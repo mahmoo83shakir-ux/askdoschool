@@ -18,7 +18,7 @@
 | 1 خواص المادة | 1 حالات المادة وخواصها | 7 | Matter، Physical property، Physical change، Chemical change، Surface tension، Viscosity، صلب، سائل، غاز، بلازما | 10 |
 | | 2 قياس حجم المادة | 12 | Volume، Boyle's law | 2 |
 | | 3 كتلة المادة وكثافتها | 18 | Mass، Density | 2 |
-| 2 القوة | 1 مفهوم القوة | 29 | Force، Newton | 2–3 |
+| 2 القوة | 1 مفهوم القوة | 29 | Force، Newton (+ Weight في النص) | 3 |
 | | 2 تصنيف القوة بحسب تأثيرها في الأجسام | 33 | Contact force، Field force، Resultant force، Balanced force، … | 4–5 |
 | 3 الضغط | 1 الضغط | 44 | Pressure، Pascal | 2 |
 | | 2 ضغط السائل والغاز | 47 | Liquid pressure، Lateral pressure، Gas pressure، Atmospheric pressure | 4 |
@@ -66,7 +66,8 @@
 | الملف | المحتوى | الحالة |
 |---|---|---|
 | `content/terms/unit-01.json` | الفيزياء، الفصل 1 «خواص المادة» — 15 مصطلحاً بترتيب الكتاب، والتعريفات بصياغته | `draft`، جاهز لمراجعة المعلم |
-| `content/terms/unit-02.json` | مؤقت: الذرة، العنصر، المركب، المخلوط (من المسودة الأولى، مكانها كتاب الكيمياء) | `draft`، ينتظر قرار ترتيب الكتب |
+| `content/terms/unit-02.json` | الفيزياء، الفصل 2 «القوة» — الدرس 1: القوة، النيوتن، الوزن (الدرس 2 في الجلسة القادمة) | `draft` |
+| `content/terms/unit-99.json` | مؤقت: الذرة، العنصر، المركب، المخلوط (من المسودة الأولى، مكانها كتاب الكيمياء) | `draft`، ينتظر قرار ترتيب الكتب |
 
 ما تغيّر في `unit-01` عن المسودة الأولى:
 - العنوان صار «خواص المادة / Properties of Matter» كما في الكتاب.

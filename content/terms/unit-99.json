@@ -1,0 +1,46 @@
+{
+  "id": "unit-99",
+  "unit": 99,
+  "title_ar": "مصطلحات من كتاب الكيمياء",
+  "title_en": "Chemistry Terms (to be placed)",
+  "status": "draft",
+  "source_note": "مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.",
+  "terms": [
+    {
+      "id": "atom",
+      "en": "Atom",
+      "ar": "الذرة",
+      "def_ar": "أصغر جزء من المادة، ولا يُرى بالعين المجردة.",
+      "def_en": "The smallest part of matter; too small to see.",
+      "example_ar": "قطعة الذهب مكونة من ذرات ذهب.",
+      "emoji": "⚛️"
+    },
+    {
+      "id": "element",
+      "en": "Element",
+      "ar": "العنصر",
+      "def_ar": "مادة نقية تتكون من نوع واحد فقط من الذرات.",
+      "def_en": "A pure substance made of only one kind of atom.",
+      "example_ar": "الأوكسجين والحديد والذهب.",
+      "emoji": "🥇"
+    },
+    {
+      "id": "compound",
+      "en": "Compound",
+      "ar": "المركب",
+      "def_ar": "مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.",
+      "def_en": "A substance formed from two or more elements in fixed ratios.",
+      "example_ar": "الماء من الهيدروجين والأوكسجين.",
+      "emoji": "💧"
+    },
+    {
+      "id": "mixture",
+      "en": "Mixture",
+      "ar": "المخلوط",
+      "def_ar": "مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.",
+      "def_en": "Two or more substances mixed physically, each keeping its properties.",
+      "example_ar": "الرمل والماء نفصلهما بالترشيح.",
+      "emoji": "🥗"
+    }
+  ]
+}

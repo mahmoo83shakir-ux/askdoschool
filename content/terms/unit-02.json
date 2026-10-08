@@ -1,46 +1,37 @@
 {
   "id": "unit-02",
   "unit": 2,
-  "title_ar": "الذرات والعناصر والمركبات",
-  "title_en": "Atoms, Elements and Compounds",
+  "title_ar": "القوة",
+  "title_en": "Force",
   "status": "draft",
-  "source_note": "مؤقت: مصطلحات نُقلت من مسودة unit-01 لأنها ليست في فصل الفيزياء الأول؛ موضعها في كتاب الكيمياء للأول المتوسط (الفصل الثاني). ترتيب الفصول بين الكتب الثلاثة ينتظر قرار المعلم (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.",
+  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني (الطبعة السابعة المنقحة 2024، ص 27–). الدرس الأول «مفهوم القوة» (ص 29–32): القوة والنيوتن من صندوق «المفردات»، والوزن معرَّف في الدرس نفسه بمصطلحه الإنكليزي Weight. الدرس الثاني يُضاف في الجلسة القادمة.",
   "terms": [
     {
-      "id": "atom",
-      "en": "Atom",
-      "ar": "الذرة",
-      "def_ar": "أصغر جزء من المادة، ولا يُرى بالعين المجردة.",
-      "def_en": "The smallest part of matter; too small to see.",
-      "example_ar": "قطعة الذهب مكونة من ذرات ذهب.",
-      "emoji": "⚛️"
+      "id": "force",
+      "en": "Force",
+      "ar": "القوة",
+      "def_ar": "كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.",
+      "def_en": "Any influence that changes, or tries to change, an object's motion or shape.",
+      "example_ar": "ندفع الكرسي بقوة لنحركه.",
+      "emoji": "💪"
     },
     {
-      "id": "element",
-      "en": "Element",
-      "ar": "العنصر",
-      "def_ar": "مادة نقية تتكون من نوع واحد فقط من الذرات.",
-      "def_en": "A pure substance made of only one kind of atom.",
-      "example_ar": "الأوكسجين والحديد والذهب.",
-      "emoji": "🥇"
+      "id": "newton",
+      "en": "Newton",
+      "ar": "النيوتن",
+      "def_ar": "وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.",
+      "def_en": "The unit of force: Earth's pull on an object of mass 1/9.8 kg.",
+      "example_ar": "رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.",
+      "emoji": "🍎"
     },
     {
-      "id": "compound",
-      "en": "Compound",
-      "ar": "المركب",
-      "def_ar": "مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.",
-      "def_en": "A substance formed from two or more elements in fixed ratios.",
-      "example_ar": "الماء من الهيدروجين والأوكسجين.",
-      "emoji": "💧"
-    },
-    {
-      "id": "mixture",
-      "en": "Mixture",
-      "ar": "المخلوط",
-      "def_ar": "مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.",
-      "def_en": "Two or more substances mixed physically, each keeping its properties.",
-      "example_ar": "الرمل والماء نفصلهما بالترشيح.",
-      "emoji": "🥗"
+      "id": "weight",
+      "en": "Weight",
+      "ar": "الوزن",
+      "def_ar": "قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.",
+      "def_en": "The force of Earth's gravity on an object: w = m × g.",
+      "example_ar": "وزن حقيبة كتلتها 6 kg يساوي 58.8 N.",
+      "emoji": "🎒"
     }
   ]
 }
