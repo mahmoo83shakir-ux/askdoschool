@@ -63,3 +63,7 @@ body { background: #000; font-family: "Tajawal", sans-serif; color: var(--ink); 
 .meaning { font-family: "Lalezar", sans-serif; font-size: 90px; color: var(--ok); }
 .cta { font-weight: 800; font-size: 54px; line-height: 1.6; color: var(--p-deep); }
 .cta b { color: var(--acc); }
+
+/* Cards without an example box (intro, quiz, answer, outro) sit centred instead of leaving the lower third empty. */
+.card:not(:has(.note)) { justify-content: center; }
+.card:not(:has(.note)) .hero { margin-top: 0; }
