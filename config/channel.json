@@ -1,0 +1,15 @@
+{
+  "series_title_ar": "مصطلحات العلوم",
+  "series_subtitle_ar": "الصف الأول المتوسط · المتميزين",
+  "teacher": "",
+  "handle": "",
+  "platform_url": "",
+  "timezone": "Asia/Baghdad",
+  "start_date": "2026-10-09",
+  "terms_per_episode": 3,
+  "hashtags": ["#العلوم", "#الأول_المتوسط", "#المتميزين", "#مصطلحات_علمية", "#Science", "#Shorts"],
+  "voices": {
+    "ar": "ar-IQ-BasselNeural",
+    "en": "en-US-AndrewNeural"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "id": "unit-01",
+  "unit": 1,
+  "title_ar": "المادة وخواصها",
+  "title_en": "Matter and Its Properties",
+  "status": "draft",
+  "source_note": "مسودة أولية لتشغيل خط الحلقات. يطابقها وكيل الملزمة مع الكتاب المدرسي ويعدّلها.",
+  "terms": [
+    {
+      "id": "matter",
+      "en": "Matter",
+      "ar": "المادة",
+      "def_ar": "كل ما له كتلة ويشغل حيزاً من الفراغ.",
+      "def_en": "Anything that has mass and takes up space.",
+      "example_ar": "الماء والهواء والحجر كلها مادة.",
+      "emoji": "🧱"
+    },
+    {
+      "id": "mass",
+      "en": "Mass",
+      "ar": "الكتلة",
+      "def_ar": "مقدار ما يحتويه الجسم من مادة، ووحدتها الكيلوغرام.",
+      "def_en": "The amount of matter in an object, measured in kilograms.",
+      "example_ar": "نقيس الكتلة بالميزان ذي الكفتين.",
+      "emoji": "⚖️"
+    },
+    {
+      "id": "volume",
+      "en": "Volume",
+      "ar": "الحجم",
+      "def_ar": "مقدار الحيز الذي يشغله الجسم.",
+      "def_en": "The amount of space an object takes up.",
+      "example_ar": "نقيس حجم السائل بالأسطوانة المدرجة.",
+      "emoji": "🧪"
+    },
+    {
+      "id": "density",
+      "en": "Density",
+      "ar": "الكثافة",
+      "def_ar": "كتلة وحدة الحجوم من المادة، وتساوي الكتلة مقسومة على الحجم.",
+      "def_en": "The mass per unit volume of a substance: density = mass ÷ volume.",
+      "example_ar": "يطفو الخشب على الماء لأن كثافته أقل من كثافة الماء.",
+      "emoji": "🪵"
+    },
+    {
+      "id": "physical-property",
+      "en": "Physical Property",
+      "ar": "الخاصية الفيزيائية",
+      "def_ar": "صفة للمادة يمكن ملاحظتها أو قياسها من دون أن يتغير تركيبها.",
+      "def_en": "A characteristic observed or measured without changing what the substance is made of.",
+      "example_ar": "اللون والكثافة ودرجة الغليان خواص فيزيائية.",
+      "emoji": "🎨"
+    },
+    {
+      "id": "chemical-property",
+      "en": "Chemical Property",
+      "ar": "الخاصية الكيميائية",
+      "def_ar": "صفة تصف قدرة المادة على التحول إلى مادة جديدة.",
+      "def_en": "A characteristic that describes a substance's ability to change into a new substance.",
+      "example_ar": "قابلية الخشب للاشتعال خاصية كيميائية.",
+      "emoji": "🔥"
+    },
+    {
+      "id": "physical-change",
+      "en": "Physical Change",
+      "ar": "التغير الفيزيائي",
+      "def_ar": "تغير في شكل المادة أو حالتها من دون أن تتكون مادة جديدة.",
+      "def_en": "A change in the form or state of matter without forming a new substance.",
+      "example_ar": "انصهار الجليد وتمزيق الورق تغيرات فيزيائية.",
+      "emoji": "🧊"
+    },
+    {
+      "id": "chemical-change",
+      "en": "Chemical Change",
+      "ar": "التغير الكيميائي",
+      "def_ar": "تغير تتكون فيه مادة جديدة أو أكثر لها خواص مختلفة عن المادة الأصلية.",
+      "def_en": "A change in which one or more new substances with different properties are formed.",
+      "example_ar": "صدأ الحديد واحتراق الورق تغيرات كيميائية.",
+      "emoji": "⚗️"
+    },
+    {
+      "id": "atom",
+      "en": "Atom",
+      "ar": "الذرة",
+      "def_ar": "أصغر جزء من العنصر يحمل خواص ذلك العنصر.",
+      "def_en": "The smallest particle of an element that has the properties of that element.",
+      "example_ar": "تتكون قطعة الذهب من ذرات ذهب فقط.",
+      "emoji": "⚛️"
+    },
+    {
+      "id": "element",
+      "en": "Element",
+      "ar": "العنصر",
+      "def_ar": "مادة نقية تتكون من نوع واحد فقط من الذرات.",
+      "def_en": "A pure substance made of only one kind of atom.",
+      "example_ar": "الأوكسجين والحديد والذهب عناصر.",
+      "emoji": "🥇"
+    },
+    {
+      "id": "compound",
+      "en": "Compound",
+      "ar": "المركب",
+      "def_ar": "مادة نقية تتكون من عنصرين أو أكثر متحدة كيميائياً بنسب ثابتة.",
+      "def_en": "A pure substance made of two or more elements chemically combined in fixed proportions.",
+      "example_ar": "الماء مركب من الهيدروجين والأوكسجين.",
+      "emoji": "💧"
+    },
+    {
+      "id": "mixture",
+      "en": "Mixture",
+      "ar": "المخلوط",
+      "def_ar": "مادتان أو أكثر مختلطة فيزيائياً، وتحتفظ كل منها بخواصها.",
+      "def_en": "Two or more substances physically mixed, each keeping its own properties.",
+      "example_ar": "الماء والملح، والرمل وبرادة الحديد مخاليط.",
+      "emoji": "🥗"
+    }
+  ]
+}
