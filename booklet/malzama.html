@@ -1,0 +1,1300 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ملزمة المصطلحات العلمية – الأول المتوسط (المتميزين)</title>
+<link data-keep rel="preconnect" href="https://fonts.googleapis.com">
+<link data-keep rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link data-keep rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap">
+<script data-keep id="mj-config">
+window.MathJax = {
+  tex: { inlineMath: [] },
+  svg: { fontCache: 'local' },
+  startup: {
+    typeset: false,
+    ready: function () {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(function () { document.dispatchEvent(new Event('mathjax-ready')); });
+    }
+  }
+};
+</script>
+<script data-keep id="mj-loader" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" defer></script>
+<style data-keep id="app-style">
+/* Layout: A4 sheets stacked on a desk. Every inner page shares one frame:
+   gradient margin, header band, framed white panel, centred watermark, footer with hex page number.
+   Edit mode adds a page bar above each sheet and a floating toolbar beside the active block. */
+:root {
+  --desk: #E6E3EB;
+  --desk-ink: #2A2533;
+  --desk-line: #CEC8D8;
+  --desk-chip: #FFFFFF;
+  --warn: #B42318;
+  --paper: #FFFFFF;
+  --ink: #1C1A22;
+  --muted: #5E5869;
+  --c-def: #1C5DB0;
+  --c-law: #C0262D;
+  --c-sol: #23803A;
+  --f-display: "Lalezar", "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --f-body: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --f-var: "Times New Roman", "Cambria Math", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --desk: #16141B; --desk-ink: #ECE8F2; --desk-line: #36313F; --desk-chip: #24212B; --warn: #F97066; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --desk: #16141B; --desk-ink: #ECE8F2; --desk-line: #36313F; --desk-chip: #24212B; --warn: #F97066; color-scheme: dark; }
+
+.book { --p: #5B2D8E; --p-deep: #3A1766; --p-soft: #EFE8F8; --acc: #F28A1F; --acc-soft: #FFF3E4; --alt: #13A08F; }
+.book[data-palette="navy"] { --p: #1D4F8C; --p-deep: #0F2F59; --p-soft: #E6EEF9; --acc: #F2A332; --acc-soft: #FFF5E2; --alt: #2AA2C4; }
+.book[data-palette="emerald"] { --p: #0E6A5B; --p-deep: #063E35; --p-soft: #E1F2ED; --acc: #E4603E; --acc-soft: #FDECE7; --alt: #D9A12E; }
+
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--desk); color: var(--desk-ink); font-family: var(--f-body); }
+.app { min-height: 100%; }
+
+/* ---------- screen chrome ---------- */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--desk); border-bottom: 1px solid var(--desk-line); }
+.bar-in { max-width: 794px; margin: 0 auto; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.bar-t { font-weight: 800; font-size: 15px; min-width: 0; }
+.bar-t small { display: block; font-weight: 500; font-size: 12.5px; opacity: .75; }
+.view-only, .edit-only { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.app:not(.editing) .edit-only { display: none; }
+.app.editing .view-only { display: none; }
+.btn { font: 700 13px var(--f-body); color: var(--desk-ink); background: var(--desk-chip); border: 1px solid var(--desk-line); border-radius: 8px; padding: 6px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; line-height: 1.4; }
+.btn:hover:not(:disabled) { border-color: var(--desk-ink); }
+.btn.primary { background: var(--desk-ink); color: var(--desk); border-color: var(--desk-ink); }
+.btn.danger { color: var(--warn); }
+.btn.sm { padding: 3px 9px; font-size: 12px; border-radius: 7px; }
+.btn:disabled { opacity: .45; cursor: default; }
+.btn:focus-visible, .tb button:focus-visible, select:focus-visible, .eqpop input:focus-visible { outline: 2px solid var(--desk-ink); outline-offset: 2px; }
+.sw { display: flex; gap: 4px; padding-inline-end: 6px; margin-inline-end: 2px; border-inline-end: 1px solid var(--desk-line); }
+.sw button { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--desk-chip); box-shadow: 0 0 0 1px var(--desk-line); cursor: pointer; padding: 0; }
+.sw button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--desk-ink); }
+.hint { max-width: 794px; margin: 0 auto; padding: 12px 16px 0; font-size: 13px; line-height: 1.75; }
+.hint b { font-weight: 800; }
+.banner { max-width: 794px; margin: 0 auto; padding: 12px 16px 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; font-weight: 700; }
+
+.book { display: flex; flex-direction: column; align-items: center; gap: 22px; padding-block: 22px 60px; padding-inline: 16px; }
+.pbar { width: min(794px, 100%); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; justify-content: space-between; font-size: 13px; margin-bottom: -12px; }
+.pbar > b { font-weight: 800; }
+.pb-tools { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+.pb-sel { display: inline-flex; align-items: center; gap: 4px; font-weight: 700; font-size: 12px; }
+.pb-sel select { font: 700 12px var(--f-body); color: var(--desk-ink); background: var(--desk-chip); border: 1px solid var(--desk-line); border-radius: 7px; padding: 2px 4px; }
+.pb-warn { color: var(--warn); font-weight: 800; display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pb-note { opacity: .75; }
+
+.tb { position: fixed; z-index: 40; background: var(--desk-chip); color: var(--desk-ink); border: 1px solid var(--desk-line); border-radius: 10px; box-shadow: 0 6px 24px rgb(0 0 0 / .2); padding: 4px; display: flex; flex-wrap: wrap; gap: 3px; max-width: calc(100vw - 16px); font-family: var(--f-body); }
+.tb button { font: 700 12.5px var(--f-body); color: var(--desk-ink); background: transparent; border: 1px solid transparent; border-radius: 7px; padding: 4px 8px; cursor: pointer; white-space: nowrap; }
+.tb button:hover { background: var(--desk); border-color: var(--desk-line); }
+.tb button.danger { color: var(--warn); }
+.tb .grp { display: inline-flex; gap: 3px; padding-inline-start: 4px; border-inline-start: 1px solid var(--desk-line); }
+.ins-menu { display: grid; grid-template-columns: 1fr 1fr; width: 250px; }
+.ins-menu button { text-align: right; }
+.eqpop { width: min(380px, calc(100vw - 24px)); display: grid; gap: 8px; padding: 10px; }
+.eqpop label { font-weight: 800; font-size: 13px; }
+.eqpop input { font: 15px ui-monospace, Consolas, monospace; padding: 8px; border: 1px solid var(--desk-line); border-radius: 8px; background: var(--desk); color: var(--desk-ink); direction: ltr; text-align: left; width: 100%; box-sizing: border-box; }
+.eq-keys { display: flex; flex-wrap: wrap; gap: 3px; }
+.eq-keys button { border-color: var(--desk-line); min-width: 30px; }
+.eq-prev { background: var(--paper); color: var(--ink); border-radius: 8px; min-height: 48px; display: grid; place-items: center; padding: 6px; overflow-x: auto; }
+.eq-act { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- sheet ---------- */
+.sheet {
+  width: 210mm; height: 297mm; position: relative; overflow: hidden; flex: none;
+  background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 11pt; line-height: 1.9;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .12), 0 8px 28px rgb(0 0 0 / .14);
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@media screen { .sheet { zoom: var(--z, 1); } }
+.sheet * { box-sizing: border-box; }
+.sheet p { margin: 0; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+/* ---------- inner page frame ---------- */
+.page {
+  background:
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--p) 22%, transparent) .9px, transparent 1.3px) 0 0 / 3.6mm 3.6mm,
+    linear-gradient(180deg, var(--p-deep) 0, var(--p) 21mm, var(--p-soft) 62mm, var(--p-soft) calc(100% - 46mm), var(--p) calc(100% - 14mm), var(--p-deep) 100%);
+}
+.phead { position: absolute; inset: 0 0 auto 0; height: 20mm; display: flex; align-items: center; justify-content: space-between; padding: 0 12mm 2mm; color: var(--paper); }
+.ph-side { display: flex; align-items: center; gap: 2.6mm; }
+.ph-ico { width: 10.5mm; height: 10.5mm; border-radius: 50%; background: var(--paper); color: var(--p); display: grid; place-items: center; box-shadow: 0 0 0 .8mm color-mix(in srgb, var(--paper) 35%, transparent); flex: none; }
+.ph-ico svg { width: 7mm; height: 7mm; }
+.ph-name { font-family: var(--f-display); font-size: 15pt; line-height: 1; padding-top: 1.2mm; min-width: 10mm; }
+.ph-subj { font-weight: 700; font-size: 10.5pt; line-height: 1.35; text-align: left; }
+.ph-subj b { display: block; font-family: var(--f-display); font-weight: 400; font-size: 13pt; }
+.ph-year { position: absolute; top: 13mm; left: 50%; transform: translateX(-50%); z-index: 4; background: var(--paper); color: var(--p-deep); border-radius: 999px; padding: .6mm 6mm; font-weight: 800; font-size: 12pt; line-height: 1.5; box-shadow: 0 0 0 .9mm var(--acc); white-space: nowrap; }
+
+.panel { position: absolute; top: 20mm; bottom: 17mm; left: 11mm; right: 11mm; background: var(--paper); border: .55mm solid var(--p); border-radius: 3mm; box-shadow: 0 0 0 1.3mm var(--paper), 0 0 0 1.75mm color-mix(in srgb, var(--p) 55%, var(--paper)); }
+.cn { position: absolute; width: 3.6mm; height: 3.6mm; background: var(--acc); transform: rotate(45deg); z-index: 3; border: .5mm solid var(--paper); }
+.cn.tl { top: -2.4mm; left: -2.4mm; } .cn.tr { top: -2.4mm; right: -2.4mm; }
+.cn.bl { bottom: -2.4mm; left: -2.4mm; } .cn.br { bottom: -2.4mm; right: -2.4mm; }
+
+.wm { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2mm; color: var(--p); opacity: .075; pointer-events: none; z-index: 0; }
+.wm svg { width: 92mm; height: 92mm; }
+.wm span { font-family: var(--f-display); font-size: 34pt; line-height: 1; }
+
+.content { position: relative; z-index: 1; height: 100%; padding: 8.5mm 8.5mm 10mm; display: flex; flex-direction: column; gap: 2.8mm; }
+.content > * { flex-shrink: 0; }
+.content:focus { outline: none; }
+
+.tab { position: absolute; left: 0; width: 8.5mm; height: 27mm; top: calc(34mm + (var(--ch, 1) - 1) * 24mm); background: var(--acc); color: var(--paper); border-radius: 0 2.6mm 2.6mm 0; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; font-weight: 800; font-size: 9pt; line-height: 1; gap: 1.4mm; z-index: 2; }
+.tab b { font-size: 12.5pt; }
+
+.pfoot { position: absolute; inset: auto 0 0 0; height: 17mm; display: flex; align-items: center; justify-content: space-between; padding: 2.4mm 13mm 0; color: var(--paper); font-weight: 700; font-size: 10pt; }
+.pf-ch { display: inline-flex; align-items: center; gap: 2mm; }
+.pf-ch b { font-family: var(--f-display); font-weight: 400; font-size: 13pt; color: var(--acc); }
+.pf-ph { display: inline-flex; align-items: center; gap: 1.6mm; letter-spacing: .35mm; }
+.pf-ph svg { width: 4mm; height: 4mm; }
+.pf-num { position: absolute; left: 50%; bottom: 9.2mm; transform: translateX(-50%); z-index: 4; width: 13.6mm; height: 15.2mm; background: var(--paper); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; }
+.pf-num span { width: 11.6mm; height: 13mm; background: var(--acc); color: var(--paper); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-weight: 800; font-size: 13pt; padding-top: .6mm; }
+
+/* ---------- content components ---------- */
+.chap { display: flex; align-items: center; gap: 3mm; margin-bottom: 1mm; }
+.chap::before, .chap::after { content: ""; flex: 1; height: 1.4mm; background: radial-gradient(circle, var(--acc) .55mm, transparent .65mm) center / 3.2mm 1.4mm repeat-x; }
+.chap-b { background: linear-gradient(90deg, var(--acc), var(--p)); padding: 1.1mm; clip-path: polygon(7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%); }
+.chap-b div { background: var(--paper); clip-path: polygon(6.6% 0, 93.4% 0, 100% 50%, 93.4% 100%, 6.6% 100%, 0 50%); padding: 1mm 12mm 1.4mm; text-align: center; line-height: 1.15; }
+.chap-b small { display: block; font-weight: 800; font-size: 9.5pt; color: var(--acc); }
+.chap-b strong { display: block; font-family: var(--f-display); font-weight: 400; font-size: 20pt; color: var(--p-deep); }
+
+.lead { color: var(--muted); font-weight: 500; }
+
+.sec { display: flex; align-items: center; gap: 2.4mm; margin: 1.6mm 0 0; font-family: var(--f-display); font-weight: 400; font-size: 15.5pt; line-height: 1.35; color: var(--p-deep); }
+.sec::after { content: ""; flex: 1; border-bottom: .55mm dotted color-mix(in srgb, var(--p) 60%, var(--paper)); transform: translateY(1mm); }
+.sec-n { font-family: var(--f-body); font-weight: 800; font-size: 9.5pt; color: var(--paper); background: var(--p); padding: .5mm 3.2mm .2mm; clip-path: polygon(14% 0, 86% 0, 100% 50%, 86% 100%, 14% 100%, 0 50%); direction: ltr; }
+.sub { font-family: var(--f-display); font-weight: 400; font-size: 12.5pt; color: var(--acc); margin: .6mm 0 -1mm; line-height: 1.5; }
+
+.def { position: relative; padding-right: 4.6mm; }
+.def::before { content: ""; position: absolute; right: 0; top: 2.6mm; width: 2.4mm; height: 2.7mm; background: var(--acc); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+.def b { font-weight: 800; color: var(--ink); }
+.def span, .blue { color: var(--c-def); }
+.red { color: var(--c-law); }
+.green { color: var(--c-sol); }
+
+.m { display: inline-block; direction: ltr; unicode-bidi: isolate; vertical-align: middle; }
+.m:empty::before { content: attr(data-tex); font: 9pt ui-monospace, Consolas, monospace; color: var(--muted); }
+
+.law { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2mm 9mm; padding: 1.6mm 4mm; border: .45mm solid color-mix(in srgb, var(--c-law) 40%, var(--paper)); border-radius: 2mm; background: color-mix(in srgb, var(--c-law) 5%, var(--paper)); color: var(--c-law); font-weight: 700; }
+.law.green { border-color: color-mix(in srgb, var(--c-sol) 40%, var(--paper)); background: color-mix(in srgb, var(--c-sol) 5%, var(--paper)); color: var(--c-sol); }
+
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0; border: .45mm solid var(--p); border-radius: 2mm; overflow: hidden; font-size: 9.5pt; line-height: 1.45; background: color-mix(in srgb, var(--paper) 85%, transparent); }
+.tbl th { background: var(--p); color: var(--paper); font-weight: 700; padding: 1.1mm 2mm; }
+.tbl td { padding: .35mm 2mm; text-align: center; border-top: .25mm solid color-mix(in srgb, var(--p) 18%, var(--paper)); }
+.tbl tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--p-soft) 75%, transparent); }
+.tbl .n { width: 7mm; color: var(--muted); font-weight: 700; }
+.tbl .ar { color: var(--c-def); font-weight: 700; }
+.tbl .en { direction: ltr; font-family: var(--f-body); }
+.tbl .sym { direction: ltr; font-weight: 800; color: var(--c-law); }
+.tbl.h th { width: 34mm; white-space: nowrap; }
+.tbl.h td { font-weight: 700; direction: ltr; }
+.tbl td.d { text-align: right; }
+.tbl td.tm { white-space: nowrap; }
+.blank { display: inline-block; min-width: 24mm; border-bottom: .4mm dotted var(--muted); }
+.exl { margin: 0; padding-right: 5mm; display: grid; gap: .6mm; font-size: 10pt; line-height: 1.75; }
+.exl li::marker { color: var(--acc); font-weight: 800; }
+.cap { text-align: center; font-size: 9.5pt; font-weight: 700; color: var(--p); margin-top: -1.6mm; }
+
+.note { position: relative; border: .5mm dashed var(--acc); border-radius: 2.4mm; background: var(--acc-soft); padding: 4mm 4mm 2mm; margin-top: 2.6mm; }
+.note-k { position: absolute; top: -3.4mm; right: 4mm; display: inline-flex; align-items: center; gap: 1.2mm; background: var(--acc); color: var(--paper); border-radius: 999px; padding: 0 3mm 0 2.4mm; font-weight: 800; font-size: 9.5pt; line-height: 1.75; }
+.note-k svg { width: 3.8mm; height: 3.8mm; }
+
+.qa { display: grid; gap: 1.2mm; }
+.qa p { display: flex; gap: 2.2mm; align-items: flex-start; }
+.qa i, .chip { font-style: normal; flex: none; width: 6.4mm; height: 6.4mm; border-radius: 50%; display: inline-grid; place-items: center; color: var(--paper); font-weight: 800; font-size: 10pt; line-height: 1; margin-top: .9mm; padding-top: .4mm; }
+.qa .q, .q-t { font-weight: 800; }
+.qa .q i, .chip.q { background: var(--c-law); }
+.qa .a i, .chip.a { background: var(--c-sol); }
+.qa .a { color: var(--c-def); }
+.qa .wz { margin-top: 1.2mm; }
+
+.ex { border: .5mm solid var(--p); border-radius: 2.6mm; overflow: hidden; background: color-mix(in srgb, var(--paper) 88%, transparent); }
+.ex-h { background: var(--p); color: var(--paper); font-family: var(--f-display); font-size: 12.5pt; padding: .4mm 4mm 0; display: flex; justify-content: space-between; align-items: center; }
+.ex-h small { font-family: var(--f-body); font-size: 9pt; font-weight: 700; opacity: .85; }
+.ex-b { padding: 2mm 4mm 2.4mm; display: grid; gap: 1.6mm; }
+.sol-k { display: inline-block; background: var(--c-sol); color: var(--paper); font-weight: 800; font-size: 9.5pt; border-radius: 999px; padding: 0 3mm; line-height: 1.8; margin-left: 2mm; }
+.steps { margin: 0; padding-right: 5mm; display: grid; gap: .2mm; font-size: 10pt; line-height: 1.75; }
+.steps li::marker { color: var(--acc); font-weight: 800; }
+
+.split { display: flex; gap: 4mm; align-items: center; }
+.split > * { min-width: 0; }
+.split .grow { flex: 1; display: grid; gap: 2mm; }
+.fig { flex: none; display: grid; justify-items: center; margin: 0; }
+.fig figcaption { font-size: 8.5pt; font-weight: 700; color: var(--p); }
+.fig svg { direction: ltr; overflow: visible; }
+.fig svg text { font-family: var(--f-var); font-style: italic; }
+
+.pic { margin: 0; display: grid; justify-items: center; gap: 1mm; }
+.pic img { display: block; max-width: 100%; height: auto; border-radius: 1.6mm; }
+.pic.pic-s img { width: 38%; } .pic.pic-md img { width: 62%; } .pic.pic-l img { width: 100%; }
+.pic figcaption { font-size: 8.5pt; font-weight: 700; color: var(--p); }
+
+.dyk { display: flex; gap: 3mm; align-items: flex-start; background: var(--p-soft); border-radius: 2.6mm; padding: 2.4mm 3.6mm; }
+.dyk-ico { flex: none; width: 9mm; height: 9mm; border-radius: 50%; background: var(--p); color: var(--paper); display: grid; place-items: center; margin-top: 1mm; }
+.dyk-ico svg { width: 5.4mm; height: 5.4mm; }
+.dyk b { font-family: var(--f-display); font-weight: 400; font-size: 12.5pt; color: var(--p-deep); display: block; line-height: 1.5; }
+
+.tip { font-size: 10pt; font-weight: 700; color: var(--muted); }
+.tip b { color: var(--acc); }
+
+.toc { list-style: none; margin: 0; padding: 0; display: grid; gap: 2mm; }
+.toc li { display: flex; align-items: center; gap: 3mm; padding: 1.3mm 2mm 1.3mm 3mm; border-radius: 2.4mm; }
+.toc li:nth-child(odd) { background: color-mix(in srgb, var(--p-soft) 80%, transparent); }
+.toc-n { flex: none; width: 10mm; height: 11.2mm; background: var(--acc); color: var(--paper); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-weight: 800; font-size: 13pt; padding-top: .6mm; }
+.toc-t { font-family: var(--f-display); font-size: 14pt; color: var(--p-deep); line-height: 1.3; }
+.toc-t small { display: block; font-family: var(--f-body); font-size: 9pt; font-weight: 500; color: var(--muted); line-height: 1.4; }
+.toc-d { flex: 1; align-self: end; margin-bottom: 2.4mm; border-bottom: .5mm dotted color-mix(in srgb, var(--p) 45%, var(--paper)); }
+.toc-p { font-weight: 800; font-size: 12pt; color: var(--p); min-width: 8mm; text-align: left; }
+
+.legend { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 6mm; font-size: 10pt; }
+.legend div { display: flex; align-items: center; gap: 2.4mm; }
+.legend .s { font-weight: 800; }
+.mini-note { border: .45mm dashed var(--acc); background: var(--acc-soft); color: var(--acc); font-weight: 800; border-radius: 1.6mm; padding: 0 2.4mm; font-size: 9pt; }
+.wz { background: var(--p-deep); color: var(--paper); font-weight: 800; font-size: 8.5pt; border-radius: 1.2mm; padding: .1mm 2mm 0; white-space: nowrap; }
+.letter { margin-top: auto; border: .45mm solid color-mix(in srgb, var(--p) 30%, var(--paper)); border-radius: 2.6mm; padding: 3mm 4mm; background: color-mix(in srgb, var(--paper) 88%, transparent); }
+.letter b { font-family: var(--f-display); font-weight: 400; font-size: 13pt; color: var(--p-deep); }
+.letter .sig { text-align: left; font-family: var(--f-display); color: var(--p); font-size: 12pt; }
+
+/* ---------- cover ---------- */
+.cover { background: var(--p-soft); }
+.cv-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cv-w1 { fill: var(--p); } .cv-w2 { fill: var(--acc); } .cv-w3 { fill: var(--p-deep); }
+.cv-f { position: absolute; color: var(--paper); opacity: .14; font-family: var(--f-var); font-style: italic; white-space: nowrap; direction: ltr; }
+.cv-grade { position: absolute; top: 15mm; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 4mm; color: var(--paper); font-weight: 800; font-size: 12pt; }
+.cv-grade::before, .cv-grade::after { content: ""; width: 34mm; height: .6mm; background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.cv-grade span { border: .5mm solid var(--paper); border-radius: 999px; padding: .4mm 6mm 0; }
+.cv-title { position: absolute; top: 30mm; left: 0; right: 0; margin: 0; text-align: center; color: var(--paper); font-family: var(--f-display); font-weight: 400; line-height: 1; }
+.cv-title .big { display: inline-flex; align-items: center; gap: 5mm; font-size: 58pt; }
+.cv-title .big svg { width: 13mm; height: 15mm; flex: none; color: var(--acc); }
+.cv-title small { display: block; font-size: 34pt; margin-top: 3mm; color: var(--acc); }
+.cv-sub { position: absolute; top: 84mm; left: 0; right: 0; text-align: center; color: var(--paper); font-weight: 700; font-size: 11pt; opacity: .9; margin: 0; }
+.cv-emb { position: absolute; top: 116mm; left: 50%; transform: translateX(-50%); width: 80mm; height: 80mm; border-radius: 50%; background: var(--paper); display: grid; place-items: center; box-shadow: 0 0 0 3.4mm var(--p-deep), 0 0 0 5.4mm var(--paper), 0 0 0 6.2mm var(--acc), 0 6mm 14mm rgb(0 0 0 / .18); }
+.cv-emb svg { width: 60mm; height: 60mm; }
+.cv-emb .o1 { stroke: var(--p); } .cv-emb .o2 { stroke: var(--acc); } .cv-emb .o3 { stroke: var(--alt); }
+.cv-emb .nu { fill: var(--acc); } .cv-emb .e1 { fill: var(--p); } .cv-emb .e2 { fill: var(--acc); } .cv-emb .e3 { fill: var(--alt); }
+.cv-emb .hl { fill: var(--paper); opacity: .55; }
+.cv-emb .ring { fill: none; stroke: var(--p-soft); stroke-width: 2; stroke-dasharray: 3 5; }
+.cv-author { position: absolute; top: 208mm; left: 0; right: 0; text-align: center; color: var(--p-deep); line-height: 1.2; }
+.cv-author span { display: inline-block; font-weight: 800; font-size: 11pt; color: var(--muted); }
+.cv-author strong { display: block; width: fit-content; margin: 1mm auto 0; font-family: var(--f-display); font-weight: 400; font-size: 30pt; }
+.cv-year { position: absolute; top: 236mm; left: 50%; transform: translateX(-50%); background: var(--acc); color: var(--paper); font-weight: 800; font-size: 13pt; border-radius: 999px; padding: .6mm 7mm 0; white-space: nowrap; }
+.cv-hex { position: absolute; left: 9mm; top: 206mm; width: 40mm; height: 40mm; }
+.cv-hex .h { fill: none; stroke: var(--p); stroke-width: 1.6; opacity: .45; }
+.cv-hex .hf { fill: var(--acc); }
+.cv-hex .hp { fill: var(--p); opacity: .85; }
+.cv-dots { position: absolute; right: 10mm; top: 212mm; width: 36mm; height: 26mm; background: radial-gradient(circle, color-mix(in srgb, var(--p) 45%, transparent) .55mm, transparent .7mm) 0 0 / 4mm 4mm; }
+.cv-contact { position: absolute; bottom: 7mm; left: 0; right: 0; display: flex; justify-content: center; gap: 12mm; color: var(--paper); font-weight: 700; font-size: 10.5pt; }
+.cv-contact > span { display: inline-flex; align-items: center; gap: 2mm; }
+.cv-contact i { width: 7.4mm; height: 7.4mm; border-radius: 50%; background: var(--paper); color: var(--p); display: grid; place-items: center; }
+.cv-contact svg { width: 4.4mm; height: 4.4mm; }
+
+/* ---------- edit mode on the sheets ---------- */
+.editing .content > *:hover { outline: 1px dashed color-mix(in srgb, var(--p) 50%, transparent); outline-offset: 1.2mm; }
+.editing .content > .blk-active, .editing .content > .blk-active:hover { outline: 1.5px solid var(--acc); outline-offset: 1.2mm; }
+.editing .sheet [contenteditable="true"][data-bind], .editing .sheet [contenteditable="true"][data-f] { outline: 1px dashed color-mix(in srgb, currentColor 60%, transparent); outline-offset: .7mm; border-radius: .6mm; cursor: text; min-width: 6mm; }
+.editing .m { cursor: pointer; border-radius: 1mm; }
+.editing .m:hover { background: color-mix(in srgb, var(--acc) 22%, transparent); }
+.editing .m[data-tex=""]::before { content: "معادلة"; font-family: var(--f-body); }
+.editing .sheet.over .panel { border-color: var(--c-law); box-shadow: 0 0 0 1.3mm var(--paper), 0 0 0 2.2mm var(--c-law); }
+
+@media print {
+  @page { size: A4; margin: 0; }
+  body { background: var(--paper); }
+  .bar, .hint, .banner, .pbar, .tb, .ins-menu, .eqpop { display: none !important; }
+  .book { display: block; padding: 0; }
+  .sheet { box-shadow: none; zoom: 1; break-after: page; }
+  .sheet:last-child { break-after: auto; }
+  .sheet *, .sheet .panel { outline: none !important; }
+  .editing .sheet.over .panel { border-color: var(--p); box-shadow: 0 0 0 1.3mm var(--paper), 0 0 0 1.75mm color-mix(in srgb, var(--p) 55%, var(--paper)); }
+}
+</style>
+<svg data-keep id="sprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="emblem" viewBox="0 0 200 200">
+      <polygon points="100,8 179.7,54 179.7,146 100,192 20.3,146 20.3,54" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/>
+      <g fill="none" stroke="currentColor" stroke-width="6">
+        <ellipse cx="100" cy="100" rx="64" ry="22"/>
+        <ellipse cx="100" cy="100" rx="64" ry="22" transform="rotate(60 100 100)"/>
+        <ellipse cx="100" cy="100" rx="64" ry="22" transform="rotate(-60 100 100)"/>
+      </g>
+      <circle cx="100" cy="100" r="13" fill="currentColor"/>
+    </symbol>
+    <symbol id="hexmark" viewBox="0 0 26 30">
+      <polygon points="13,1 25,8 25,22 13,29 1,22 1,8" fill="currentColor"/>
+      <polygon points="13,8 19,11.5 19,18.5 13,22 7,18.5 7,11.5" fill="none" stroke="#fff" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.4 11.4 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02z"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" d="M21 3 2.8 10.4l7 2.8 2.8 7zM9.8 13.2l5.6-5.4"/></symbol>
+    <symbol id="i-cam" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a6.5 6.5 0 0 0-3.9 11.7c.6.5.9 1.2.9 2V17h6v-.8c0-.8.3-1.5.9-2A6.5 6.5 0 0 0 12 2.5z"/></g></symbol>
+    <symbol id="i-q" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 9a3 3 0 1 1 4.2 2.75c-.75.33-1.2 1.05-1.2 1.85V14"/></g><circle cx="12" cy="18" r="1.4" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+<template data-keep id="tpl-cover">
+  <svg class="cv-bg" viewBox="0 0 210 297" preserveAspectRatio="none" aria-hidden="true">
+    <path class="cv-w2" d="M0 0H210V164C160 199 82 139 0 189Z"/>
+    <path class="cv-w1" d="M0 0H210V156C160 190 82 130 0 180Z"/>
+    <path class="cv-w3" d="M0 271C62 259 140 285 210 266V297H0Z"/>
+  </svg>
+  <span class="cv-f" style="top:13mm;left:9mm;font-size:17pt;transform:rotate(-7deg)">ρ = m / V</span>
+  <span class="cv-f" style="top:12mm;right:12mm;font-size:22pt;transform:rotate(9deg)">H₂O</span>
+  <span class="cv-f" style="top:44mm;left:8mm;font-size:19pt;transform:rotate(-6deg)">V = V₂ − V₁</span>
+  <span class="cv-f" style="top:50mm;right:7mm;font-size:19pt;transform:rotate(7deg)">PV = const</span>
+  <span class="cv-f" style="top:96mm;left:12mm;font-size:21pt;transform:rotate(-9deg)">g / cm³</span>
+  <span class="cv-f" style="top:92mm;right:11mm;font-size:21pt;transform:rotate(6deg)">O₂</span>
+  <span class="cv-f" style="top:128mm;left:21mm;font-size:17pt;transform:rotate(-4deg)">m³ · L · mL</span>
+  <span class="cv-f" style="top:124mm;right:18mm;font-size:17pt;transform:rotate(5deg)">kg</span>
+  <div class="cv-grade"><span data-bind="grade"></span></div>
+  <h1 class="cv-title"><span class="big"><svg aria-hidden="true"><use href="#hexmark"/></svg><span data-bind="title"></span><svg aria-hidden="true"><use href="#hexmark"/></svg></span><small data-bind="titleSub"></small></h1>
+  <p class="cv-sub" data-bind="tagline"></p>
+  <div class="cv-emb" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <circle class="ring" cx="100" cy="100" r="96"/>
+      <g fill="none" stroke-width="5.5" stroke-linecap="round">
+        <ellipse class="o1" cx="100" cy="100" rx="80" ry="28"/>
+        <ellipse class="o2" cx="100" cy="100" rx="80" ry="28" transform="rotate(60 100 100)"/>
+        <ellipse class="o3" cx="100" cy="100" rx="80" ry="28" transform="rotate(-60 100 100)"/>
+      </g>
+      <circle class="nu" cx="100" cy="100" r="17"/>
+      <circle class="hl" cx="94" cy="94" r="6"/>
+      <circle class="e1" cx="20" cy="100" r="7"/>
+      <circle class="e2" cx="140" cy="169.3" r="7"/>
+      <circle class="e3" cx="140" cy="30.7" r="7"/>
+    </svg>
+  </div>
+  <svg class="cv-hex" viewBox="0 0 80 80" aria-hidden="true">
+    <polygon class="h" points="20,4 34,12 34,28 20,36 6,28 6,12"/>
+    <polygon class="hf" points="40,16 54,24 54,40 40,48 26,40 26,24"/>
+    <polygon class="h" points="20,28 34,36 34,52 20,60 6,52 6,36"/>
+    <polygon class="hp" points="20,52 30,58 30,70 20,76 10,70 10,58"/>
+    <polygon class="h" points="60,28 74,36 74,52 60,60 46,52 46,36"/>
+  </svg>
+  <div class="cv-dots" aria-hidden="true"></div>
+  <div class="cv-author"><span data-bind="byLabel"></span><strong data-bind="teacher"></strong></div>
+  <div class="cv-year"><bdi dir="ltr" data-bind="year"></bdi></div>
+  <div class="cv-contact">
+    <span><i><svg><use href="#i-phone"/></svg></i><bdi dir="ltr" data-bind="phone"></bdi></span>
+    <span><i><svg><use href="#i-send"/></svg></i><bdi dir="ltr" data-bind="telegram"></bdi></span>
+    <span><i><svg><use href="#i-cam"/></svg></i><bdi dir="ltr" data-bind="instagram"></bdi></span>
+  </div>
+</template>
+<div class="app" id="app" dir="rtl" lang="ar"></div>
+<script type="application/json" id="malzama-settings">{"palette": "violet", "teacher": "اسم الأستاذ", "byLabel": "إعداد", "title": "المصطلحات", "titleSub": "العلمية", "edition": "الأول المتوسط (المتميزين)", "grade": "الصف الأول المتوسط · المتميزين", "subject": "العلوم", "tagline": "المصطلح بالعربية والإنكليزية · التعريف بصياغة الكتاب · تمارين وأجوبة", "year": "2026 – 2027", "phone": "07XX XXX XXXX", "telegram": "@username", "instagram": "@username"}</script>
+<template id="malzama-pages">
+<section data-kind="cover"></section>
+<section data-kind="page" data-chapter="" data-numbered="0" data-foot="المقدمة" data-foot-name="المصطلحات العلمية للأول المتوسط">
+<div class="chap"><div class="chap-b"><div><small>محتويات الملزمة</small><strong>الفهرس</strong></div></div></div>
+<p class="lead">الفصول على وفق كتاب الفيزياء للصف الأول المتوسط (الطبعة السابعة المنقحة 2024). يُضاف كل فصل حين يكتمل.</p>
+<ol class="toc">
+<li><span class="toc-n">1</span><span class="toc-t">خواص المادة<small>حالات المادة وخواصها · قياس حجم المادة · كتلة المادة وكثافتها</small></span><span class="toc-d"></span><span class="toc-p">1</span></li>
+<li><span class="toc-n">2</span><span class="toc-t">القوة<small>مفهوم القوة · تصنيف القوة بحسب تأثيرها في الأجسام</small></span><span class="toc-d"></span><span class="toc-p">—</span></li>
+<li><span class="toc-n">3</span><span class="toc-t">الضغط<small>الضغط · ضغط السائل والغاز · مبدأ أرخميدس</small></span><span class="toc-d"></span><span class="toc-p">—</span></li>
+<li><span class="toc-n">4</span><span class="toc-t">الحرارة<small>مفهوم الحرارة · طرائق انتقال الحرارة</small></span><span class="toc-d"></span><span class="toc-p">—</span></li>
+<li><span class="toc-n">5</span><span class="toc-t">أثر الحرارة في المواد<small>الحرارة وتمدد الأجسام · تحولات حالات المادة</small></span><span class="toc-d"></span><span class="toc-p">—</span></li>
+<li><span class="toc-n">✓</span><span class="toc-t">الأجوبة<small>أجوبة تمارين كل الفصول</small></span><span class="toc-d"></span><span class="toc-p">5</span></li>
+</ol>
+<h2 class="sec">دليل الألوان والرموز</h2>
+<div class="legend">
+<div><span class="s blue">نص أزرق</span> التعريف بصياغة الكتاب</div>
+<div><span class="s red">نص أحمر</span> قانون أو معلومة مهمة</div>
+<div><span class="s green">نص أخضر</span> الجواب الصحيح</div>
+<div><i class="chip q">س</i><i class="chip a">ج</i> سؤال وجوابه النموذجي</div>
+<div><span class="mini-note">ملاحظة</span> تنبيه على خطأ شائع</div>
+<div><span class="wz">Term</span> المصطلح كما ورد بالإنكليزية في الكتاب</div>
+</div>
+<div class="letter">
+<b>عزيزي الطالب</b>
+<p>جمعتُ في هذه الملزمة المصطلحات العلمية لكل فصل بالترتيب الذي وردت به في كتابك، مع ما يقابلها بالإنكليزية وتعريفها بصياغة الكتاب. احفظ المصطلح بلغتيه، واكتب تعريفه بكلماتك ثم قارنه بالتعريف، وحلّ التمارين قبل أن تنظر في الأجوبة.</p>
+<p class="sig" data-bind="teacher">اسم الأستاذ</p>
+</div>
+</section>
+<section data-kind="page" data-chapter="1" data-numbered="1" data-foot="الفصل الأول" data-foot-name="خواص المادة">
+<div class="chap"><div class="chap-b"><div><small>الفصل الأول · Chapter 1</small><strong>خواص المادة</strong></div></div></div>
+<p class="lead">للمادة صفات يمكن تحديدها أو قياسها. في هذا الفصل 15 مصطلحاً موزعة على ثلاثة دروس.</p>
+<h2 class="sec"><span class="sec-n">1-1</span>حالات المادة وخواصها</h2>
+<table class="tbl">
+<thead><tr><th class="n">ت</th><th>المصطلح</th><th>Term</th><th>التعريف</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td class="ar tm">المادة</td><td class="en tm">Matter</td><td class="d blue">كل شيء له كتلة وله حجم.</td></tr>
+<tr><td class="n">2</td><td class="ar tm">الخاصية الفيزيائية</td><td class="en tm">Physical Property</td><td class="d blue">خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.</td></tr>
+<tr><td class="n">3</td><td class="ar tm">التغير الفيزيائي</td><td class="en tm">Physical Change</td><td class="d blue">تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.</td></tr>
+<tr><td class="n">4</td><td class="ar tm">التغير الكيميائي</td><td class="en tm">Chemical Change</td><td class="d blue">تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.</td></tr>
+<tr><td class="n">5</td><td class="ar tm">الخاصية الكيميائية</td><td class="en tm">Chemical Property</td><td class="d blue">قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.</td></tr>
+<tr><td class="n">6</td><td class="ar tm">الشد السطحي</td><td class="en tm">Surface Tension</td><td class="d blue">قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.</td></tr>
+<tr><td class="n">7</td><td class="ar tm">اللزوجة</td><td class="en tm">Viscosity</td><td class="d blue">خاصية السائل التي تجعله يقاوم الانسياب.</td></tr>
+</tbody>
+</table>
+<p class="cap">جدول (1-1) مصطلحات الدرس الأول (1)</p>
+<div class="note"><span class="note-k"><svg><use href="#i-bulb"/></svg>ملاحظة</span><p>في الشمعة المشتعلة تغيّران معاً: <b class="red">انصهار الشمع</b> تغير فيزيائي لأن الشمع يبقى شمعاً، أما <b class="red">احتراق الفتيل</b> فتغير كيميائي لأنه ينتج مواد جديدة.</p></div>
+</section>
+<section data-kind="page" data-chapter="1" data-numbered="1" data-foot="الفصل الأول" data-foot-name="خواص المادة">
+<table class="tbl">
+<thead><tr><th class="n">ت</th><th>المصطلح</th><th>Term</th><th>التعريف</th></tr></thead>
+<tbody>
+<tr><td class="n">8</td><td class="ar tm">الصلب</td><td class="en tm">Solid</td><td class="d blue">حالة للمادة لها حجم وشكل محددان.</td></tr>
+<tr><td class="n">9</td><td class="ar tm">السائل</td><td class="en tm">Liquid</td><td class="d blue">حالة للمادة لها حجم محدد وشكل متغير.</td></tr>
+<tr><td class="n">10</td><td class="ar tm">الغاز</td><td class="en tm">Gas</td><td class="d blue">حالة للمادة لها حجم متغير وشكل متغير.</td></tr>
+<tr><td class="n">11</td><td class="ar tm">البلازما</td><td class="en tm">Plasma</td><td class="d blue">حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.</td></tr>
+</tbody>
+</table>
+<p class="cap">جدول (1-1) مصطلحات الدرس الأول (2): حالات المادة</p>
+<div class="dyk"><span class="dyk-ico"><svg><use href="#i-q"/></svg></span><p><b>هل تعلم؟</b>البلازما أكثر حالات المادة انتشاراً في الكون، فالشمس والنجوم كلها في حالة البلازما، ونراها على الأرض في البرق وأنابيب النيون.</p></div>
+<h2 class="sec"><span class="sec-n">1-2</span>قياس حجم المادة</h2>
+<table class="tbl">
+<thead><tr><th class="n">ت</th><th>المصطلح</th><th>Term</th><th>التعريف</th></tr></thead>
+<tbody>
+<tr><td class="n">12</td><td class="ar tm">الحجم</td><td class="en tm">Volume</td><td class="d blue">مقدار الحيز الذي تشغله المادة في الكون.</td></tr>
+<tr><td class="n">13</td><td class="ar tm">قانون بويل</td><td class="en tm">Boyle&#x27;s Law</td><td class="d blue">يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.</td></tr>
+</tbody>
+</table>
+<div class="law"><span>حجم الغاز × ضغطه = مقدار ثابت</span><span class="ltr">1 m³ = 1000 L · 1 cm³ = 1 mL</span></div>
+<h2 class="sec"><span class="sec-n">1-3</span>كتلة المادة وكثافتها</h2>
+<table class="tbl">
+<thead><tr><th class="n">ت</th><th>المصطلح</th><th>Term</th><th>التعريف</th></tr></thead>
+<tbody>
+<tr><td class="n">14</td><td class="ar tm">الكتلة</td><td class="en tm">Mass</td><td class="d blue">كمية المادة الموجودة في الجسم.</td></tr>
+<tr><td class="n">15</td><td class="ar tm">الكثافة</td><td class="en tm">Density</td><td class="d blue">كمية المادة الموجودة في حجم معين.</td></tr>
+</tbody>
+</table>
+<div class="law"><span>الكثافة: <span class="m" data-tex="\rho = \dfrac{m}{V}"></span></span><span>وحداتها: <span class="ltr">kg/m³</span> أو <span class="ltr">g/cm³</span></span></div>
+<div class="note"><span class="note-k"><svg><use href="#i-bulb"/></svg>ملاحظة</span><p>لا تخلط بين <b class="red">الكتلة</b> و<b class="red">الوزن</b>: الكتلة كمية المادة في الجسم وتبقى ثابتة مهما يكن موقعه في الكون وتقاس بالكيلوغرام، أما الوزن فقوة جذب الأرض للجسم ويقاس بالنيوتن (الفصل الثاني).</p></div>
+</section>
+<section data-kind="page" data-chapter="1" data-numbered="1" data-foot="الفصل الأول" data-foot-name="خواص المادة">
+<div class="chap"><div class="chap-b"><div><small>الفصل الأول</small><strong>تمارين المصطلحات</strong></div></div></div>
+<div class="ex">
+<div class="ex-h"><span>أولاً: المطابقة</span><small>اكتب حرف المصطلح من (b) أمام العبارة في (a)</small></div>
+<div class="ex-b">
+<table class="tbl">
+<thead><tr><th class="n">ت</th><th>(a) العبارة</th><th class="n">الحرف</th><th>(b) المصطلح</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td class="d">كل شيء له كتلة وله حجم.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">أ. اللزوجة <span class="ltr">Viscosity</span></td></tr>
+<tr><td class="n">2</td><td class="d">خاصية السائل التي تجعله يقاوم الانسياب.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">ب. البلازما <span class="ltr">Plasma</span></td></tr>
+<tr><td class="n">3</td><td class="d">مقدار الحيز الذي تشغله المادة في الكون.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">ج. المادة <span class="ltr">Matter</span></td></tr>
+<tr><td class="n">4</td><td class="d">كمية المادة الموجودة في الجسم.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">د. الكتلة <span class="ltr">Mass</span></td></tr>
+<tr><td class="n">5</td><td class="d">تغير ينتج عنه مادة جديدة تختلف في خواصها عن المادة الأصلية.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">هـ. التغير الكيميائي <span class="ltr">Chemical Change</span></td></tr>
+<tr><td class="n">6</td><td class="d">حالة للمادة جسيماتها مشحونة كهربائياً.</td><td><span class="blank" style="min-width:8mm"></span></td><td class="d">و. الحجم <span class="ltr">Volume</span></td></tr>
+<tr><td class="n"></td><td class="d"></td><td></td><td class="d">ز. الكثافة <span class="ltr">Density</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="ex">
+<div class="ex-h"><span>ثانياً: أكمل الفراغ</span><small>بالمصطلح أو الكلمة المناسبة</small></div>
+<div class="ex-b">
+<ol class="exl">
+<li>تتغير حالة المادة بتغير <span class="blank"></span> و<span class="blank"></span>.</li>
+<li>الظاهرة التي يتصرف فيها سطح السائل كأنه غشاء رقيق ومرن تسمى <span class="blank"></span>.</li>
+<li>نقيس حجم جسم صلب غير منتظم الشكل بطريقة <span class="blank"></span>.</li>
+<li>من المواد الصلبة البلورية <span class="blank"></span> و<span class="blank"></span>.</li>
+<li>الكثافة = <span class="blank"></span> ÷ <span class="blank"></span>.</li>
+<li>تقاس الكثافة بوحدة <span class="blank"></span> أو <span class="blank"></span>.</li>
+</ol>
+</div>
+</div>
+<div class="ex">
+<div class="ex-h"><span>ثالثاً: صح أم خطأ</span><small>صحّح العبارة الخاطئة</small></div>
+<div class="ex-b">
+<ol class="exl">
+<li>ذوبان السكر في الماء تغير كيميائي. ( &nbsp; )</li>
+<li>للمادة في الحالة الغازية حجم متغير وشكل متغير. ( &nbsp; )</li>
+<li>تتغير كتلة الجسم إذا نقلناه من الأرض إلى القمر. ( &nbsp; )</li>
+<li>لزوجة العسل أكبر من لزوجة الماء. ( &nbsp; )</li>
+<li>يزداد حجم كمية من الغاز عندما يزداد الضغط عليها بثبوت درجة الحرارة. ( &nbsp; )</li>
+<li>الزجاج مادة صلبة بلورية. ( &nbsp; )</li>
+</ol>
+</div>
+</div>
+</section>
+<section data-kind="page" data-chapter="1" data-numbered="1" data-foot="الفصل الأول" data-foot-name="خواص المادة">
+<div class="ex">
+<div class="ex-h"><span>رابعاً: اكتب المصطلح</span><small>بالعربية وبالإنكليزية</small></div>
+<div class="ex-b">
+<ol class="exl">
+<li>أي خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة الأصلية. <span class="blank"></span> <span class="blank"></span></li>
+<li>قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة. <span class="blank"></span> <span class="blank"></span></li>
+<li>حالة للمادة لها حجم محدد وشكل متغير. <span class="blank"></span> <span class="blank"></span></li>
+<li>كمية المادة الموجودة في حجم معين. <span class="blank"></span> <span class="blank"></span></li>
+<li>تغير يطرأ على بعض الخواص الفيزيائية للمادة من دون أن يغيّر تركيبها. <span class="blank"></span> <span class="blank"></span></li>
+<li>حالة للمادة لها حجم وشكل محددان. <span class="blank"></span> <span class="blank"></span></li>
+</ol>
+</div>
+</div>
+<div class="qa">
+<p class="q"><i>س</i>لماذا تطفو قطعة الجليد على سطح الماء؟</p>
+<p class="a"><i>ج</i>لأن كثافة الجليد (نحو <span class="ltr">0.92 g/cm³</span>) أقل من كثافة الماء (<span class="ltr">1 g/cm³</span>).</p>
+</div>
+<div class="dyk"><span class="dyk-ico"><svg><use href="#i-q"/></svg></span><p><b>هل تعلم؟</b>الماء من المواد القليلة التي تكون كثافتها في الحالة الصلبة أقل منها في الحالة السائلة، لذلك يتجمد سطح البحيرة أولاً وتبقى الأسماك حية في الماء تحته.</p></div>
+</section>
+<section data-kind="page" data-chapter="" data-numbered="1" data-foot="الأجوبة" data-foot-name="أجوبة التمارين">
+<div class="chap"><div class="chap-b"><div><small>نهاية الملزمة</small><strong>الأجوبة</strong></div></div></div>
+<h2 class="sec"><span class="sec-n">1</span>الفصل الأول: خواص المادة</h2>
+<p class="sub">أولاً: المطابقة</p>
+<p class="green">1 ← ج (المادة) · 2 ← أ (اللزوجة) · 3 ← و (الحجم) · 4 ← د (الكتلة) · 5 ← هـ (التغير الكيميائي) · 6 ← ب (البلازما)</p>
+<p class="sub">ثانياً: أكمل الفراغ</p>
+<ol class="exl green">
+<li>درجة الحرارة، الضغط.</li>
+<li>الشد السطحي <span class="ltr">Surface Tension</span>.</li>
+<li>إزاحة السائل.</li>
+<li>الماس، الجليد.</li>
+<li>الكتلة ÷ الحجم.</li>
+<li><span class="ltr">kg/m³</span>، <span class="ltr">g/cm³</span>.</li>
+</ol>
+<p class="sub">ثالثاً: صح أم خطأ</p>
+<ol class="exl green">
+<li>خطأ، والصواب: ذوبان السكر في الماء تغير فيزيائي.</li>
+<li>صح.</li>
+<li>خطأ، والصواب: تبقى كتلة الجسم ثابتة مهما يكن موقعه في الكون.</li>
+<li>صح.</li>
+<li>خطأ، والصواب: يزداد حجم الغاز عندما ينخفض الضغط عليه (قانون بويل).</li>
+<li>خطأ، والصواب: الزجاج مادة صلبة غير بلورية.</li>
+</ol>
+<p class="sub">رابعاً: اكتب المصطلح</p>
+<ol class="exl green">
+<li>الخاصية الفيزيائية <span class="ltr">Physical Property</span></li>
+<li>الخاصية الكيميائية <span class="ltr">Chemical Property</span></li>
+<li>السائل <span class="ltr">Liquid</span></li>
+<li>الكثافة <span class="ltr">Density</span></li>
+<li>التغير الفيزيائي <span class="ltr">Physical Change</span></li>
+<li>الصلب <span class="ltr">Solid</span></li>
+</ol>
+</section>
+</template>
+<script data-keep id="app-script">
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var A4 = 793.7;
+  var DRAFT_KEY = 'malzama-terms-g7-draft-v1';
+  var app = document.getElementById('app');
+  var coverTpl = document.getElementById('tpl-cover').innerHTML;
+
+  /* ---------- state ---------- */
+  var S = { settings: JSON.parse(document.getElementById('malzama-settings').textContent), pages: [] };
+  Array.prototype.slice.call(document.getElementById('malzama-pages').content.children).forEach(function (sec) {
+    S.pages.push({
+      kind: sec.getAttribute('data-kind'),
+      chapter: Number(sec.getAttribute('data-chapter')) || 0,
+      numbered: sec.getAttribute('data-numbered') === '1',
+      foot: sec.getAttribute('data-foot') || '',
+      footName: sec.getAttribute('data-foot-name') || '',
+      html: sec.innerHTML.trim()
+    });
+  });
+  var savedJSON = JSON.stringify(S);
+  var editing = false, standalone = false, artifactApi = null, downloadsApi = null, busy = false;
+  var undoStack = [], activeBlock = null, curCell = null, curPic = null, lastRange = null;
+  var mjReady = !!(window.MathJax && window.MathJax.tex2svg);
+  var insTarget = null, eqTarget = null, eqIsNew = false;
+
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function docTitle() { return ('ملزمة ' + (S.settings.title || '') + ' ' + (S.settings.titleSub || '') + (S.settings.edition ? ' – ' + S.settings.edition : '')).replace(/\s+/g, ' ').trim(); }
+
+  /* ---------- chrome ---------- */
+  var PALETTES = [['violet', '#5B2D8E', 'بنفسجي'], ['navy', '#1D4F8C', 'كحلي'], ['emerald', '#0E6A5B', 'زمردي']];
+  var BLOCKS = [
+    ['para', 'فقرة', '<p>اكتب النص هنا.</p>'],
+    ['sec', 'عنوان قسم', '<h2 class="sec"><span class="sec-n">1-1</span>عنوان القسم</h2>'],
+    ['def', 'تعريف', '<p class="def"><b>المصطلح:</b> <span>نص التعريف.</span></p>'],
+    ['law', 'قانون (معادلة)', '<div class="law"><span><span class="m" data-tex="F = m a"></span></span></div>'],
+    ['qa', 'سؤال وجواب', '<div class="qa"><p class="q"><i>س</i>اكتب السؤال هنا؟</p><p class="a"><i>ج</i>اكتب الجواب هنا.</p></div>'],
+    ['wz', 'سؤال وزاري', '<div class="qa"><p class="q"><i>س</i><span class="wz">وزاري</span>اكتب السؤال هنا؟</p><p class="a"><i>ج</i>اكتب الجواب هنا.</p></div>'],
+    ['ex', 'مثال محلول', '<div class="ex"><div class="ex-h"><span>مثال</span><small>عنوان المثال</small></div><div class="ex-b"><p class="q-t">نص السؤال.</p><p><span class="sol-k">الحل</span> <span class="green">خطوات الحل.</span></p></div></div>'],
+    ['note', 'ملاحظة', '<div class="note"><span class="note-k"><svg><use href="#i-bulb"/></svg>ملاحظة</span><p>نص الملاحظة.</p></div>'],
+    ['dyk', 'هل تعلم؟', '<div class="dyk"><span class="dyk-ico"><svg><use href="#i-q"/></svg></span><p><b>هل تعلم؟</b>اكتب المعلومة هنا.</p></div>'],
+    ['tbl', 'جدول', '<table class="tbl"><thead><tr><th>عنوان</th><th>عنوان</th><th>عنوان</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>—</td></tr><tr><td>—</td><td>—</td><td>—</td></tr></tbody></table>'],
+    ['chap', 'شارة فصل', '<div class="chap"><div class="chap-b"><div><small>الفصل الثاني</small><strong>عنوان الفصل</strong></div></div></div>'],
+    ['img', 'صورة', null]
+  ];
+  var EQ_KEYS = [['كسر', '\\dfrac{}{}', 7], ['أُس', '^{}', 2], ['جذر', '\\sqrt{}', 6], ['×', '\\times ', 7], ['÷', '\\div ', 5], ['Δ', '\\Delta ', 7], ['θ', '\\theta ', 7], ['ρ', '\\rho ', 5], ['π', '\\pi ', 4], ['Ω', '\\Omega ', 7], ['λ', '\\lambda ', 8], ['μ', '\\mu ', 4], ['≈', '\\approx ', 8], ['°', '^\\circ', 6], ['وحدة', '\\text{}', 6]];
+
+  app.innerHTML =
+    '<div class="bar"><div class="bar-in">' +
+      '<div class="bar-t"><span id="bar-name"></span><small id="bar-status" aria-live="polite"></small></div>' +
+      '<div class="view-only">' +
+        '<button type="button" class="btn primary" id="btn-edit" hidden>تعديل الملزمة</button>' +
+        '<button type="button" class="btn" id="btn-dl" hidden>تنزيل للطباعة</button>' +
+        '<button type="button" class="btn" id="btn-print" hidden>طباعة / PDF</button>' +
+      '</div>' +
+      '<div class="edit-only">' +
+        '<div class="sw" role="group" aria-label="لون الملزمة">' + PALETTES.map(function (p) { return '<button type="button" id="pal-' + p[0] + '" data-pal="' + p[0] + '" style="background:' + p[1] + '" title="' + p[2] + '" aria-label="' + p[2] + '"></button>'; }).join('') + '</div>' +
+        '<button type="button" class="btn" id="btn-undo" disabled>تراجع</button>' +
+        '<button type="button" class="btn" id="btn-cancel">إلغاء التعديلات</button>' +
+        '<button type="button" class="btn primary" id="btn-save">حفظ</button>' +
+      '</div>' +
+    '</div></div>' +
+    '<p class="hint edit-only"><b>وضع التعديل:</b> اضغط على أي نص في الصفحات واكتب مباشرة. الاسم والهاتف والسنة تتغيّر في كل الصفحات معاً. اضغط على أي معادلة لتعديلها. فوق كل صفحة أزرار لإضافة عنصر أو صفحة، وبجانب العنصر المحدد أزرار لنقله أو حذفه.</p>' +
+    '<div class="banner" id="draft-banner" hidden><span>وُجدت تعديلات لم تُحفظ من جلسة سابقة.</span><button type="button" class="btn sm primary" id="btn-restore">استعادتها</button><button type="button" class="btn sm" id="btn-discard">تجاهلها</button></div>' +
+    '<div class="book"></div>' +
+    '<div class="tb blk-tools" id="blk-tools" role="toolbar" aria-label="أدوات العنصر" hidden>' +
+      '<button type="button" data-b="up" aria-label="نقل لأعلى" title="نقل لأعلى">▲</button>' +
+      '<button type="button" data-b="down" aria-label="نقل لأسفل" title="نقل لأسفل">▼</button>' +
+      '<button type="button" data-b="dup">نسخ</button>' +
+      '<button type="button" data-b="add">+ إضافة بعده</button>' +
+      '<button type="button" data-b="eq">+ معادلة</button>' +
+      '<span class="grp" id="t-tbl" hidden><button type="button" data-b="r-add">+ صف</button><button type="button" data-b="r-del">− صف</button><button type="button" data-b="c-add">+ عمود</button><button type="button" data-b="c-del">− عمود</button></span>' +
+      '<span class="grp" id="t-pic" hidden><button type="button" data-b="p-s">صغيرة</button><button type="button" data-b="p-md">متوسطة</button><button type="button" data-b="p-l">كبيرة</button></span>' +
+      '<button type="button" data-b="del" class="danger">حذف</button>' +
+    '</div>' +
+    '<div class="tb ins-menu" id="ins-menu" role="menu" aria-label="إضافة عنصر" hidden>' + BLOCKS.map(function (b) { return '<button type="button" role="menuitem" data-ins="' + b[0] + '">' + b[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="tb eqpop" id="eqpop" role="dialog" aria-label="تعديل المعادلة" hidden>' +
+      '<label for="eq-in">المعادلة (بصيغة LaTeX)</label>' +
+      '<input id="eq-in" type="text" autocomplete="off" spellcheck="false" placeholder="v = \\dfrac{d}{t}">' +
+      '<div class="eq-keys">' + EQ_KEYS.map(function (k, i) { return '<button type="button" data-k="' + i + '">' + k[0] + '</button>'; }).join('') + '</div>' +
+      '<div class="eq-prev" id="eq-prev"></div>' +
+      '<div class="eq-act"><button type="button" class="btn sm primary" id="eq-ok">تطبيق</button><button type="button" class="btn sm" id="eq-close">إغلاق</button><button type="button" class="btn sm danger" id="eq-del">حذف المعادلة</button></div>' +
+    '</div>' +
+    '<input type="file" id="img-in" accept="image/*" hidden>';
+
+  var book = $('.book', app), tools = $('#blk-tools'), menu = $('#ins-menu'), eqPop = $('#eqpop'), eqIn = $('#eq-in'), eqPrev = $('#eq-prev'), imgIn = $('#img-in');
+
+  function status(t) { $('#bar-status').textContent = t; }
+  function idleStatus() {
+    if (editing) status(JSON.stringify(S) === savedJSON ? 'لا توجد تعديلات غير محفوظة' : 'تعديلات غير محفوظة');
+    else status('عدد الصفحات: ' + S.pages.length + ' · حجم A4');
+  }
+
+  /* ---------- rendering ---------- */
+  var HEAD = '<header class="phead"><div class="ph-side"><span class="ph-ico"><svg><use href="#emblem"/></svg></span><span class="ph-name" data-bind="teacher"></span></div><div class="ph-side"><span class="ph-subj"><b data-bind="subject"></b><span data-bind="grade"></span></span><span class="ph-ico"><svg><use href="#i-bulb"/></svg></span></div></header><div class="ph-year"><bdi dir="ltr" data-bind="year"></bdi></div>';
+  var PANEL_TOP = '<main class="panel"><i class="cn tl"></i><i class="cn tr"></i><i class="cn bl"></i><i class="cn br"></i><div class="wm" aria-hidden="true"><svg><use href="#emblem"/></svg><span data-bind="teacher"></span></div>';
+
+  function pageHTML(p, i, num) {
+    return '<section class="sheet page" data-idx="' + i + '"' + (p.chapter ? ' style="--ch:' + p.chapter + '"' : '') + '>' + HEAD +
+      (p.chapter ? '<div class="tab">الفصل <b>' + p.chapter + '</b></div>' : '') +
+      PANEL_TOP + '<div class="content">' + p.html + '</div></main>' +
+      (num ? '<div class="pf-num"><span>' + num + '</span></div>' : '') +
+      '<footer class="pfoot"><span class="pf-ch"><b data-f="foot">' + esc(p.foot) + '</b><span data-f="footName">' + esc(p.footName) + '</span></span>' +
+      '<span class="pf-ph"><svg><use href="#i-phone"/></svg><bdi dir="ltr" data-bind="phone"></bdi></span></footer></section>';
+  }
+
+  function pbarHTML(p, i) {
+    if (p.kind === 'cover') return '<div class="pbar" data-for="' + i + '"><b>الغلاف</b><span class="pb-note">اضغط على أي نص في الغلاف لتعديله</span></div>';
+    var opts = '<option value="0">بلا</option>';
+    for (var c = 1; c <= 9; c++) opts += '<option value="' + c + '"' + (p.chapter === c ? ' selected' : '') + '>' + c + '</option>';
+    var last = i === S.pages.length - 1;
+    return '<div class="pbar" data-for="' + i + '"><b>الورقة ' + (i + 1) + '</b>' +
+      '<span class="pb-warn" hidden>المحتوى أطول من الصفحة <button type="button" class="btn sm" data-act="overflow">انقل الزائد لورقة جديدة</button></span>' +
+      '<span class="pb-tools">' +
+        '<label class="pb-sel">لسان الفصل <select data-act="chapter" id="ch-' + i + '">' + opts + '</select></label>' +
+        '<button type="button" class="btn sm" data-act="add">+ عنصر</button>' +
+        '<button type="button" class="btn sm" data-act="up" aria-label="نقل الورقة لأعلى" title="نقل الورقة لأعلى"' + (i <= 1 ? ' disabled' : '') + '>▲</button>' +
+        '<button type="button" class="btn sm" data-act="down" aria-label="نقل الورقة لأسفل" title="نقل الورقة لأسفل"' + (last ? ' disabled' : '') + '>▼</button>' +
+        '<button type="button" class="btn sm" data-act="dup">نسخ الورقة</button>' +
+        '<button type="button" class="btn sm" data-act="new">+ ورقة بعدها</button>' +
+        '<button type="button" class="btn sm danger" data-act="del">حذف</button>' +
+      '</span></div>';
+  }
+
+  function applyBindings(root) {
+    $$('[data-bind]', root).forEach(function (el) { el.textContent = S.settings[el.getAttribute('data-bind')] || ''; });
+  }
+
+  var mjStyled = false;
+  function renderMath(root) {
+    if (!mjReady) return;
+    if (!mjStyled) {
+      mjStyled = true;
+      try { if (!document.getElementById('MJX-SVG-styles')) document.head.appendChild(window.MathJax.svgStylesheet()); } catch (e) {}
+    }
+    $$('.m', root).forEach(function (el) {
+      var tex = el.getAttribute('data-tex') || '';
+      if (!tex) { el.replaceChildren(); return; }
+      try { el.replaceChildren(window.MathJax.tex2svg(tex, { display: false })); }
+      catch (err) { el.textContent = tex; }
+    });
+  }
+
+  function lockInside(root) {
+    $$('.m, .qa i, .note-k svg, .dyk-ico, .fig svg, .pic img', root).forEach(function (el) { el.setAttribute('contenteditable', 'false'); });
+  }
+
+  function armEditing() {
+    $$('.sheet .content', book).forEach(function (c) { c.setAttribute('contenteditable', 'true'); c.spellcheck = false; });
+    $$('.sheet [data-bind], .sheet [data-f]', book).forEach(function (el) {
+      if (!el.closest('.wm') && !el.closest('.content')) { el.setAttribute('contenteditable', 'true'); el.spellcheck = false; }
+    });
+    lockInside(book);
+  }
+
+  function renderAll() {
+    var y = window.scrollY, out = [], num = 0;
+    S.pages.forEach(function (p, i) {
+      if (editing) out.push(pbarHTML(p, i));
+      if (p.kind === 'cover') out.push('<section class="sheet cover" data-idx="' + i + '">' + coverTpl + '</section>');
+      else { if (p.numbered) num++; out.push(pageHTML(p, i, p.numbered ? num : 0)); }
+    });
+    book.innerHTML = out.join('');
+    book.setAttribute('data-palette', S.settings.palette || 'violet');
+    $$('.sw button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-pal') === (S.settings.palette || 'violet'))); });
+    applyBindings(book);
+    renderMath(book);
+    if (editing) armEditing();
+    document.title = docTitle();
+    $('#bar-name').textContent = docTitle();
+    activeBlock = null; tools.hidden = true;
+    window.scrollTo(0, y);
+    checkOverflow();
+    idleStatus();
+  }
+
+  /* ---------- DOM -> state ---------- */
+  function cleanHTML(node) {
+    var c = node.cloneNode(true);
+    $$('script, style, iframe, object, embed, link, meta, template, base, form', c).forEach(function (e) { e.remove(); });
+    $$('.m', c).forEach(function (m) { m.replaceChildren(); });
+    $$('*', c).forEach(function (e) {
+      e.removeAttribute('contenteditable'); e.removeAttribute('spellcheck');
+      if (e.classList) { e.classList.remove('blk-active'); if (e.getAttribute('class') === '') e.removeAttribute('class'); }
+      Array.prototype.slice.call(e.attributes).forEach(function (a) {
+        if (/^on/i.test(a.name)) e.removeAttribute(a.name);
+        else if (/^(href|src|xlink:href|action|formaction)$/i.test(a.name) && /^\s*(javascript|vbscript):/i.test(a.value)) e.removeAttribute(a.name);
+      });
+    });
+    return c.innerHTML.trim();
+  }
+
+  function syncFromDom() {
+    $$('.sheet', book).forEach(function (sh) {
+      var p = S.pages[Number(sh.getAttribute('data-idx'))];
+      if (!p || p.kind !== 'page') return;
+      var c = $('.content', sh);
+      if (c) p.html = cleanHTML(c);
+      var f = $('[data-f="foot"]', sh), fn = $('[data-f="footName"]', sh);
+      if (f) p.foot = f.textContent.trim();
+      if (fn) p.footName = fn.textContent.trim();
+    });
+  }
+
+  var tChange = 0;
+  function changed() { clearTimeout(tChange); tChange = setTimeout(afterChange, 450); }
+  function afterChange() {
+    clearTimeout(tChange);
+    if (!editing) return;
+    $$('.sheet .content', book).forEach(function (c) { if (!c.children.length && !c.textContent.trim()) c.innerHTML = '<p><br></p>'; });
+    syncFromDom();
+    var j = JSON.stringify(S);
+    try { if (j !== savedJSON) localStorage.setItem(DRAFT_KEY, j); else localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    checkOverflow();
+    if (!busy) idleStatus();
+  }
+
+  function checkOverflow() {
+    if (!editing) return;
+    $$('.sheet.page', book).forEach(function (sh) {
+      var c = $('.content', sh), over = c.scrollHeight > c.clientHeight + 2;
+      sh.classList.toggle('over', over);
+      var bar = $('.pbar[data-for="' + sh.getAttribute('data-idx') + '"]', book);
+      if (bar) $('.pb-warn', bar).hidden = !over;
+    });
+  }
+
+  function pushUndo() {
+    undoStack.push(JSON.stringify(S));
+    if (undoStack.length > 40) undoStack.shift();
+    $('#btn-undo').disabled = false;
+  }
+  function doUndo() {
+    if (!undoStack.length) return;
+    S = JSON.parse(undoStack.pop());
+    $('#btn-undo').disabled = !undoStack.length;
+    renderAll(); changed();
+  }
+
+  /* ---------- edit mode ---------- */
+  function enterEdit() {
+    editing = true; app.classList.add('editing');
+    renderAll();
+  }
+  var cancelArmed = 0;
+  function cancelEdit() {
+    var dirty = (syncFromDom(), JSON.stringify(S) !== savedJSON);
+    var btn = $('#btn-cancel');
+    if (dirty && !cancelArmed) {
+      btn.textContent = 'اضغط مرة أخرى لحذف التعديلات';
+      cancelArmed = setTimeout(function () { cancelArmed = 0; btn.textContent = 'إلغاء التعديلات'; }, 3500);
+      return;
+    }
+    clearTimeout(cancelArmed); cancelArmed = 0; btn.textContent = 'إلغاء التعديلات';
+    try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    S = JSON.parse(savedJSON); undoStack = []; $('#btn-undo').disabled = true;
+    editing = false; app.classList.remove('editing'); hideFloating();
+    renderAll();
+  }
+
+  function hideFloating() { tools.hidden = true; menu.hidden = true; if (!eqPop.hidden) closeEq(); setActive(null); }
+
+  function blockOf(el) {
+    var content = el && el.closest && el.closest('.content');
+    if (!content || !book.contains(content)) return null;
+    var b = el;
+    while (b && b.parentElement !== content) b = b.parentElement;
+    return b && b !== content ? b : null;
+  }
+
+  function setActive(blk, inner) {
+    if (activeBlock && activeBlock !== blk) activeBlock.classList.remove('blk-active');
+    activeBlock = blk || null;
+    curCell = inner && inner.closest ? inner.closest('td, th') : null;
+    curPic = blk ? (blk.matches('figure.pic') ? blk : (inner && inner.closest ? inner.closest('figure.pic') : null)) : null;
+    if (activeBlock) {
+      activeBlock.classList.add('blk-active');
+      $('#t-tbl').hidden = !curCell;
+      $('#t-pic').hidden = !curPic;
+      positionTools();
+    } else tools.hidden = true;
+  }
+
+  function positionTools() {
+    if (!editing || !activeBlock || !book.contains(activeBlock)) { tools.hidden = true; return; }
+    tools.hidden = false;
+    var r = activeBlock.getBoundingClientRect(), barB = $('.bar', app).getBoundingClientRect().bottom;
+    var th = tools.offsetHeight, tw = tools.offsetWidth;
+    var top = r.top - th - 8;
+    if (top < barB + 4) top = r.bottom + 8;
+    if (top > window.innerHeight - th - 4) top = Math.max(barB + 4, window.innerHeight - th - 4);
+    var left = Math.min(Math.max(8, r.right - tw), document.documentElement.clientWidth - tw - 8);
+    tools.style.top = top + 'px'; tools.style.left = Math.max(8, left) + 'px';
+  }
+
+  function placeNear(pop, rect) {
+    pop.hidden = false;
+    var h = pop.offsetHeight, w = pop.offsetWidth, vw = document.documentElement.clientWidth;
+    var top = rect.bottom + 6;
+    if (top + h > window.innerHeight - 6) top = Math.max(6, rect.top - h - 6);
+    var left = Math.min(Math.max(8, rect.right - w), vw - w - 8);
+    pop.style.top = top + 'px'; pop.style.left = Math.max(8, left) + 'px';
+  }
+
+  function placeCaret(node) {
+    var host = node.closest('[contenteditable="true"]');
+    if (host) host.focus({ preventScroll: true });
+    var w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, { acceptNode: function (t) {
+      return (!t.textContent.trim() || t.parentElement.closest('[contenteditable="false"]')) ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
+    } });
+    var t = w.nextNode(), r = document.createRange();
+    if (t) { r.setStart(t, 0); r.setEnd(t, t.textContent.length); } else { r.selectNodeContents(node); r.collapse(true); }
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+
+  function neighborContent(c, dir) {
+    var all = $$('.sheet.page .content', book), i = all.indexOf(c);
+    return all[i + dir] || null;
+  }
+
+  function blockAction(act) {
+    var b = activeBlock;
+    if (!b || !book.contains(b)) return;
+    var c = b.parentElement;
+    if (act === 'add') { insTarget = { after: b }; placeNear(menu, tools.getBoundingClientRect()); return; }
+    if (act === 'eq') { insertEq(); return; }
+    if (/^(r|c)-/.test(act) && !(curCell && book.contains(curCell))) return;
+    if (/^p-/.test(act) && !curPic) return;
+    syncFromDom(); pushUndo();
+    if (act === 'up') {
+      if (b.previousElementSibling) c.insertBefore(b, b.previousElementSibling);
+      else { var pc = neighborContent(c, -1); if (pc) pc.appendChild(b); }
+    } else if (act === 'down') {
+      if (b.nextElementSibling) c.insertBefore(b.nextElementSibling, b);
+      else { var nc = neighborContent(c, 1); if (nc) nc.insertBefore(b, nc.firstChild); }
+    } else if (act === 'dup') {
+      var cl = b.cloneNode(true); cl.classList.remove('blk-active'); b.after(cl);
+    } else if (act === 'del') {
+      b.remove(); setActive(null);
+    } else if (/^(r|c)-/.test(act)) {
+      tableAction(act);
+    } else if (/^p-/.test(act) && curPic) {
+      curPic.classList.remove('pic-s', 'pic-md', 'pic-l'); curPic.classList.add('pic-' + act.slice(2));
+    }
+    if (!c.children.length) c.innerHTML = '<p><br></p>';
+    if (activeBlock && book.contains(activeBlock)) { activeBlock.scrollIntoView({ block: 'nearest' }); positionTools(); }
+    afterChange();
+  }
+
+  function tableAction(act) {
+    var cell = curCell; if (!cell || !book.contains(cell)) return;
+    var row = cell.parentElement, table = cell.closest('table'), ci = Array.prototype.indexOf.call(row.children, cell);
+    var inHead = row.parentElement.tagName === 'THEAD';
+    if (act === 'r-add') {
+      var nr = document.createElement('tr');
+      Array.prototype.forEach.call(row.children, function (ref) {
+        var n = document.createElement(inHead ? 'td' : ref.tagName.toLowerCase());
+        if (!inHead && ref.className) n.className = ref.className;
+        n.textContent = '—'; nr.appendChild(n);
+      });
+      if (inHead) { var tb = table.tBodies[0] || table.createTBody(); tb.insertBefore(nr, tb.firstChild); }
+      else row.after(nr);
+    } else if (act === 'r-del') {
+      var bodyRows = $$('tbody tr', table);
+      if (!inHead && bodyRows.length > 1) { row.remove(); curCell = null; }
+    } else if (act === 'c-add') {
+      Array.prototype.forEach.call(table.rows, function (r) {
+        var ref = r.children[ci], n = document.createElement(ref ? ref.tagName.toLowerCase() : 'td');
+        n.textContent = '—';
+        if (ref) ref.after(n); else r.appendChild(n);
+      });
+    } else if (act === 'c-del') {
+      if (row.children.length > 1) Array.prototype.forEach.call(table.rows, function (r) { if (r.children[ci]) r.children[ci].remove(); });
+      curCell = null;
+    }
+  }
+
+  function doInsert(html, target) {
+    syncFromDom(); pushUndo();
+    var tmp = document.createElement('div'); tmp.innerHTML = html;
+    var node = tmp.firstElementChild; if (!node) return;
+    if (target && target.after && book.contains(target.after)) target.after.after(node);
+    else {
+      var content = $('.sheet[data-idx="' + (target ? target.page : -1) + '"] .content', book);
+      if (!content) return;
+      var only = content.children.length === 1 && !content.textContent.trim() && !content.querySelector('img, svg, .m');
+      if (only) content.replaceChildren(node); else content.appendChild(node);
+    }
+    lockInside(node); renderMath(node);
+    placeCaret(node);
+    setActive(node, node);
+    node.scrollIntoView({ block: 'nearest' });
+    positionTools();
+    afterChange();
+  }
+
+  function insertBlock(key) {
+    menu.hidden = true;
+    var def = null;
+    BLOCKS.forEach(function (b) { if (b[0] === key) def = b; });
+    if (!def) return;
+    if (key === 'img') { imgIn.value = ''; imgIn.click(); return; }
+    doInsert(def[2], insTarget);
+  }
+
+  function loadImage(file, cb) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = new Image();
+      img.onload = function () {
+        var max = 1100, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+        var cv = document.createElement('canvas'); cv.width = Math.max(1, Math.round(w * k)); cv.height = Math.max(1, Math.round(h * k));
+        var cx = cv.getContext('2d'), alpha = /png|gif|webp|svg/i.test(file.type);
+        if (!alpha) { cx.fillStyle = '#ffffff'; cx.fillRect(0, 0, cv.width, cv.height); }
+        cx.drawImage(img, 0, 0, cv.width, cv.height);
+        cb(alpha ? cv.toDataURL('image/webp', 0.86) : cv.toDataURL('image/jpeg', 0.82));
+      };
+      img.onerror = function () { status('تعذّرت قراءة الصورة. جرّب صورة بصيغة JPG أو PNG.'); };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /* ---------- equations ---------- */
+  function previewEq() {
+    var tex = eqIn.value.trim();
+    if (!tex) { eqPrev.textContent = 'اكتب المعادلة في الحقل أعلاه'; return; }
+    if (!mjReady) { eqPrev.textContent = tex; return; }
+    try { eqPrev.replaceChildren(window.MathJax.tex2svg(tex, { display: true })); } catch (e) { eqPrev.textContent = tex; }
+  }
+  function openEq(span, isNew) {
+    eqTarget = span; eqIsNew = isNew;
+    eqIn.value = span.getAttribute('data-tex') || '';
+    previewEq();
+    placeNear(eqPop, span.getBoundingClientRect());
+    eqIn.focus();
+  }
+  function closeEq() {
+    if (eqTarget && eqIsNew && !eqTarget.getAttribute('data-tex')) { eqTarget.remove(); afterChange(); }
+    eqTarget = null; eqIsNew = false; eqPop.hidden = true;
+  }
+  function applyEq() {
+    if (!eqTarget) return;
+    var tex = eqIn.value.trim();
+    if (!eqIsNew) { syncFromDom(); pushUndo(); }
+    if (!tex) { eqTarget.remove(); }
+    else { eqTarget.setAttribute('data-tex', tex); renderMath(eqTarget.parentElement || eqTarget); }
+    eqIsNew = false; eqTarget = null; eqPop.hidden = true;
+    afterChange();
+  }
+  function insertEq() {
+    var span = document.createElement('span');
+    span.className = 'm'; span.setAttribute('data-tex', ''); span.setAttribute('contenteditable', 'false');
+    syncFromDom(); pushUndo();
+    var r = lastRange;
+    if (r && book.contains(r.startContainer) && blockOf(r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentElement) === activeBlock) {
+      r = r.cloneRange(); r.collapse(false); r.insertNode(span);
+    } else if (activeBlock) {
+      var target = activeBlock.matches('p, h2, li, td, th') ? activeBlock : (activeBlock.querySelector('p, span, li, td') || activeBlock);
+      target.appendChild(span);
+    } else return;
+    openEq(span, true);
+  }
+
+  /* ---------- page actions ---------- */
+  function confirmTwice(btn, label) {
+    if (btn.getAttribute('data-armed') === '1') return true;
+    var old = btn.textContent;
+    btn.setAttribute('data-armed', '1'); btn.textContent = label;
+    setTimeout(function () { if (document.body.contains(btn)) { btn.removeAttribute('data-armed'); btn.textContent = old; } }, 3500);
+    return false;
+  }
+
+  function pageAction(act, i, btn) {
+    var P = S.pages, p = P[i];
+    if (act === 'add') { insTarget = { page: i }; placeNear(menu, btn.getBoundingClientRect()); return; }
+    if (act === 'del' && !confirmTwice(btn, 'تأكيد حذف الورقة')) return;
+    syncFromDom();
+    if (act === 'overflow') { moveOverflow(i); return; }
+    pushUndo();
+    if (act === 'up' && i > 1) { P.splice(i - 1, 0, P.splice(i, 1)[0]); }
+    else if (act === 'down' && i < P.length - 1) { P.splice(i + 1, 0, P.splice(i, 1)[0]); }
+    else if (act === 'dup') { P.splice(i + 1, 0, JSON.parse(JSON.stringify(p))); }
+    else if (act === 'new') { P.splice(i + 1, 0, { kind: 'page', chapter: p.chapter, numbered: true, foot: p.foot, footName: p.footName, html: '<p>اكتب هنا…</p>' }); }
+    else if (act === 'del') { P.splice(i, 1); }
+    renderAll(); afterChange();
+    if (act === 'new' || act === 'dup') { var sh = $('.sheet[data-idx="' + (i + 1) + '"]', book); if (sh) sh.scrollIntoView({ block: 'start' }); }
+  }
+
+  function moveOverflow(i) {
+    var sh = $('.sheet[data-idx="' + i + '"]', book), c = sh && $('.content', sh);
+    if (!c) return;
+    pushUndo();
+    var moved = [];
+    while (c.scrollHeight > c.clientHeight + 2 && c.children.length > 1) { moved.unshift(c.lastElementChild); c.lastElementChild.remove(); }
+    if (!moved.length) { undoStack.pop(); status('العنصر الأخير وحده أطول من الصفحة؛ قسّمه أو صغّره.'); return; }
+    var wrap = document.createElement('div'); moved.forEach(function (m) { wrap.appendChild(m); });
+    syncFromDom();
+    var p = S.pages[i];
+    S.pages.splice(i + 1, 0, { kind: 'page', chapter: p.chapter, numbered: true, foot: p.foot, footName: p.footName, html: cleanHTML(wrap) });
+    renderAll(); afterChange();
+  }
+
+  /* ---------- save / export ---------- */
+  function resetCSS() {
+    var s = $$('style', document.head).filter(function (st) { return !st.id; })[0];
+    var t = s && s.textContent;
+    return t && /margin/.test(t) ? t : ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif;background:#fafaf9}img{max-width:100%}[hidden]{display:none!important}';
+  }
+  function pagesTemplate() {
+    return S.pages.map(function (p) {
+      if (p.kind === 'cover') return '<section data-kind="cover"></section>';
+      return '<section data-kind="page" data-chapter="' + (p.chapter || '') + '" data-numbered="' + (p.numbered ? 1 : 0) + '" data-foot="' + esc(p.foot) + '" data-foot-name="' + esc(p.footName) + '">\n' + p.html + '\n</section>';
+    }).join('\n');
+  }
+  function buildDoc() {
+    var keep = $$('[data-keep]').filter(function (e) { return e.id !== 'app-script'; }).map(function (e) { return e.outerHTML; }).join('\n');
+    var body = '<title>' + esc(docTitle()) + '</title>\n' + keep +
+      '\n<div class="app" id="app" dir="rtl" lang="ar"></div>\n' +
+      '<script type="application/json" id="malzama-settings">' + JSON.stringify(S.settings).replace(/</g, '\\u003c') + '<\/script>\n' +
+      '<template id="malzama-pages">\n' + pagesTemplate() + '\n</template>\n' +
+      document.getElementById('app-script').outerHTML;
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' + resetCSS() + '</style></head><body>' + body + '</body></html>';
+  }
+
+  function setBusy(b) { busy = b; $('#btn-save').disabled = b; }
+
+  function save(retried) {
+    afterChange();
+    if (JSON.stringify(S) === savedJSON && !retried) { status('لا توجد تعديلات لحفظها'); return; }
+    var html = buildDoc();
+    if (standalone) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+      a.download = docTitle() + '.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      status('حُفظت نسخة على جهازك');
+      return;
+    }
+    if (!artifactApi) { status('الحفظ غير متاح في هذه النافذة.'); return; }
+    if (html.length > 15.5e6) { status('حجم الملزمة أكبر من المسموح بسبب الصور. صغّر الصور أو احذف بعضها ثم احفظ.'); return; }
+    setBusy(true); status('جارٍ الحفظ…');
+    artifactApi.publish(html).then(function () {
+      try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+      savedJSON = JSON.stringify(S);
+      status('تم الحفظ');
+    }, function (err) {
+      var code = err && err.code;
+      setBusy(false);
+      if (code === 'conflict') status('نُشرت نسخة أحدث قبل قليل، وستُعاد تحميل الصفحة. تعديلاتك محفوظة كمسودة ويمكنك استعادتها.');
+      else if (code === 'not_writer' || code === 'not_granted' || code === 'consent_required' || code === 'not_declared' || code === 'capability_disabled' || code === 'capability_removed') { status('لا تملك صلاحية حفظ هذه الملزمة؛ هذه النسخة للقراءة فقط.'); $('#btn-save').hidden = true; }
+      else if (code === 'too_large') status('حجم الملزمة أكبر من المسموح. صغّر الصور أو احذف بعضها ثم احفظ.');
+      else if (code === 'rate_limited') status('حفظتَ عدة مرات بسرعة. انتظر دقيقة ثم احفظ مرة أخرى.');
+      else if (code === 'invalid_content' || code === 'transform_error') status('تعذّر الحفظ بسبب خطأ في محتوى الصفحة.');
+      else if (!retried) { status('جارٍ إعادة المحاولة…'); setTimeout(function () { save(true); }, 1500 + Math.random() * 1500); }
+      else status('تعذّر الحفظ بسبب مشكلة مؤقتة في الخدمة. حاول مرة أخرى بعد قليل.');
+    });
+  }
+
+  function download() {
+    if (!downloadsApi) return;
+    afterChange();
+    downloadsApi.save({ filename: docTitle() + '.html', data: buildDoc() }).then(function () {
+      status('نُزّل الملف. افتحه في المتصفح واضغط Ctrl+P ثم اختر "حفظ كـ PDF".');
+    }, function (err) {
+      var code = err && err.code;
+      if (code === 'declined') return;
+      if (code === 'rate_limited') status('نافذة تنزيل مفتوحة بالفعل.');
+      else { status('التنزيل غير متاح هنا.'); $('#btn-dl').hidden = true; }
+    });
+  }
+
+  /* ---------- events ---------- */
+  $('#btn-edit').addEventListener('click', enterEdit);
+  $('#btn-cancel').addEventListener('click', cancelEdit);
+  $('#btn-save').addEventListener('click', function () { save(false); });
+  $('#btn-undo').addEventListener('click', doUndo);
+  $('#btn-dl').addEventListener('click', download);
+  $('#btn-print').addEventListener('click', function () { window.print(); });
+  $$('.sw button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      syncFromDom(); pushUndo();
+      S.settings.palette = b.getAttribute('data-pal');
+      book.setAttribute('data-palette', S.settings.palette);
+      $$('.sw button').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      afterChange();
+    });
+  });
+  $('#btn-restore').addEventListener('click', function () {
+    var d = null; try { d = localStorage.getItem(DRAFT_KEY); } catch (e) {}
+    $('#draft-banner').hidden = true;
+    if (!d) return;
+    try { S = JSON.parse(d); } catch (e) { return; }
+    editing = true; app.classList.add('editing'); renderAll();
+  });
+  $('#btn-discard').addEventListener('click', function () {
+    try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    $('#draft-banner').hidden = true;
+  });
+
+  book.addEventListener('input', function (e) {
+    if (!editing) return;
+    var b = e.target.closest && e.target.closest('[data-bind]');
+    if (!b) {
+      var sel = window.getSelection(), n = sel && sel.anchorNode, el = n && (n.nodeType === 1 ? n : n.parentElement);
+      b = el && el.closest('[data-bind]');
+    }
+    if (b && !b.closest('.wm')) {
+      var key = b.getAttribute('data-bind');
+      S.settings[key] = b.textContent;
+      $$('[data-bind="' + key + '"]', book).forEach(function (o) { if (o !== b) o.textContent = b.textContent; });
+      if (key === 'title' || key === 'titleSub') { document.title = docTitle(); $('#bar-name').textContent = docTitle(); }
+    }
+    changed();
+  });
+
+  book.addEventListener('keydown', function (e) {
+    if (!editing) return;
+    if (e.key === 'Enter' && e.target.matches && e.target.matches('[data-bind], [data-f]')) { e.preventDefault(); e.target.blur(); }
+  });
+
+  book.addEventListener('paste', function (e) {
+    if (!editing || !(e.target.closest && e.target.closest('[contenteditable="true"]'))) return;
+    var t = (e.clipboardData || window.clipboardData).getData('text/plain');
+    e.preventDefault();
+    document.execCommand('insertText', false, t);
+  });
+
+  book.addEventListener('click', function (e) {
+    if (!editing) return;
+    var m = e.target.closest('.m');
+    if (m && book.contains(m)) { e.preventDefault(); setActive(blockOf(m), m); openEq(m, false); return; }
+    var btn = e.target.closest('.pbar [data-act]');
+    if (btn && btn.tagName === 'BUTTON') pageAction(btn.getAttribute('data-act'), Number(btn.closest('.pbar').getAttribute('data-for')), btn);
+  });
+
+  book.addEventListener('change', function (e) {
+    var s = e.target.closest && e.target.closest('select[data-act="chapter"]');
+    if (!s || !editing) return;
+    syncFromDom(); pushUndo();
+    S.pages[Number(s.closest('.pbar').getAttribute('data-for'))].chapter = Number(s.value) || 0;
+    renderAll(); afterChange();
+  });
+
+  document.addEventListener('selectionchange', function () {
+    if (!editing) return;
+    var sel = window.getSelection();
+    if (!sel.rangeCount) return;
+    var n = sel.anchorNode, el = n && (n.nodeType === 1 ? n : n.parentElement);
+    if (!el || !book.contains(el)) return;
+    var content = el.closest('.content');
+    if (!content) { setActive(null); return; }
+    lastRange = sel.getRangeAt(0).cloneRange();
+    var blk = el === content ? (content.children[Math.min(sel.anchorOffset, content.children.length - 1)] || null) : blockOf(el);
+    setActive(blk, el);
+  });
+
+  [tools, menu, eqPop].forEach(function (p) {
+    p.addEventListener('mousedown', function (e) { if (e.target.closest('button')) e.preventDefault(); });
+  });
+  tools.addEventListener('click', function (e) { var b = e.target.closest('[data-b]'); if (b) blockAction(b.getAttribute('data-b')); });
+  menu.addEventListener('click', function (e) { var b = e.target.closest('[data-ins]'); if (b) insertBlock(b.getAttribute('data-ins')); });
+  imgIn.addEventListener('change', function () {
+    var f = imgIn.files && imgIn.files[0];
+    if (!f) return;
+    var target = insTarget;
+    loadImage(f, function (url) { doInsert('<figure class="pic pic-md"><img src="' + url + '" alt=""><figcaption>اكتب وصف الصورة</figcaption></figure>', target); });
+  });
+
+  eqIn.addEventListener('input', previewEq);
+  eqIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); applyEq(); } });
+  $('.eq-keys', eqPop).addEventListener('click', function (e) {
+    var b = e.target.closest('[data-k]'); if (!b) return;
+    var k = EQ_KEYS[Number(b.getAttribute('data-k'))], s = eqIn.selectionStart, en = eqIn.selectionEnd;
+    eqIn.setRangeText(k[1], s, en, 'end'); eqIn.setSelectionRange(s + k[2], s + k[2]); eqIn.focus(); previewEq();
+  });
+  $('#eq-ok').addEventListener('click', applyEq);
+  $('#eq-close').addEventListener('click', closeEq);
+  $('#eq-del').addEventListener('click', function () { if (eqTarget) { if (!eqIsNew) { syncFromDom(); pushUndo(); } eqTarget.remove(); eqTarget = null; eqPop.hidden = true; afterChange(); } });
+
+  document.addEventListener('mousedown', function (e) {
+    if (!editing) return;
+    if (e.target.closest('.tb')) return;
+    if (!menu.hidden && !e.target.closest('[data-act="add"]')) menu.hidden = true;
+    if (!eqPop.hidden && !e.target.closest('.m')) closeEq();
+    if (!e.target.closest('.content')) setActive(null);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!editing) return;
+    if (e.key === 'Escape') { if (!eqPop.hidden) closeEq(); menu.hidden = true; }
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) { e.preventDefault(); save(false); }
+  });
+  window.addEventListener('scroll', function () { if (editing && activeBlock) positionTools(); menu.hidden = true; }, { passive: true });
+
+  document.addEventListener('mathjax-ready', function () { mjReady = true; renderMath(book); checkOverflow(); });
+
+  /* ---------- fit to width ---------- */
+  function fit() {
+    var w = Math.max(240, document.documentElement.clientWidth - 32);
+    document.documentElement.style.setProperty('--z', Math.min(1, w / A4).toFixed(4));
+    if (editing && activeBlock) positionTools();
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+
+  /* ---------- capabilities ---------- */
+  function offerDraft() {
+    var d = null; try { d = localStorage.getItem(DRAFT_KEY); } catch (e) {}
+    if (d && d !== savedJSON) $('#draft-banner').hidden = false;
+    else if (d) { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+  }
+  function initCaps() {
+    if (!window.claude || typeof window.claude.use !== 'function') {
+      standalone = true;
+      $('#btn-edit').hidden = false;
+      $('#btn-print').hidden = false;
+      $('#btn-save').textContent = 'حفظ نسخة على جهازك';
+      offerDraft();
+      return;
+    }
+    Promise.all([window.claude.use('artifact'), window.claude.use('user'), window.claude.use('downloads')]).then(function (r) {
+      artifactApi = r[0]; downloadsApi = r[2];
+      if (downloadsApi) $('#btn-dl').hidden = false;
+      var user = r[1];
+      return (user ? user.canEdit() : Promise.resolve(null)).then(function (ok) {
+        if (artifactApi && ok !== false) { $('#btn-edit').hidden = false; offerDraft(); }
+      });
+    }).catch(function () {});
+  }
+
+  window.__malzama = { state: function () { syncFromDom(); return JSON.parse(JSON.stringify(S)); }, build: buildDoc };
+
+  renderAll();
+  initCaps();
+})();
+</script>
+
+</body></html>

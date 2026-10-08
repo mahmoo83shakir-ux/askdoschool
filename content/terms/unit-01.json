@@ -1,118 +1,145 @@
 {
   "id": "unit-01",
   "unit": 1,
-  "title_ar": "المادة وخواصها",
-  "title_en": "Matter and Its Properties",
+  "title_ar": "خواص المادة",
+  "title_en": "Properties of Matter",
   "status": "draft",
-  "source_note": "مسودة أولية لتشغيل خط الحلقات. يطابقها وكيل الملزمة مع الكتاب المدرسي ويعدّلها.",
+  "source_note": "مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.",
   "terms": [
     {
       "id": "matter",
       "en": "Matter",
       "ar": "المادة",
-      "def_ar": "كل ما له كتلة ويشغل حيزاً من الفراغ.",
-      "def_en": "Anything that has mass and takes up space.",
-      "example_ar": "الماء والهواء والحجر كلها مادة.",
+      "def_ar": "كل شيء له كتلة وله حجم.",
+      "def_en": "Anything that has mass and volume.",
+      "example_ar": "الماء والهواء والجليد كلها مادة.",
       "emoji": "🧱"
-    },
-    {
-      "id": "mass",
-      "en": "Mass",
-      "ar": "الكتلة",
-      "def_ar": "مقدار ما يحتويه الجسم من مادة، ووحدتها الكيلوغرام.",
-      "def_en": "The amount of matter in an object, measured in kilograms.",
-      "example_ar": "نقيس الكتلة بالميزان ذي الكفتين.",
-      "emoji": "⚖️"
-    },
-    {
-      "id": "volume",
-      "en": "Volume",
-      "ar": "الحجم",
-      "def_ar": "مقدار الحيز الذي يشغله الجسم.",
-      "def_en": "The amount of space an object takes up.",
-      "example_ar": "نقيس حجم السائل بالأسطوانة المدرجة.",
-      "emoji": "🧪"
-    },
-    {
-      "id": "density",
-      "en": "Density",
-      "ar": "الكثافة",
-      "def_ar": "كتلة وحدة الحجوم من المادة، وتساوي الكتلة مقسومة على الحجم.",
-      "def_en": "The mass per unit volume of a substance: density = mass ÷ volume.",
-      "example_ar": "يطفو الخشب على الماء لأن كثافته أقل من كثافة الماء.",
-      "emoji": "🪵"
     },
     {
       "id": "physical-property",
       "en": "Physical Property",
       "ar": "الخاصية الفيزيائية",
-      "def_ar": "صفة للمادة يمكن ملاحظتها أو قياسها من دون أن يتغير تركيبها.",
-      "def_en": "A characteristic observed or measured without changing what the substance is made of.",
-      "example_ar": "اللون والكثافة ودرجة الغليان خواص فيزيائية.",
+      "def_ar": "خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.",
+      "def_en": "A property observed or measured without changing what the substance is.",
+      "example_ar": "اللون والكتلة والكثافة خواص فيزيائية.",
       "emoji": "🎨"
-    },
-    {
-      "id": "chemical-property",
-      "en": "Chemical Property",
-      "ar": "الخاصية الكيميائية",
-      "def_ar": "صفة تصف قدرة المادة على التحول إلى مادة جديدة.",
-      "def_en": "A characteristic that describes a substance's ability to change into a new substance.",
-      "example_ar": "قابلية الخشب للاشتعال خاصية كيميائية.",
-      "emoji": "🔥"
     },
     {
       "id": "physical-change",
       "en": "Physical Change",
       "ar": "التغير الفيزيائي",
-      "def_ar": "تغير في شكل المادة أو حالتها من دون أن تتكون مادة جديدة.",
-      "def_en": "A change in the form or state of matter without forming a new substance.",
-      "example_ar": "انصهار الجليد وتمزيق الورق تغيرات فيزيائية.",
+      "def_ar": "تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.",
+      "def_en": "A change in some physical properties without changing the original substance.",
+      "example_ar": "انصهار الثلج وذوبان السكر في الماء.",
       "emoji": "🧊"
     },
     {
       "id": "chemical-change",
       "en": "Chemical Change",
       "ar": "التغير الكيميائي",
-      "def_ar": "تغير تتكون فيه مادة جديدة أو أكثر لها خواص مختلفة عن المادة الأصلية.",
-      "def_en": "A change in which one or more new substances with different properties are formed.",
-      "example_ar": "صدأ الحديد واحتراق الورق تغيرات كيميائية.",
+      "def_ar": "تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.",
+      "def_en": "A change in composition that produces a new substance with new properties.",
+      "example_ar": "حرق الخشب وتسوس الأسنان.",
       "emoji": "⚗️"
     },
     {
-      "id": "atom",
-      "en": "Atom",
-      "ar": "الذرة",
-      "def_ar": "أصغر جزء من العنصر يحمل خواص ذلك العنصر.",
-      "def_en": "The smallest particle of an element that has the properties of that element.",
-      "example_ar": "تتكون قطعة الذهب من ذرات ذهب فقط.",
-      "emoji": "⚛️"
+      "id": "chemical-property",
+      "en": "Chemical Property",
+      "ar": "الخاصية الكيميائية",
+      "def_ar": "قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.",
+      "def_en": "A substance's ability to react with others and form a new substance.",
+      "example_ar": "قابلية الخشب للاحتراق.",
+      "emoji": "🔥"
     },
     {
-      "id": "element",
-      "en": "Element",
-      "ar": "العنصر",
-      "def_ar": "مادة نقية تتكون من نوع واحد فقط من الذرات.",
-      "def_en": "A pure substance made of only one kind of atom.",
-      "example_ar": "الأوكسجين والحديد والذهب عناصر.",
-      "emoji": "🥇"
-    },
-    {
-      "id": "compound",
-      "en": "Compound",
-      "ar": "المركب",
-      "def_ar": "مادة نقية تتكون من عنصرين أو أكثر متحدة كيميائياً بنسب ثابتة.",
-      "def_en": "A pure substance made of two or more elements chemically combined in fixed proportions.",
-      "example_ar": "الماء مركب من الهيدروجين والأوكسجين.",
+      "id": "surface-tension",
+      "en": "Surface Tension",
+      "ar": "الشد السطحي",
+      "def_ar": "قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.",
+      "def_en": "A force on a liquid's surface molecules that makes it act like a thin elastic film.",
+      "example_ar": "تقف بعض الحشرات على سطح الماء.",
       "emoji": "💧"
     },
     {
-      "id": "mixture",
-      "en": "Mixture",
-      "ar": "المخلوط",
-      "def_ar": "مادتان أو أكثر مختلطة فيزيائياً، وتحتفظ كل منها بخواصها.",
-      "def_en": "Two or more substances physically mixed, each keeping its own properties.",
-      "example_ar": "الماء والملح، والرمل وبرادة الحديد مخاليط.",
-      "emoji": "🥗"
+      "id": "viscosity",
+      "en": "Viscosity",
+      "ar": "اللزوجة",
+      "def_ar": "خاصية السائل التي تجعله يقاوم الانسياب.",
+      "def_en": "The property of a liquid that makes it resist flowing.",
+      "example_ar": "لزوجة العسل أكبر من لزوجة الماء.",
+      "emoji": "🍯"
+    },
+    {
+      "id": "solid",
+      "en": "Solid",
+      "ar": "الصلب",
+      "def_ar": "حالة للمادة لها حجم وشكل محددان.",
+      "def_en": "A state of matter with a definite volume and shape.",
+      "example_ar": "الحجر والجليد والماس.",
+      "emoji": "🪨"
+    },
+    {
+      "id": "liquid",
+      "en": "Liquid",
+      "ar": "السائل",
+      "def_ar": "حالة للمادة لها حجم محدد وشكل متغير.",
+      "def_en": "A state of matter with a definite volume but no fixed shape.",
+      "example_ar": "الماء يأخذ شكل الكأس.",
+      "emoji": "🥛"
+    },
+    {
+      "id": "gas",
+      "en": "Gas",
+      "ar": "الغاز",
+      "def_ar": "حالة للمادة لها حجم متغير وشكل متغير.",
+      "def_en": "A state of matter with no fixed volume or shape.",
+      "example_ar": "الهواء يملأ البالون كله.",
+      "emoji": "🎈"
+    },
+    {
+      "id": "plasma",
+      "en": "Plasma",
+      "ar": "البلازما",
+      "def_ar": "حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.",
+      "def_en": "A fourth state of matter with charged particles, at very high temperatures.",
+      "example_ar": "البرق وأنابيب النيون والشمس.",
+      "emoji": "⚡"
+    },
+    {
+      "id": "volume",
+      "en": "Volume",
+      "ar": "الحجم",
+      "def_ar": "مقدار الحيز الذي تشغله المادة في الكون.",
+      "def_en": "The amount of space that matter occupies.",
+      "example_ar": "نقيس حجم الحجر بإزاحة الماء.",
+      "emoji": "🧪"
+    },
+    {
+      "id": "boyles-law",
+      "en": "Boyle's Law",
+      "ar": "قانون بويل",
+      "def_ar": "يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.",
+      "def_en": "At constant temperature, a gas's volume increases as its pressure decreases.",
+      "example_ar": "تكبر فقاعة الهواء وهي تصعد إلى السطح.",
+      "emoji": "🫧"
+    },
+    {
+      "id": "mass",
+      "en": "Mass",
+      "ar": "الكتلة",
+      "def_ar": "كمية المادة الموجودة في الجسم.",
+      "def_en": "The amount of matter in an object.",
+      "example_ar": "نقيس الكتلة بالميزان بوحدة kg أو g.",
+      "emoji": "⚖️"
+    },
+    {
+      "id": "density",
+      "en": "Density",
+      "ar": "الكثافة",
+      "def_ar": "كمية المادة الموجودة في حجم معين.",
+      "def_en": "The amount of matter in a given volume (mass ÷ volume).",
+      "example_ar": "يطفو الخشب لأن كثافته أقل من الماء.",
+      "emoji": "🪵"
     }
   ]
 }
