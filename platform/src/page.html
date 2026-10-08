@@ -1,0 +1,41 @@
+<title>منصة العلوم ثلاثية الأبعاد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+/*@CSS*/
+</style>
+
+<div id="app" dir="rtl" lang="ar">
+  <!-- Home: one card per unit (from content/terms), each listing that unit's games -->
+  <main id="home" class="home">
+    <header class="masthead">
+      <p class="eyebrow">الأول المتوسط · المتميزين</p>
+      <h1>منصة العلوم <span>ثلاثية الأبعاد</span></h1>
+      <p class="lede">ألعاب قصيرة تثبّت مصطلحات العلوم بالإنكليزية والعربية. اختر فصلاً، ثم لعبة.</p>
+      <div class="totals" id="totals"></div>
+    </header>
+    <section class="units" id="units" aria-label="الفصول"></section>
+  </main>
+
+  <!-- Game screen: WebGL canvas + HUD; each game fills #stage-ui -->
+  <section id="game" class="game" hidden>
+    <canvas id="scene" aria-label="مختبر ثلاثي الأبعاد"></canvas>
+    <div class="hud">
+      <button class="icon-btn" id="btn-back" type="button" aria-label="رجوع إلى الصفحة الرئيسية">→</button>
+      <div class="hud-title">
+        <strong id="hud-game">مختبر المصطلحات</strong>
+        <span id="hud-level">المستوى ١ من ٤</span>
+      </div>
+      <div class="hud-score"><span id="hud-score">0</span><small>نقطة</small></div>
+    </div>
+    <div id="stage-ui"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </section>
+</div>
+
+<script type="application/json" id="units-data">/*@DATA*/</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+/*@JS*/
+</script>
