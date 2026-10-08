@@ -163,6 +163,8 @@ button { font: inherit; color: inherit; }
 .def .ans { display: block; color: var(--ok); font-weight: 700; font-size: var(--step--1); }
 .def.done { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--bench)); cursor: default; }
 .def.target { border-color: var(--brass); }
+.def.decoy { opacity: 0.6; cursor: default; }
+.def.decoy .ans { color: var(--muted); }
 .def.shake { animation: shake .35s; }
 @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
@@ -196,7 +198,8 @@ button { font: inherit; color: inherit; }
 .sheet .big-stars .off { color: var(--line); }
 .sheet p { margin: 0; color: var(--muted); }
 .learned { display: grid; gap: 6px; text-align: right; }
-.learned div { display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; border-radius: 8px; background: var(--bg); font-size: 0.9rem; }
+.learned div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; padding: 6px 10px; border-radius: 8px; background: var(--bg); font-size: 0.9rem; }
+.learned small { flex-basis: 100%; color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
 .learned bdi { direction: ltr; color: var(--brass); font-weight: 700; }
 .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .btn {
@@ -244,7 +247,7 @@ button { font: inherit; color: inherit; }
   </section>
 </div>
 
-<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"المادة وخواصها","title_en":"Matter and Its Properties","status":"draft","source_note":"مسودة أولية لتشغيل خط الحلقات. يطابقها وكيل الملزمة مع الكتاب المدرسي ويعدّلها.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل ما له كتلة ويشغل حيزاً من الفراغ.","def_en":"Anything that has mass and takes up space.","example_ar":"الماء والهواء والحجر كلها مادة.","emoji":"🧱"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"مقدار ما يحتويه الجسم من مادة، ووحدتها الكيلوغرام.","def_en":"The amount of matter in an object, measured in kilograms.","example_ar":"نقيس الكتلة بالميزان ذي الكفتين.","emoji":"⚖️"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي يشغله الجسم.","def_en":"The amount of space an object takes up.","example_ar":"نقيس حجم السائل بالأسطوانة المدرجة.","emoji":"🧪"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كتلة وحدة الحجوم من المادة، وتساوي الكتلة مقسومة على الحجم.","def_en":"The mass per unit volume of a substance: density = mass ÷ volume.","example_ar":"يطفو الخشب على الماء لأن كثافته أقل من كثافة الماء.","emoji":"🪵"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"صفة للمادة يمكن ملاحظتها أو قياسها من دون أن يتغير تركيبها.","def_en":"A characteristic observed or measured without changing what the substance is made of.","example_ar":"اللون والكثافة ودرجة الغليان خواص فيزيائية.","emoji":"🎨"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"صفة تصف قدرة المادة على التحول إلى مادة جديدة.","def_en":"A characteristic that describes a substance's ability to change into a new substance.","example_ar":"قابلية الخشب للاشتعال خاصية كيميائية.","emoji":"🔥"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير في شكل المادة أو حالتها من دون أن تتكون مادة جديدة.","def_en":"A change in the form or state of matter without forming a new substance.","example_ar":"انصهار الجليد وتمزيق الورق تغيرات فيزيائية.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير تتكون فيه مادة جديدة أو أكثر لها خواص مختلفة عن المادة الأصلية.","def_en":"A change in which one or more new substances with different properties are formed.","example_ar":"صدأ الحديد واحتراق الورق تغيرات كيميائية.","emoji":"⚗️"},{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من العنصر يحمل خواص ذلك العنصر.","def_en":"The smallest particle of an element that has the properties of that element.","example_ar":"تتكون قطعة الذهب من ذرات ذهب فقط.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب عناصر.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة نقية تتكون من عنصرين أو أكثر متحدة كيميائياً بنسب ثابتة.","def_en":"A pure substance made of two or more elements chemically combined in fixed proportions.","example_ar":"الماء مركب من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطة فيزيائياً، وتحتفظ كل منها بخواصها.","def_en":"Two or more substances physically mixed, each keeping its own properties.","example_ar":"الماء والملح، والرمل وبرادة الحديد مخاليط.","emoji":"🥗"}]}]</script>
+<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني (الطبعة السابعة المنقحة 2024، ص 27–). الدرس الأول «مفهوم القوة» (ص 29–32): القوة والنيوتن من صندوق «المفردات»، والوزن معرَّف في الدرس نفسه بمصطلحه الإنكليزي Weight. الدرس الثاني يُضاف في الجلسة القادمة.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script>
 // مختبر المصطلحات — drag (or tap) an English-term cube onto the platform of its Arabic definition.
@@ -521,29 +524,43 @@ const TermLab = (() => {
     return { group: grp, ring, base, top };
   }
 
+  // One extra "decoy" definition per level (from the same unit, else from another unit),
+  // so the last cube is never a forced match.
+  function pickDecoy(unit, items, pool) {
+    const taken = new Set(items.map((t) => t.id));
+    const same = unit.terms.filter((t) => !taken.has(t.id));
+    const other = pool.filter((t) => !taken.has(t.id));
+    const from = same.length ? same : other;
+    return from.length ? from[Math.floor(Math.random() * from.length)] : null;
+  }
+
   function startLevel(unit, levelIndex, ui, onExit) {
     clearLevel();
     const levels = levelsOf(unit.terms);
     const items = levels[levelIndex];
     const n = items.length;
+    const decoy = n < LETTERS.length ? pickDecoy(unit, items, ui.pool()) : null;
+    const padTerms = shuffle(decoy ? items.concat(decoy) : items);
+    const np = padTerms.length;
     // portrait phones get a narrower, deeper bench so the cubes stay large
     const tall = window.innerHeight > window.innerWidth;
-    const size = n > 3 ? (tall ? 1.05 : 1.15) : 1.3;
-    const gap = n > 3 ? (tall ? 1.45 : 2.15) : (tall ? 1.8 : 2.5);
+    const size = np > 3 ? (tall ? 1.05 : 1.15) : 1.3;
+    const gap = np > 3 ? (tall ? 1.45 : 2.15) : (tall ? 1.8 : 2.5);
     const padZ = tall ? -2.3 : -1.7, cubeZ = tall ? 2.0 : 1.5;
-    const xs = items.map((_, i) => (i - (n - 1) / 2) * gap);
-    const layout = { half: ((n - 1) / 2) * gap + size * 0.75, back: padZ - size, front: cubeZ + size * 0.7, tall };
+    const row = (k) => Array.from({ length: k }, (_, i) => (i - (k - 1) / 2) * gap);
+    const padXs = row(np), xs = row(n);
+    const layout = { half: ((np - 1) / 2) * gap + size * 0.75, back: padZ - size, front: cubeZ + size * 0.7, tall };
 
     run = {
-      unit, levels, levelIndex, items, ui, onExit, layout,
+      unit, levels, levelIndex, items, ui, onExit, layout, decoy,
       pads: [], cubes: [], selected: null, drag: null,
       mistakes: 0, matched: 0, score: 0,
     };
 
-    // pads keep the tray order (أ ب ج); the tray is RTL, so أ sits on the right of the bench too
-    items.forEach((term, i) => {
+    // pads keep the tray order (أ ب ج د); the tray is RTL, so أ sits on the right of the bench too
+    padTerms.forEach((term, i) => {
       const pad = makePad(i, Math.min(size, (gap * 0.46) / 0.86));
-      pad.group.position.set(-xs[i], 0, padZ);
+      pad.group.position.set(-padXs[i], 0, padZ);
       pad.term = term;
       pad.index = i;
       pad.base.userData.pad = pad;
@@ -567,7 +584,7 @@ const TermLab = (() => {
       tween(cube.mesh.position, { y: CUBE_Y }, 0.5 + i * 0.12);
     });
 
-    ui.renderTray(items, LETTERS, PAD_COLORS, (i) => tapPad(run.pads[i]));
+    ui.renderTray(padTerms, LETTERS, PAD_COLORS, (i) => tapPad(run.pads[i]));
     ui.setLevel(levelIndex, levels.length);
     ui.setScore(0);
     resize();
@@ -695,6 +712,7 @@ const TermLab = (() => {
     const stars = run.mistakes === 0 ? 3 : run.mistakes <= 2 ? 2 : 1;
     run.score += stars * 5;
     run.ui.setScore(run.score);
+    if (run.decoy) run.ui.markDecoy(run.pads.find((p) => p.term === run.decoy).index, run.decoy);
     run.ui.levelDone({
       stars,
       score: run.score,
@@ -818,7 +836,7 @@ function renderHome() {
     }).join("");
     return `<article class="unit">
       <div class="unit-head">
-        <div><div class="unit-num">الفصل ${num(u.unit)}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
+        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
         <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
       </div>
       <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
@@ -872,6 +890,14 @@ const ui = {
     a.hidden = false;
     a.textContent = `${term.emoji || "✔"} ${term.ar} · ${term.en}`;
   },
+  markDecoy(i, term) {
+    const b = document.querySelector(`.def[data-i="${i}"]`);
+    b.classList.add("decoy");
+    const a = b.querySelector(".ans");
+    a.hidden = false;
+    a.textContent = `تعريف إضافي: ${term.ar} · ${term.en}`;
+  },
+  pool: () => UNITS.flatMap((u) => u.terms),
   markTarget(i) {
     document.querySelectorAll(".def").forEach((b) => b.classList.toggle("target", Number(b.dataset.i) === i));
   },
@@ -904,7 +930,7 @@ const ui = {
       <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
       <p>${num(r.score)} نقطة · ${r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء"}</p>
-      <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi></div>`).join("")}</div>
+      <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>
       <div class="actions">
         ${last ? "" : `<button class="btn primary" type="button" data-act="next">المستوى التالي</button>`}
         <button class="btn" type="button" data-act="again">أعد المستوى</button>

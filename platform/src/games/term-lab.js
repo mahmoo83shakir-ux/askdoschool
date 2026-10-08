@@ -272,29 +272,43 @@ const TermLab = (() => {
     return { group: grp, ring, base, top };
   }
 
+  // One extra "decoy" definition per level (from the same unit, else from another unit),
+  // so the last cube is never a forced match.
+  function pickDecoy(unit, items, pool) {
+    const taken = new Set(items.map((t) => t.id));
+    const same = unit.terms.filter((t) => !taken.has(t.id));
+    const other = pool.filter((t) => !taken.has(t.id));
+    const from = same.length ? same : other;
+    return from.length ? from[Math.floor(Math.random() * from.length)] : null;
+  }
+
   function startLevel(unit, levelIndex, ui, onExit) {
     clearLevel();
     const levels = levelsOf(unit.terms);
     const items = levels[levelIndex];
     const n = items.length;
+    const decoy = n < LETTERS.length ? pickDecoy(unit, items, ui.pool()) : null;
+    const padTerms = shuffle(decoy ? items.concat(decoy) : items);
+    const np = padTerms.length;
     // portrait phones get a narrower, deeper bench so the cubes stay large
     const tall = window.innerHeight > window.innerWidth;
-    const size = n > 3 ? (tall ? 1.05 : 1.15) : 1.3;
-    const gap = n > 3 ? (tall ? 1.45 : 2.15) : (tall ? 1.8 : 2.5);
+    const size = np > 3 ? (tall ? 1.05 : 1.15) : 1.3;
+    const gap = np > 3 ? (tall ? 1.45 : 2.15) : (tall ? 1.8 : 2.5);
     const padZ = tall ? -2.3 : -1.7, cubeZ = tall ? 2.0 : 1.5;
-    const xs = items.map((_, i) => (i - (n - 1) / 2) * gap);
-    const layout = { half: ((n - 1) / 2) * gap + size * 0.75, back: padZ - size, front: cubeZ + size * 0.7, tall };
+    const row = (k) => Array.from({ length: k }, (_, i) => (i - (k - 1) / 2) * gap);
+    const padXs = row(np), xs = row(n);
+    const layout = { half: ((np - 1) / 2) * gap + size * 0.75, back: padZ - size, front: cubeZ + size * 0.7, tall };
 
     run = {
-      unit, levels, levelIndex, items, ui, onExit, layout,
+      unit, levels, levelIndex, items, ui, onExit, layout, decoy,
       pads: [], cubes: [], selected: null, drag: null,
       mistakes: 0, matched: 0, score: 0,
     };
 
-    // pads keep the tray order (أ ب ج); the tray is RTL, so أ sits on the right of the bench too
-    items.forEach((term, i) => {
+    // pads keep the tray order (أ ب ج د); the tray is RTL, so أ sits on the right of the bench too
+    padTerms.forEach((term, i) => {
       const pad = makePad(i, Math.min(size, (gap * 0.46) / 0.86));
-      pad.group.position.set(-xs[i], 0, padZ);
+      pad.group.position.set(-padXs[i], 0, padZ);
       pad.term = term;
       pad.index = i;
       pad.base.userData.pad = pad;
@@ -318,7 +332,7 @@ const TermLab = (() => {
       tween(cube.mesh.position, { y: CUBE_Y }, 0.5 + i * 0.12);
     });
 
-    ui.renderTray(items, LETTERS, PAD_COLORS, (i) => tapPad(run.pads[i]));
+    ui.renderTray(padTerms, LETTERS, PAD_COLORS, (i) => tapPad(run.pads[i]));
     ui.setLevel(levelIndex, levels.length);
     ui.setScore(0);
     resize();
@@ -446,6 +460,7 @@ const TermLab = (() => {
     const stars = run.mistakes === 0 ? 3 : run.mistakes <= 2 ? 2 : 1;
     run.score += stars * 5;
     run.ui.setScore(run.score);
+    if (run.decoy) run.ui.markDecoy(run.pads.find((p) => p.term === run.decoy).index, run.decoy);
     run.ui.levelDone({
       stars,
       score: run.score,

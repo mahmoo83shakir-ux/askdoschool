@@ -50,7 +50,7 @@ function renderHome() {
     }).join("");
     return `<article class="unit">
       <div class="unit-head">
-        <div><div class="unit-num">الفصل ${num(u.unit)}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
+        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
         <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
       </div>
       <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
@@ -104,6 +104,14 @@ const ui = {
     a.hidden = false;
     a.textContent = `${term.emoji || "✔"} ${term.ar} · ${term.en}`;
   },
+  markDecoy(i, term) {
+    const b = document.querySelector(`.def[data-i="${i}"]`);
+    b.classList.add("decoy");
+    const a = b.querySelector(".ans");
+    a.hidden = false;
+    a.textContent = `تعريف إضافي: ${term.ar} · ${term.en}`;
+  },
+  pool: () => UNITS.flatMap((u) => u.terms),
   markTarget(i) {
     document.querySelectorAll(".def").forEach((b) => b.classList.toggle("target", Number(b.dataset.i) === i));
   },
@@ -136,7 +144,7 @@ const ui = {
       <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
       <p>${num(r.score)} نقطة · ${r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء"}</p>
-      <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi></div>`).join("")}</div>
+      <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>
       <div class="actions">
         ${last ? "" : `<button class="btn primary" type="button" data-act="next">المستوى التالي</button>`}
         <button class="btn" type="button" data-act="again">أعد المستوى</button>

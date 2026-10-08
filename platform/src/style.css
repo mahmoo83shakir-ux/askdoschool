@@ -158,6 +158,8 @@ button { font: inherit; color: inherit; }
 .def .ans { display: block; color: var(--ok); font-weight: 700; font-size: var(--step--1); }
 .def.done { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, var(--bench)); cursor: default; }
 .def.target { border-color: var(--brass); }
+.def.decoy { opacity: 0.6; cursor: default; }
+.def.decoy .ans { color: var(--muted); }
 .def.shake { animation: shake .35s; }
 @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
@@ -191,7 +193,8 @@ button { font: inherit; color: inherit; }
 .sheet .big-stars .off { color: var(--line); }
 .sheet p { margin: 0; color: var(--muted); }
 .learned { display: grid; gap: 6px; text-align: right; }
-.learned div { display: flex; justify-content: space-between; gap: 10px; padding: 6px 10px; border-radius: 8px; background: var(--bg); font-size: 0.9rem; }
+.learned div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; padding: 6px 10px; border-radius: 8px; background: var(--bg); font-size: 0.9rem; }
+.learned small { flex-basis: 100%; color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
 .learned bdi { direction: ltr; color: var(--brass); font-weight: 700; }
 .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .btn {
