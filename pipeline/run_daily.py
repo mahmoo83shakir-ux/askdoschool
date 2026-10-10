@@ -32,6 +32,9 @@ def main():
 
     config = episode_mod.load_config()
     date = dt.date.fromisoformat(args.date) if args.date else dt.datetime.now(ZoneInfo(config["timezone"])).date()
+    if episode_mod.episode_number(config, date) < 1:
+        print(f"{date} is before start_date {config['start_date']}: no episode today.")
+        return 0
     ep = episode_mod.build(date)
     print(f"Episode {ep['number']} for {ep['date']}: {', '.join(t['en'] for t in ep['terms'])}")
 
@@ -50,7 +53,7 @@ def main():
         return 0
 
     state = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else {}
-    done = state.setdefault(ep["date"], {"number": ep["number"], "title": ep["title"]})
+    done = state.get(ep["date"], {"number": ep["number"], "title": ep["title"]})
     failures = []
     for name, (enabled, upload) in publish.CHANNELS.items():
         if not enabled():
@@ -65,8 +68,10 @@ def main():
         except Exception:
             traceback.print_exc()
             failures.append(name)
-    STATE.parent.mkdir(exist_ok=True)
-    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if set(done) - {"number", "title"}:  # record only days where at least one channel went out
+        state[ep["date"]] = done
+        STATE.parent.mkdir(exist_ok=True)
+        STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if failures:
         print(f"FAILED: {', '.join(failures)}")

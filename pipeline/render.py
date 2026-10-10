@@ -2,6 +2,7 @@
 import asyncio
 import html
 import os
+import re
 import ssl
 import subprocess
 import wave
@@ -15,6 +16,14 @@ SAMPLE_RATE = 24000
 
 def esc(text):
     return html.escape(str(text))
+
+
+UNIT_RUN = re.compile(r"\d+(?:[.,/]\d+)*\s?[A-Za-z]+\b")
+
+
+def esc_ar(text):
+    """Escapes Arabic text and keeps numbers with Latin units (6 kg, 58.8 N) left-to-right."""
+    return UNIT_RUN.sub(lambda m: f"<bdi>{m.group(0)}</bdi>", esc(text))
 
 
 # ---------- slides ----------
@@ -51,12 +60,12 @@ def build_slides(ep):
         body = f"""
 <div class="pill">المصطلح {ep["ordinals"][i]}</div>
 <div class="emoji">{esc(t.get("emoji", ""))}</div>
-<div class="term-en ltr">{esc(t["en"])}</div>
+<div class="term-en ltr{' long' if len(t['en']) > 12 else ''}">{esc(t["en"])}</div>
 <div class="term-ar">{esc(t["ar"])}</div>
 <div class="rule"></div>
-<div class="def-ar">{esc(t["def_ar"])}</div>
+<div class="def-ar">{esc_ar(t["def_ar"])}</div>
 <div class="def-en ltr">{esc(t.get("def_en", ""))}</div>
-{f'<div class="note"><span>مثال</span>{esc(t["example_ar"])}</div>' if t.get("example_ar") else ""}
+{f'<div class="note"><span>مثال</span>{esc_ar(t["example_ar"])}</div>' if t.get("example_ar") else ""}
 <div class="dots">{dots}</div>"""
         narration = [
             ("ar", f"المصطلح {ep['ordinals'][i]}", 0.25),
@@ -78,7 +87,7 @@ def build_slides(ep):
     question = f"""
 <div class="pill">اختبر نفسك</div>
 <div class="big-emoji">🤔</div>
-<div class="q">{esc(quiz["question"])}</div>
+<div class="q">{esc_ar(quiz["question"])}</div>
 <div class="choices">{choices_html(False)}</div>"""
     narration = [("ar", "اختبر نفسك.", 0.3), ("ar", quiz["question"], 0.5)]
     narration += [("en", c, 0.35) for c in quiz["choices"]]
@@ -103,7 +112,7 @@ def build_slides(ep):
 <div class="hero">أحسنت!</div>
 <div class="cta">اكتب مصطلحات اليوم في دفترك<br>وراجعها قبل النوم</div>
 <div class="list">{rows}</div>
-{f'<div class="cta">العب وتعلّم على المنصة:<br><b class="ltr">{esc(cfg["platform_url"])}</b></div>' if cfg.get("platform_url") else ""}
+{f'<div class="cta">العب وتعلّم على المنصة:<br><b class="ltr url">{esc(cfg["platform_url"])}</b></div>' if cfg.get("platform_url") else ""}
 <div class="cta"><b>نلتقي غداً في حلقة جديدة</b></div>"""
     slides.append((frame(ep, outro, "تابعنا"),
                    [("ar", "أحسنت! اكتب مصطلحات اليوم في دفترك، ونلتقي غداً في حلقة جديدة.", 1.0)]))
@@ -122,6 +131,22 @@ def page_html(slides):
     return f'<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>{faces}{css}</style></head><body>{body}</body></html>'
 
 
+# Shrinks a card's content step by step until it fits inside the card.
+FIT_JS = """() => {
+  for (const card of document.querySelectorAll('.card')) {
+    const kids = [...card.children], cs = getComputedStyle(card);
+    const room = card.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+    const used = () => Math.max(...kids.map(k => k.getBoundingClientRect().bottom))
+                     - Math.min(...kids.map(k => k.getBoundingClientRect().top));
+    let z = 1;
+    while (used() > room + 1 && z > 0.6) {
+      z -= 0.04;
+      for (const k of kids) k.style.zoom = z;
+    }
+  }
+}"""
+
+
 def screenshot_slides(slides, out_dir):
     from playwright.sync_api import sync_playwright
 
@@ -134,6 +159,7 @@ def screenshot_slides(slides, out_dir):
         page = browser.new_page(viewport={"width": 1080, "height": 1920})
         page.goto(page_path.as_uri())
         page.evaluate("document.fonts.ready")
+        page.evaluate(FIT_JS)
         for i, el in enumerate(page.query_selector_all("section.slide")):
             png = out_dir / f"slide-{i:02d}.png"
             el.screenshot(path=str(png))

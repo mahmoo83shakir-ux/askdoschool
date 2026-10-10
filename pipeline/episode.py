@@ -41,6 +41,22 @@ def auto_quiz(picked, all_terms, rng):
     }
 
 
+def auto_start(config, date, episodes_dir, all_terms, k):
+    """Index of the first term for a day without an episode file: continue after the
+    latest earlier (non-review) episode file, k terms per day since then."""
+    order = {t["id"]: i for i, t in enumerate(all_terms)}
+    last_date, last_index = dt.date.fromisoformat(config["start_date"]) - dt.timedelta(days=1), -1
+    for path in sorted(episodes_dir.glob("*.json")):
+        day = dt.date.fromisoformat(path.stem)
+        if day >= date:
+            break
+        data = json.loads(path.read_text(encoding="utf-8"))
+        ids = [i for i in data.get("terms", []) if i in order]
+        if ids and not data.get("review"):
+            last_date, last_index = day, max(order[i] for i in ids)
+    return last_index + 1 + k * ((date - last_date).days - 1)
+
+
 def build(date):
     config = load_config()
     all_terms = load_terms()
@@ -49,7 +65,8 @@ def build(date):
     if number < 1:
         raise SystemExit(f"{date} is before start_date {config['start_date']}")
 
-    override_path = ROOT / "content" / "episodes" / f"{date.isoformat()}.json"
+    episodes_dir = ROOT / "content" / "episodes"
+    override_path = episodes_dir / f"{date.isoformat()}.json"
     override = json.loads(override_path.read_text(encoding="utf-8")) if override_path.exists() else {}
 
     review = False
@@ -58,9 +75,10 @@ def build(date):
         if missing:
             raise SystemExit(f"{override_path.name}: unknown term ids {missing}")
         picked = [by_id[i] for i in override["terms"]]
+        review = bool(override.get("review"))
     else:
         k = config["terms_per_episode"]
-        first = (number - 1) * k
+        first = auto_start(config, date, episodes_dir, all_terms, k)
         review = first >= len(all_terms)
         picked = [all_terms[(first + i) % len(all_terms)] for i in range(k)]
 

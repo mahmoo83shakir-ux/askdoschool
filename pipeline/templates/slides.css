@@ -67,3 +67,5 @@ body { background: #000; font-family: "Tajawal", sans-serif; color: var(--ink); 
 /* Cards without an example box (intro, quiz, answer, outro) sit centred instead of leaving the lower third empty. */
 .card:not(:has(.note)) { justify-content: center; }
 .card:not(:has(.note)) .hero { margin-top: 0; }
+.term-en.long { font-size: 84px; }
+.cta .url { display: block; font-size: 34px; line-height: 1.4; word-break: break-all; }
