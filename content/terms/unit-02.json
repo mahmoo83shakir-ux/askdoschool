@@ -4,7 +4,7 @@
   "title_ar": "القوة",
   "title_en": "Force",
   "status": "draft",
-  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني (الطبعة السابعة المنقحة 2024، ص 27–). الدرس الأول «مفهوم القوة» (ص 29–32): القوة والنيوتن من صندوق «المفردات»، والوزن معرَّف في الدرس نفسه بمصطلحه الإنكليزي Weight. الدرس الثاني يُضاف في الجلسة القادمة.",
+  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.",
   "terms": [
     {
       "id": "force",
@@ -32,6 +32,51 @@
       "def_en": "The force of Earth's gravity on an object: w = m × g.",
       "example_ar": "وزن حقيبة كتلتها 6 kg يساوي 58.8 N.",
       "emoji": "🎒"
+    },
+    {
+      "id": "contact-force",
+      "en": "Contact Force",
+      "ar": "قوى التماس",
+      "def_ar": "قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.",
+      "def_en": "Forces between objects that result from direct contact.",
+      "example_ar": "شد نابض باليد أو دفع عربة.",
+      "emoji": "🤝"
+    },
+    {
+      "id": "field-force",
+      "en": "Field Force",
+      "ar": "قوى المجال",
+      "def_ar": "قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.",
+      "def_en": "Forces that act at a distance without actual contact.",
+      "example_ar": "جذب المغناطيس للمسامير.",
+      "emoji": "🧲"
+    },
+    {
+      "id": "resultant-force",
+      "en": "Resultant Force",
+      "ar": "محصلة القوى",
+      "def_ar": "قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.",
+      "def_en": "One force equal in effect to several forces acting on an object at once (Fnet).",
+      "example_ar": "500 N و300 N نحو الشرق محصلتهما 800 N.",
+      "emoji": "➕"
+    },
+    {
+      "id": "balanced-force",
+      "en": "Balanced Force",
+      "ar": "القوى المتزنة",
+      "def_ar": "قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.",
+      "def_en": "Forces whose resultant is zero, so the object's motion does not change.",
+      "example_ar": "شد حبل بقوتين متساويتين متعاكستين.",
+      "emoji": "🪢"
+    },
+    {
+      "id": "unbalanced-force",
+      "en": "Unbalanced Force",
+      "ar": "القوى غير المتزنة",
+      "def_ar": "قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.",
+      "def_en": "Forces whose resultant is not zero, changing an object's speed or direction.",
+      "example_ar": "ركل اللاعب لكرة القدم.",
+      "emoji": "⚽"
     }
   ]
 }
