@@ -12,9 +12,9 @@ Games (each unit gets all of them):
 |---|---|---|
 | `term-lab` | مختبر المصطلحات: drag (or tap) English cubes onto the Arabic-definition pads, 3 terms per level plus one decoy definition, stars per level | working prototype |
 | `atom-race` | سباق الذرات | planned |
-| `term-bank` | بنك المصطلحات | planned |
+| `term-bank` | بنك المصطلحات: 3D flip cards (English face, Arabic face), definition and example under the card, file as known or review later; stars from first-pass known cards | working prototype |
 
-To add a game: write `src/games/<id>.js` exposing `start(unit, levelIndex, ui, onExit)`, `stop()`, `levelsOf(terms)`, add it to `SCRIPTS` in `build.py` and to `GAMES` in `src/app.js`.
+Games share one WebGL renderer (`src/stage.js`). To add a game: write `src/games/<id>.js` exposing `start(unit, levelIndex, ui, onExit)`, `stop()`, `levelsOf(terms)`, add it to `SCRIPTS` in `build.py` and to `GAMES` in `src/app.js`.
 
 Published Artifact: see `platform_url` in `config/channel.json`.
 - Units numbered 90+ (e.g. `unit-99`, terms waiting for their book chapter) show as «مصطلحات إضافية» instead of a chapter number.

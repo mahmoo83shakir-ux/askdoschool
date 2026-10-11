@@ -28,6 +28,7 @@
   --step-3: clamp(2.1rem, 7vw, 3.2rem);
   color-scheme: dark;
 }
+*, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   background: var(--bg);
@@ -192,6 +193,7 @@ button { font: inherit; color: inherit; }
   width: min(26rem, 100%);
   background: var(--bench); border: 1px solid var(--line); border-radius: 16px;
   padding: 22px; display: grid; gap: 14px; text-align: center;
+  max-height: calc(100% - 32px); overflow-y: auto;
 }
 .sheet h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: var(--step-2); }
 .sheet .big-stars { font-size: 2.4rem; letter-spacing: 6px; color: var(--brass); }
@@ -207,6 +209,30 @@ button { font: inherit; color: inherit; }
   border: 1px solid var(--line); background: var(--bg);
 }
 .btn.primary { background: var(--brass); color: var(--bg); border-color: var(--brass); }
+
+/* term bank: definition panel and filing buttons under the card */
+.bank-panel {
+  position: absolute; inset-inline: 0; bottom: 0;
+  padding: 14px 16px calc(env(safe-area-inset-bottom, 0px) + 14px);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px;
+  background: linear-gradient(transparent, var(--bg) 22%);
+}
+.bank-info {
+  width: min(34rem, 100%); margin: 0 auto;
+  min-height: 7.5rem;
+  background: var(--bench); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; display: grid; gap: 6px; align-content: start;
+}
+.bank-info p { margin: 0; }
+.bank-prompt { color: var(--muted); align-self: center; text-align: center; }
+.bank-term { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-weight: 800; font-size: var(--step-1); }
+.bank-term bdi { direction: ltr; color: var(--brass); }
+.bank-def { line-height: 1.6; }
+.bank-ex { color: var(--muted); font-size: var(--step--1); }
+.bank-ex b { color: var(--fg); }
+.bank-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.bank-actions .btn { flex: 1 1 0; max-width: 11rem; min-width: 0; padding-inline: 10px; }
+.btn:disabled { opacity: 0.45; cursor: default; }
 
 @media (min-width: 820px) and (orientation: landscape) {
   .tray { inset-inline: 16px auto; width: 22rem; }
@@ -247,9 +273,24 @@ button { font: inherit; color: inherit; }
   </section>
 </div>
 
-<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني (الطبعة السابعة المنقحة 2024، ص 27–). الدرس الأول «مفهوم القوة» (ص 29–32): القوة والنيوتن من صندوق «المفردات»، والوزن معرَّف في الدرس نفسه بمصطلحه الإنكليزي Weight. الدرس الثاني يُضاف في الجلسة القادمة.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
+<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"},{"id":"contact-force","en":"Contact Force","ar":"قوى التماس","def_ar":"قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.","def_en":"Forces between objects that result from direct contact.","example_ar":"شد نابض باليد أو دفع عربة.","emoji":"🤝"},{"id":"field-force","en":"Field Force","ar":"قوى المجال","def_ar":"قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.","def_en":"Forces that act at a distance without actual contact.","example_ar":"جذب المغناطيس للمسامير.","emoji":"🧲"},{"id":"resultant-force","en":"Resultant Force","ar":"محصلة القوى","def_ar":"قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.","def_en":"One force equal in effect to several forces acting on an object at once (Fnet).","example_ar":"500 N و300 N نحو الشرق محصلتهما 800 N.","emoji":"➕"},{"id":"balanced-force","en":"Balanced Force","ar":"القوى المتزنة","def_ar":"قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.","def_en":"Forces whose resultant is zero, so the object's motion does not change.","example_ar":"شد حبل بقوتين متساويتين متعاكستين.","emoji":"🪢"},{"id":"unbalanced-force","en":"Unbalanced Force","ar":"القوى غير المتزنة","def_ar":"قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.","def_en":"Forces whose resultant is not zero, changing an object's speed or direction.","example_ar":"ركل اللاعب لكرة القدم.","emoji":"⚽"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script>
+// One WebGL renderer on #scene, shared by every game (a canvas can hold only one GL context).
+const Stage = (() => {
+  let renderer = null;
+  return {
+    renderer() {
+      if (!renderer) {
+        renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("scene"), antialias: true, powerPreference: "low-power" });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.setClearColor("#0e1c2b");
+      }
+      return renderer;
+    },
+  };
+})();
+
 // مختبر المصطلحات — drag (or tap) an English-term cube onto the platform of its Arabic definition.
 // One level = 3 terms (4 when the unit's count leaves a remainder). Reads terms only from the unit data.
 const TermLab = (() => {
@@ -359,9 +400,7 @@ const TermLab = (() => {
 
   // ---------- scene ----------
   function build(canvas) {
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "low-power" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor("#0e1c2b");
+    const renderer = Stage.renderer();
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog("#0e1c2b", 14, 26);
@@ -431,7 +470,7 @@ const TermLab = (() => {
   // Fit the bench (pads + cubes) into the part of the screen the definitions tray leaves free:
   // binary-search the camera distance on the projected bounding box, then shift with a view offset.
   function resize() {
-    if (!ctx) return;
+    if (!ctx || !run) return;
     const { renderer, camera } = ctx;
     const w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h, false);
@@ -784,6 +823,350 @@ const TermLab = (() => {
   };
 })();
 
+// بنك المصطلحات — a deck of 3D cards for memorising: English face, Arabic face, definition and example below.
+// The student flips each card, then files it as "حفظته" (into the bank) or "راجعه لاحقاً" (back of the deck).
+// One round = the whole unit; stars come from how many cards were known on the first pass.
+const TermBank = (() => {
+  const CARD_W = 3.2, CARD_H = 2.0, CARD_D = 0.06;
+  const IVORY = "#f3ead8", INK = "#0e1c2b", BRASS = "#f2aa3c", BENCH = "#15283b";
+
+  let ctx = null;
+  let run = null;
+
+  // ---------- textures ----------
+  function wrap(g, text, maxW) {
+    const words = text.split(" ");
+    const lines = [];
+    let line = "";
+    for (const w of words) {
+      const t = line ? line + " " + w : w;
+      if (g.measureText(t).width > maxW && line) { lines.push(line); line = w; } else line = t;
+    }
+    lines.push(line);
+    return lines;
+  }
+
+  function fitText(g, text, font, maxW, maxH, start) {
+    let size = start, lines;
+    do {
+      g.font = font(size);
+      lines = wrap(g, text, maxW);
+      size -= 6;
+    } while ((lines.some((l) => g.measureText(l).width > maxW) || lines.length * size * 1.25 > maxH) && size > 40);
+    return { lines, size: size + 6 };
+  }
+
+  function drawFront(c, term, k, n) {
+    const g = c.getContext("2d");
+    g.fillStyle = IVORY; g.fillRect(0, 0, c.width, c.height);
+    g.fillStyle = BRASS; g.fillRect(0, 0, c.width, 18);
+    g.fillStyle = "rgba(14,28,43,.55)";
+    g.font = "700 34px Tajawal, system-ui, sans-serif";
+    g.textBaseline = "top";
+    g.textAlign = "left"; g.direction = "ltr";
+    g.fillText("ENGLISH", 48, 50);
+    g.textAlign = "right"; g.direction = "rtl";
+    g.fillText(`${k.toLocaleString("ar-IQ")} / ${n.toLocaleString("ar-IQ")}`, c.width - 48, 50);
+    g.fillStyle = INK; g.textAlign = "center"; g.direction = "ltr"; g.textBaseline = "middle";
+    const { lines, size } = fitText(g, term.en, (s) => `800 ${s}px Tajawal, system-ui, sans-serif`, c.width - 140, 380, 150);
+    lines.forEach((l, i) => g.fillText(l, c.width / 2, c.height / 2 + 20 + (i - (lines.length - 1) / 2) * size * 1.15));
+    g.fillStyle = "rgba(14,28,43,.45)"; g.font = "500 32px Tajawal, system-ui, sans-serif"; g.direction = "rtl";
+    g.fillText("المس البطاقة لتقلبها", c.width / 2, c.height - 56);
+  }
+
+  function drawBack(c, term) {
+    const g = c.getContext("2d");
+    g.fillStyle = BENCH; g.fillRect(0, 0, c.width, c.height);
+    g.strokeStyle = BRASS; g.lineWidth = 10; g.strokeRect(24, 24, c.width - 48, c.height - 48);
+    g.textAlign = "center"; g.textBaseline = "middle"; g.direction = "rtl";
+    g.fillStyle = BRASS;
+    const { lines, size } = fitText(g, term.ar, (s) => `${s}px Lalezar, Tajawal, sans-serif`, c.width - 160, 330, 170);
+    lines.forEach((l, i) => g.fillText(l, c.width / 2, c.height / 2 - 30 + (i - (lines.length - 1) / 2) * size * 1.2));
+    g.fillStyle = "#9cb1c5"; g.direction = "ltr";
+    g.font = "700 46px Tajawal, system-ui, sans-serif";
+    g.fillText(term.en, c.width / 2, c.height - 110);
+  }
+
+  function cardMesh(term, k, n) {
+    const front = document.createElement("canvas"), back = document.createElement("canvas");
+    front.width = back.width = 1024; front.height = back.height = 640;
+    const draw = () => { drawFront(front, term, k, n); drawBack(back, term); ft.needsUpdate = bt.needsUpdate = true; };
+    const ft = new THREE.CanvasTexture(front), bt = new THREE.CanvasTexture(back);
+    [ft, bt].forEach((t) => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; });
+    draw();
+    // redraw once the web fonts arrive, so the canvas text is not left in a fallback face
+    if (document.fonts && document.fonts.status !== "loaded") document.fonts.ready.then(draw);
+    const edge = new THREE.MeshStandardMaterial({ color: "#d9cdb3", roughness: 0.7 });
+    const mats = [edge, edge, edge, edge,
+      new THREE.MeshStandardMaterial({ map: ft, roughness: 0.6 }),
+      new THREE.MeshStandardMaterial({ map: bt, roughness: 0.6 })];
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(CARD_W, CARD_H, CARD_D), mats);
+    mesh.userData.term = term;
+    return mesh;
+  }
+
+  // ---------- scene ----------
+  function build() {
+    const renderer = Stage.renderer();
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
+    scene.add(new THREE.HemisphereLight("#dfe9f3", "#0e1c2b", 1.5));
+    const key = new THREE.DirectionalLight("#fff3e0", 1.4);
+    key.position.set(-2, 3, 5);
+    scene.add(key);
+
+    // an atom model drifting behind the deck: nucleus and three electron orbits
+    const atom = new THREE.Group();
+    atom.add(new THREE.Mesh(new THREE.SphereGeometry(0.28, 20, 14), new THREE.MeshStandardMaterial({ color: "#ff8a5c", emissive: "#3b1606" })));
+    const orbitMat = new THREE.MeshBasicMaterial({ color: "#38c6b6", transparent: true, opacity: 0.55 });
+    const eMat = new THREE.MeshStandardMaterial({ color: "#6fa8ff", emissive: "#1d3f80" });
+    for (let i = 0; i < 3; i++) {
+      const orbit = new THREE.Group();
+      orbit.add(new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.015, 6, 64), orbitMat));
+      const e = new THREE.Mesh(new THREE.SphereGeometry(0.08, 10, 8), eMat);
+      e.position.x = 1.1;
+      orbit.add(e);
+      orbit.rotation.set(Math.PI / 2 + i * 0.9, i * 1.1, 0);
+      orbit.userData.speed = 0.9 + i * 0.35;
+      atom.add(orbit);
+    }
+    atom.position.set(3.6, 1.3, -4.5);
+    scene.add(atom);
+
+    const deck = new THREE.Group();
+    scene.add(deck);
+
+    ctx = { renderer, scene, camera, atom, deck, tweens: [], clock: new THREE.Clock(), raf: 0,
+      raycaster: new THREE.Raycaster(), pointer: new THREE.Vector2() };
+
+    renderer.domElement.addEventListener("pointerup", (e) => {
+      if (!run || run.busy) return;
+      const rect = renderer.domElement.getBoundingClientRect();
+      ctx.pointer.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
+      ctx.raycaster.setFromCamera(ctx.pointer, camera);
+      if (run.card && ctx.raycaster.intersectObject(run.card, false).length) flip();
+    });
+    window.addEventListener("resize", resize);
+    document.addEventListener("keydown", (e) => {
+      if (!run || run.busy || e.target.closest("button")) return;
+      if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
+    });
+  }
+
+  // Fit the card into the space above the bottom panel.
+  function resize() {
+    if (!ctx || !run) return;
+    const { renderer, camera } = ctx;
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    const panel = document.querySelector(".bank-panel");
+    const top = 64, bottom = panel ? panel.getBoundingClientRect().top - 8 : h - 20;
+    const freeW = Math.min(w - 32, 720), freeH = Math.max(bottom - top, 120);
+    const t = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
+    const d = Math.max((CARD_W * 1.12 * h) / (2 * t * freeW), (CARD_H * 1.25 * h) / (2 * t * freeH));
+    camera.aspect = w / h;
+    camera.position.set(0, 0.25 * d / 6, d);
+    camera.lookAt(0, 0, 0);
+    const dy = (top + bottom) / 2 - h / 2;
+    camera.setViewOffset(w, h, 0, -dy, w, h);
+    camera.updateProjectionMatrix();
+  }
+
+  // ---------- round ----------
+  function clearDeck() {
+    while (ctx.deck.children.length) {
+      const m = ctx.deck.children.pop();
+      m.geometry.dispose();
+      [].concat(m.material).forEach((mat) => { if (mat.map) mat.map.dispose(); mat.dispose(); });
+    }
+    ctx.tweens.length = 0;
+  }
+
+  function startRound(unit, ui, onExit) {
+    clearDeck();
+    const n = unit.terms.length;
+    run = {
+      unit, ui, onExit, n,
+      queue: unit.terms.map((t, i) => ({ term: t, k: i + 1, tries: 0 })),
+      known: [], firstPass: 0, score: 0,
+      card: null, flipped: false, busy: false,
+    };
+    renderPanel();
+    // the rest of the deck, as thin plain cards under the active one
+    run.stack = [];
+    const stackMat = new THREE.MeshStandardMaterial({ color: "#e4d8bf", roughness: 0.8 });
+    for (let i = 0; i < 3; i++) {
+      const s = new THREE.Mesh(new THREE.BoxGeometry(CARD_W, CARD_H, CARD_D), stackMat);
+      s.position.set(0.06 * (i + 1), -0.07 * (i + 1), -0.12 * (i + 1));
+      s.rotation.z = -0.02 * (i + 1);
+      ctx.deck.add(s);
+      run.stack.push(s);
+    }
+    ui.setScore(0);
+    resize();
+    dealNext();
+  }
+
+  function updateStack() {
+    const left = run.queue.length - 1;
+    run.stack.forEach((s, i) => { s.visible = i < left; });
+  }
+
+  function dealNext() {
+    const item = run.queue[0];
+    if (!item) return finish();
+    const card = cardMesh(item.term, item.k, run.n);
+    card.position.set(0, 3.2, 0.4);
+    card.rotation.set(-0.5, 0, 0.12);
+    ctx.deck.add(card);
+    run.card = card;
+    run.flipped = false;
+    run.busy = true;
+    tween(card.position, { y: 0, z: 0 }, 0.45);
+    tween(card.rotation, { x: 0, z: 0 }, 0.45, () => { run.busy = false; });
+    updateStack();
+    run.ui.setStatus(`${run.unit.title_ar} · في البنك ${num(run.known.length)} من ${num(run.n)}`);
+    showInfo(null);
+  }
+
+  function flip() {
+    if (!run.card || run.busy) return;
+    run.flipped = !run.flipped;
+    run.busy = true;
+    const y = run.flipped ? Math.PI : 0;
+    tween(run.card.position, { z: 0.6 }, 0.18, () => tween(run.card.position, { z: 0 }, 0.22));
+    tween(run.card.rotation, { y }, 0.4, () => { run.busy = false; });
+    if (run.flipped) showInfo(run.queue[0].term);
+  }
+
+  function file(knownIt) {
+    if (!run.card || run.busy || !run.flipped) return;
+    const item = run.queue.shift();
+    const card = run.card;
+    run.card = null;
+    run.busy = true;
+    item.tries++;
+    if (knownIt) {
+      const first = item.tries === 1;
+      if (first) run.firstPass++;
+      run.score += first ? 10 : 5;
+      run.known.push(item.term);
+      run.ui.setScore(run.score);
+      run.ui.toast(`أُضيفت إلى البنك: ${item.term.ar}`, "ok");
+      tween(card.position, { x: -6, y: 1.5 }, 0.45);
+      tween(card.rotation, { z: 0.6 }, 0.45, () => { ctx.deck.remove(card); disposeCard(card); dealNext(); });
+    } else {
+      run.queue.push(item);
+      run.ui.toast("ستعود إليك في آخر الرزمة", "");
+      tween(card.position, { y: -0.3, z: -0.6 }, 0.35);
+      tween(card.scale, { x: 0.92, y: 0.92 }, 0.35, () => { ctx.deck.remove(card); disposeCard(card); dealNext(); });
+    }
+  }
+
+  function disposeCard(card) {
+    card.geometry.dispose();
+    new Set(card.material).forEach((m) => { if (m.map) m.map.dispose(); m.dispose(); });
+  }
+
+  function finish() {
+    run.card = null;
+    updateStack();
+    const ratio = run.firstPass / run.n;
+    const stars = ratio >= 0.99 ? 3 : ratio >= 0.6 ? 2 : 1;
+    run.score += stars * 5;
+    run.ui.setScore(run.score);
+    run.ui.levelDone({
+      stars,
+      score: run.score,
+      summary: `${num(run.firstPass)} من ${num(run.n)} حفظتها من أول مرة`,
+      items: run.unit.terms,
+      levelIndex: 0,
+      levelCount: 1,
+    });
+  }
+
+  // ---------- DOM panel ----------
+  const num = (n) => Number(n).toLocaleString("ar-IQ");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function renderPanel() {
+    const panel = document.createElement("div");
+    panel.className = "bank-panel";
+    panel.innerHTML = `
+      <div class="bank-info" id="bank-info"></div>
+      <div class="bank-actions">
+        <button class="btn" type="button" id="bank-again">راجعه لاحقاً</button>
+        <button class="btn" type="button" id="bank-flip">اقلب البطاقة</button>
+        <button class="btn primary" type="button" id="bank-known">حفظته</button>
+      </div>`;
+    panel.querySelector("#bank-flip").addEventListener("click", flip);
+    panel.querySelector("#bank-again").addEventListener("click", () => file(false));
+    panel.querySelector("#bank-known").addEventListener("click", () => file(true));
+    document.getElementById("stage-ui").replaceChildren(panel);
+  }
+
+  function showInfo(term) {
+    const box = document.getElementById("bank-info");
+    const again = document.getElementById("bank-again"), known = document.getElementById("bank-known");
+    again.disabled = known.disabled = !term;
+    if (!term) {
+      box.innerHTML = `<p class="bank-prompt">هل تعرف معنى هذا المصطلح؟ قل تعريفه في نفسك، ثم اقلب البطاقة.</p>`;
+      return;
+    }
+    box.innerHTML = `
+      <p class="bank-term"><span>${esc(term.emoji || "")} ${esc(term.ar)}</span><bdi>${esc(term.en)}</bdi></p>
+      <p class="bank-def">${esc(term.def_ar)}</p>
+      ${term.example_ar ? `<p class="bank-ex"><b>مثال:</b> ${esc(term.example_ar)}</p>` : ""}`;
+  }
+
+  // ---------- loop ----------
+  function tween(obj, to, dur, done) {
+    const from = {};
+    for (const k in to) from[k] = obj[k];
+    ctx.tweens = ctx.tweens.filter((t) => !(t.obj === obj && Object.keys(t.to).some((k) => k in to)));
+    ctx.tweens.push({ obj, from, to, dur, t: 0, done });
+  }
+
+  function frame() {
+    ctx.raf = requestAnimationFrame(frame);
+    const dt = Math.min(ctx.clock.getDelta(), 0.05);
+    const finished = [];
+    ctx.tweens = ctx.tweens.filter((tw) => {
+      tw.t = Math.min(tw.t + dt / tw.dur, 1);
+      const e = 1 - Math.pow(1 - tw.t, 3);
+      for (const k in tw.to) tw.obj[k] = tw.from[k] + (tw.to[k] - tw.from[k]) * e;
+      if (tw.t >= 1 && tw.done) finished.push(tw.done);
+      return tw.t < 1;
+    });
+    finished.forEach((f) => f());
+    ctx.atom.rotation.y += dt * 0.25;
+    ctx.atom.children.forEach((o, i) => { if (i) o.rotation.z += dt * o.userData.speed; });
+    ctx.atom.position.y = 1.3 + Math.sin(ctx.clock.elapsedTime * 0.8) * 0.12;
+    ctx.renderer.render(ctx.scene, ctx.camera);
+  }
+
+  return {
+    id: "term-bank",
+    levelsOf: (terms) => [terms],
+    metaLabel: (terms) => `${num(terms.length)} بطاقة`,
+    start(unit, _levelIndex, ui, onExit) {
+      if (!ctx) build();
+      startRound(unit, ui, onExit);
+      cancelAnimationFrame(ctx.raf);
+      ctx.clock.getDelta();
+      frame();
+    },
+    stop() {
+      if (ctx) cancelAnimationFrame(ctx.raf);
+      run = null;
+    },
+    // for the automated browser test
+    peek() {
+      return run && { left: run.queue.length, known: run.known.length, flipped: run.flipped, busy: run.busy };
+    },
+  };
+})();
+
 // Platform shell: home page (one card per unit in content/terms), game registry, progress in localStorage.
 const UNITS = JSON.parse(document.getElementById("units-data").textContent);
 
@@ -791,7 +1174,7 @@ const UNITS = JSON.parse(document.getElementById("units-data").textContent);
 const GAMES = [
   { id: "term-lab", name: "مختبر المصطلحات", desc: "اسحب مكعب المصطلح الإنكليزي إلى منصة تعريفه العربي.", ready: true, impl: TermLab },
   { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: false },
-  { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: false },
+  { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: true, impl: TermBank },
 ];
 
 const num = (n) => Number(n).toLocaleString("ar-IQ");
@@ -831,7 +1214,7 @@ function renderHome() {
       starsGot += got; starsMax += levels * 3;
       return `<button class="game-card" type="button" data-unit="${esc(u.id)}" data-game="${g.id}">
         <strong>${g.name}</strong><p>${g.desc}</p>
-        <div class="meta"><span>${num(levels)} مستويات</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
+        <div class="meta"><span>${g.impl.metaLabel ? g.impl.metaLabel(u.terms) : (levels === 1 ? "مستوى واحد" : `${num(levels)} مستويات`)}</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
       </button>`;
     }).join("");
     return `<article class="unit">
@@ -917,19 +1300,21 @@ const ui = {
     toastTimer = setTimeout(() => (t.className = "toast"), 1600);
   },
   setScore(s) { $("hud-score").textContent = num(s); },
+  setStatus(text) { $("hud-level").textContent = text; },
   setLevel(i, n) { $("hud-level").textContent = `${current.unit.title_ar} · المستوى ${num(i + 1)} من ${num(n)}`; },
   levelDone(r) {
     const gp = gameProgress(current.unit.id, current.game.id);
     gp.stars[r.levelIndex] = Math.max(gp.stars[r.levelIndex] || 0, r.stars);
     gp.best[r.levelIndex] = Math.max(gp.best[r.levelIndex] || 0, r.score);
     saveProgress();
+    $("toast").className = "toast";
     const last = r.levelIndex === r.levelCount - 1;
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";
     wrap.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
       <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
-      <p>${num(r.score)} نقطة · ${r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء"}</p>
+      <p>${num(r.score)} نقطة، ${r.summary || (r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء")}</p>
       <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>
       <div class="actions">
         ${last ? "" : `<button class="btn primary" type="button" data-act="next">المستوى التالي</button>`}

@@ -5,7 +5,7 @@ const UNITS = JSON.parse(document.getElementById("units-data").textContent);
 const GAMES = [
   { id: "term-lab", name: "مختبر المصطلحات", desc: "اسحب مكعب المصطلح الإنكليزي إلى منصة تعريفه العربي.", ready: true, impl: TermLab },
   { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: false },
-  { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: false },
+  { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: true, impl: TermBank },
 ];
 
 const num = (n) => Number(n).toLocaleString("ar-IQ");
@@ -45,7 +45,7 @@ function renderHome() {
       starsGot += got; starsMax += levels * 3;
       return `<button class="game-card" type="button" data-unit="${esc(u.id)}" data-game="${g.id}">
         <strong>${g.name}</strong><p>${g.desc}</p>
-        <div class="meta"><span>${num(levels)} مستويات</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
+        <div class="meta"><span>${g.impl.metaLabel ? g.impl.metaLabel(u.terms) : (levels === 1 ? "مستوى واحد" : `${num(levels)} مستويات`)}</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
       </button>`;
     }).join("");
     return `<article class="unit">
@@ -131,19 +131,21 @@ const ui = {
     toastTimer = setTimeout(() => (t.className = "toast"), 1600);
   },
   setScore(s) { $("hud-score").textContent = num(s); },
+  setStatus(text) { $("hud-level").textContent = text; },
   setLevel(i, n) { $("hud-level").textContent = `${current.unit.title_ar} · المستوى ${num(i + 1)} من ${num(n)}`; },
   levelDone(r) {
     const gp = gameProgress(current.unit.id, current.game.id);
     gp.stars[r.levelIndex] = Math.max(gp.stars[r.levelIndex] || 0, r.stars);
     gp.best[r.levelIndex] = Math.max(gp.best[r.levelIndex] || 0, r.score);
     saveProgress();
+    $("toast").className = "toast";
     const last = r.levelIndex === r.levelCount - 1;
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";
     wrap.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
       <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
-      <p>${num(r.score)} نقطة · ${r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء"}</p>
+      <p>${num(r.score)} نقطة، ${r.summary || (r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء")}</p>
       <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>
       <div class="actions">
         ${last ? "" : `<button class="btn primary" type="button" data-act="next">المستوى التالي</button>`}

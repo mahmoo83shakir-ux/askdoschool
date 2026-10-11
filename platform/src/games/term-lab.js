@@ -107,9 +107,7 @@ const TermLab = (() => {
 
   // ---------- scene ----------
   function build(canvas) {
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "low-power" });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor("#0e1c2b");
+    const renderer = Stage.renderer();
 
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog("#0e1c2b", 14, 26);
@@ -179,7 +177,7 @@ const TermLab = (() => {
   // Fit the bench (pads + cubes) into the part of the screen the definitions tray leaves free:
   // binary-search the camera distance on the projected bounding box, then shift with a view offset.
   function resize() {
-    if (!ctx) return;
+    if (!ctx || !run) return;
     const { renderer, camera } = ctx;
     const w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h, false);
