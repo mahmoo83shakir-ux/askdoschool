@@ -1,0 +1,28 @@
+{
+  "id": "unit-03",
+  "unit": 3,
+  "title_ar": "الضغط",
+  "title_en": "Pressure",
+  "status": "draft",
+  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرسان الثاني والثالث يُضافان في الجلسات القادمة.",
+  "terms": [
+    {
+      "id": "pressure",
+      "en": "Pressure",
+      "ar": "الضغط",
+      "def_ar": "القوة العمودية المؤثرة في وحدة المساحة.",
+      "def_en": "The perpendicular force acting on a unit area: P = F ÷ A.",
+      "example_ar": "تقطع السكين الحادة بسهولة لأن ضغطها أكبر.",
+      "emoji": "📌"
+    },
+    {
+      "id": "pascal",
+      "en": "Pascal",
+      "ar": "الباسكال",
+      "def_ar": "وحدة قياس الضغط، ويساوي نيوتن لكل متر مربع (N/m²).",
+      "def_en": "The unit of pressure, equal to one newton per square metre (N/m²).",
+      "example_ar": "قوة 200 N على 0.01 m² تعطي 20000 Pa.",
+      "emoji": "📏"
+    }
+  ]
+}
