@@ -4,7 +4,7 @@
   "title_ar": "الضغط",
   "title_en": "Pressure",
   "status": "draft",
-  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرسان الثاني والثالث يُضافان في الجلسات القادمة.",
+  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرس الثاني «ضغط السائل والغاز» (ص 47–51): المصطلحات الأربعة من «المفردات» والتعريفات من نص الكتاب. الدرس الثالث يُضاف في الجلسة القادمة.",
   "terms": [
     {
       "id": "pressure",
@@ -23,6 +23,42 @@
       "def_en": "The unit of pressure, equal to one newton per square metre (N/m²).",
       "example_ar": "قوة 200 N على 0.01 m² تعطي 20000 Pa.",
       "emoji": "📏"
+    },
+    {
+      "id": "liquid-pressure",
+      "en": "Liquid Pressure",
+      "ar": "ضغط السائل",
+      "def_ar": "وزن عمود السائل على مساحة القاعدة التي يقع عليها الوزن العمودي للسائل.",
+      "def_en": "The weight of a liquid column on the area of the base it rests on.",
+      "example_ar": "يندفع الماء أقوى من الثقب الأسفل.",
+      "emoji": "🌊"
+    },
+    {
+      "id": "lateral-pressure",
+      "en": "Lateral Pressure",
+      "ar": "الضغط الجانبي",
+      "def_ar": "الضغط الذي يسلطه السائل على جدران الوعاء الذي يحتويه.",
+      "def_en": "The pressure a liquid exerts on the walls of its container.",
+      "example_ar": "قاعدة السد أعرض لتتحمل ضغط الماء.",
+      "emoji": "🚰"
+    },
+    {
+      "id": "gas-pressure",
+      "en": "Gas Pressure",
+      "ar": "ضغط الغاز",
+      "def_ar": "الضغط الذي تسلطه جزيئات الغاز نتيجة اصطدام الجزيئات فيما بينها.",
+      "def_en": "The pressure gas molecules exert as a result of their collisions.",
+      "example_ar": "نفخ الإطار بالمنفاخ يزيد ضغط الهواء فيه.",
+      "emoji": "🛞"
+    },
+    {
+      "id": "atmospheric-pressure",
+      "en": "Atmospheric Pressure",
+      "ar": "الضغط الجوي",
+      "def_ar": "الضغط الذي يسببه وزن الغلاف الجوي على الأرض.",
+      "def_en": "The pressure caused by the weight of the atmosphere on Earth.",
+      "example_ar": "يدفع الضغط الجوي العصير في قصبة الشرب.",
+      "emoji": "🌍"
     }
   ]
 }
