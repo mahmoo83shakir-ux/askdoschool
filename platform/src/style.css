@@ -178,6 +178,9 @@ button { font: inherit; color: inherit; }
   font-weight: 700; white-space: nowrap; pointer-events: none;
   transition: opacity .2s, transform .2s;
 }
+/* keep the toast clear of each game's bottom controls */
+.game:has(.race-lanes) .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 100px); }
+.game:has(.bank-panel) .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 236px); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 .toast.ok { border-color: var(--ok); color: var(--ok); }
 .toast.bad { border-color: var(--bad); color: var(--bad); }
@@ -228,6 +231,35 @@ button { font: inherit; color: inherit; }
 .bank-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 .bank-actions .btn { flex: 1 1 0; max-width: 11rem; min-width: 0; padding-inline: 10px; }
 .btn:disabled { opacity: 0.45; cursor: default; }
+
+/* atom race: question card on top, three lane buttons at the bottom (left to right, like the doors) */
+.race-q {
+  position: absolute; inset-inline: 10px; top: calc(env(safe-area-inset-top, 0px) + 64px);
+  width: auto; max-width: 34rem; margin-inline: auto;
+  background: color-mix(in srgb, var(--bench) 92%, transparent);
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 14px 12px; display: grid; gap: 6px;
+}
+.race-q p { margin: 0; font-size: var(--step-1); font-weight: 700; line-height: 1.5; }
+.race-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+#race-hearts { color: var(--bad); letter-spacing: 3px; font-size: 1rem; }
+#race-hearts .off { color: var(--line); }
+.race-bar { height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.race-bar span { display: block; height: 100%; width: 0; background: var(--brass); }
+.race-lanes {
+  position: absolute; inset-inline: 0; bottom: 0;
+  padding: 10px 10px calc(env(safe-area-inset-bottom, 0px) + 12px);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+  max-width: 40rem; margin-inline: auto;
+}
+.lane {
+  min-height: 3.4rem; padding: 6px 8px; border-radius: 10px; cursor: pointer;
+  background: var(--bench); border: 2px solid var(--line); border-top: 5px solid var(--c);
+  font-weight: 800; font-size: 0.95rem; line-height: 1.2; overflow-wrap: anywhere;
+}
+.lane.on { border-color: var(--brass); border-top-color: var(--c); background: color-mix(in srgb, var(--brass) 16%, var(--bench)); }
+.lane.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 20%, var(--bench)); }
+.lane.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 20%, var(--bench)); }
 
 @media (min-width: 820px) and (orientation: landscape) {
   .tray { inset-inline: 16px auto; width: 22rem; }

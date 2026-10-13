@@ -4,7 +4,7 @@ const UNITS = JSON.parse(document.getElementById("units-data").textContent);
 // Every unit gets every game; a game with ready:false shows as "قريباً".
 const GAMES = [
   { id: "term-lab", name: "مختبر المصطلحات", desc: "اسحب مكعب المصطلح الإنكليزي إلى منصة تعريفه العربي.", ready: true, impl: TermLab },
-  { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: false },
+  { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: true, impl: AtomRace },
   { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: true, impl: TermBank },
 ];
 
@@ -143,7 +143,7 @@ const ui = {
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";
     wrap.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-      <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
+      <h3 id="sheet-title">${r.title ? esc(r.title) : last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
       <p>${num(r.score)} نقطة، ${r.summary || (r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء")}</p>
       <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>

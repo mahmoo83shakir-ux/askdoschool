@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 SRC = ROOT / "src"
 # games first (app.js registers them), then the shell
-SCRIPTS = ["stage.js", "games/term-lab.js", "games/term-bank.js", "app.js"]
+SCRIPTS = ["stage.js", "games/term-lab.js", "games/term-bank.js", "games/atom-race.js", "app.js"]
 
 
 def load_units():

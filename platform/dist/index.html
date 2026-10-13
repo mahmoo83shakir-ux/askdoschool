@@ -183,6 +183,9 @@ button { font: inherit; color: inherit; }
   font-weight: 700; white-space: nowrap; pointer-events: none;
   transition: opacity .2s, transform .2s;
 }
+/* keep the toast clear of each game's bottom controls */
+.game:has(.race-lanes) .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 100px); }
+.game:has(.bank-panel) .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 236px); }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 .toast.ok { border-color: var(--ok); color: var(--ok); }
 .toast.bad { border-color: var(--bad); color: var(--bad); }
@@ -234,6 +237,35 @@ button { font: inherit; color: inherit; }
 .bank-actions .btn { flex: 1 1 0; max-width: 11rem; min-width: 0; padding-inline: 10px; }
 .btn:disabled { opacity: 0.45; cursor: default; }
 
+/* atom race: question card on top, three lane buttons at the bottom (left to right, like the doors) */
+.race-q {
+  position: absolute; inset-inline: 10px; top: calc(env(safe-area-inset-top, 0px) + 64px);
+  width: auto; max-width: 34rem; margin-inline: auto;
+  background: color-mix(in srgb, var(--bench) 92%, transparent);
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 14px 12px; display: grid; gap: 6px;
+}
+.race-q p { margin: 0; font-size: var(--step-1); font-weight: 700; line-height: 1.5; }
+.race-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+#race-hearts { color: var(--bad); letter-spacing: 3px; font-size: 1rem; }
+#race-hearts .off { color: var(--line); }
+.race-bar { height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.race-bar span { display: block; height: 100%; width: 0; background: var(--brass); }
+.race-lanes {
+  position: absolute; inset-inline: 0; bottom: 0;
+  padding: 10px 10px calc(env(safe-area-inset-bottom, 0px) + 12px);
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;
+  max-width: 40rem; margin-inline: auto;
+}
+.lane {
+  min-height: 3.4rem; padding: 6px 8px; border-radius: 10px; cursor: pointer;
+  background: var(--bench); border: 2px solid var(--line); border-top: 5px solid var(--c);
+  font-weight: 800; font-size: 0.95rem; line-height: 1.2; overflow-wrap: anywhere;
+}
+.lane.on { border-color: var(--brass); border-top-color: var(--c); background: color-mix(in srgb, var(--brass) 16%, var(--bench)); }
+.lane.right { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 20%, var(--bench)); }
+.lane.wrong { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 20%, var(--bench)); }
+
 @media (min-width: 820px) and (orientation: landscape) {
   .tray { inset-inline: 16px auto; width: 22rem; }
   .def { font-size: 0.95rem; }
@@ -273,7 +305,7 @@ button { font: inherit; color: inherit; }
   </section>
 </div>
 
-<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"},{"id":"contact-force","en":"Contact Force","ar":"قوى التماس","def_ar":"قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.","def_en":"Forces between objects that result from direct contact.","example_ar":"شد نابض باليد أو دفع عربة.","emoji":"🤝"},{"id":"field-force","en":"Field Force","ar":"قوى المجال","def_ar":"قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.","def_en":"Forces that act at a distance without actual contact.","example_ar":"جذب المغناطيس للمسامير.","emoji":"🧲"},{"id":"resultant-force","en":"Resultant Force","ar":"محصلة القوى","def_ar":"قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.","def_en":"One force equal in effect to several forces acting on an object at once (Fnet).","example_ar":"500 N و300 N نحو الشرق محصلتهما 800 N.","emoji":"➕"},{"id":"balanced-force","en":"Balanced Force","ar":"القوى المتزنة","def_ar":"قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.","def_en":"Forces whose resultant is zero, so the object's motion does not change.","example_ar":"شد حبل بقوتين متساويتين متعاكستين.","emoji":"🪢"},{"id":"unbalanced-force","en":"Unbalanced Force","ar":"القوى غير المتزنة","def_ar":"قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.","def_en":"Forces whose resultant is not zero, changing an object's speed or direction.","example_ar":"ركل اللاعب لكرة القدم.","emoji":"⚽"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
+<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"},{"id":"contact-force","en":"Contact Force","ar":"قوى التماس","def_ar":"قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.","def_en":"Forces between objects that result from direct contact.","example_ar":"شد نابض باليد أو دفع عربة.","emoji":"🤝"},{"id":"field-force","en":"Field Force","ar":"قوى المجال","def_ar":"قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.","def_en":"Forces that act at a distance without actual contact.","example_ar":"جذب المغناطيس للمسامير.","emoji":"🧲"},{"id":"resultant-force","en":"Resultant Force","ar":"محصلة القوى","def_ar":"قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.","def_en":"One force equal in effect to several forces acting on an object at once (Fnet).","example_ar":"500 N و300 N نحو الشرق محصلتهما 800 N.","emoji":"➕"},{"id":"balanced-force","en":"Balanced Force","ar":"القوى المتزنة","def_ar":"قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.","def_en":"Forces whose resultant is zero, so the object's motion does not change.","example_ar":"شد حبل بقوتين متساويتين متعاكستين.","emoji":"🪢"},{"id":"unbalanced-force","en":"Unbalanced Force","ar":"القوى غير المتزنة","def_ar":"قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.","def_en":"Forces whose resultant is not zero, changing an object's speed or direction.","example_ar":"ركل اللاعب لكرة القدم.","emoji":"⚽"}]},{"id":"unit-03","unit":3,"title_ar":"الضغط","title_en":"Pressure","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرس الثاني «ضغط السائل والغاز» (ص 47–51): المصطلحات الأربعة من «المفردات» والتعريفات من نص الكتاب. الدرس الثالث يُضاف في الجلسة القادمة.","terms":[{"id":"pressure","en":"Pressure","ar":"الضغط","def_ar":"القوة العمودية المؤثرة في وحدة المساحة.","def_en":"The perpendicular force acting on a unit area: P = F ÷ A.","example_ar":"تقطع السكين الحادة بسهولة لأن ضغطها أكبر.","emoji":"📌"},{"id":"pascal","en":"Pascal","ar":"الباسكال","def_ar":"وحدة قياس الضغط، ويساوي نيوتن لكل متر مربع (N/m²).","def_en":"The unit of pressure, equal to one newton per square metre (N/m²).","example_ar":"قوة 200 N على 0.01 m² تعطي 20000 Pa.","emoji":"📏"},{"id":"liquid-pressure","en":"Liquid Pressure","ar":"ضغط السائل","def_ar":"وزن عمود السائل على مساحة القاعدة التي يقع عليها الوزن العمودي للسائل.","def_en":"The weight of a liquid column on the area of the base it rests on.","example_ar":"يندفع الماء أقوى من الثقب الأسفل.","emoji":"🌊"},{"id":"lateral-pressure","en":"Lateral Pressure","ar":"الضغط الجانبي","def_ar":"الضغط الذي يسلطه السائل على جدران الوعاء الذي يحتويه.","def_en":"The pressure a liquid exerts on the walls of its container.","example_ar":"قاعدة السد أعرض لتتحمل ضغط الماء.","emoji":"🚰"},{"id":"gas-pressure","en":"Gas Pressure","ar":"ضغط الغاز","def_ar":"الضغط الذي تسلطه جزيئات الغاز نتيجة اصطدام الجزيئات فيما بينها.","def_en":"The pressure gas molecules exert as a result of their collisions.","example_ar":"نفخ الإطار بالمنفاخ يزيد ضغط الهواء فيه.","emoji":"🛞"},{"id":"atmospheric-pressure","en":"Atmospheric Pressure","ar":"الضغط الجوي","def_ar":"الضغط الذي يسببه وزن الغلاف الجوي على الأرض.","def_en":"The pressure caused by the weight of the atmosphere on Earth.","example_ar":"يدفع الضغط الجوي العصير في قصبة الشرب.","emoji":"🌍"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script>
 // One WebGL renderer on #scene, shared by every game (a canvas can hold only one GL context).
@@ -1167,13 +1199,416 @@ const TermBank = (() => {
   };
 })();
 
+// سباق الذرات — an atom runs down a lab corridor; each gate has three doors with English terms.
+// The Arabic definition is the question: move to the lane of the right term before the gate arrives.
+// One run = every term of the unit once, three hearts; gates come a little faster each time.
+const AtomRace = (() => {
+  const LANES = [-1.8, 0, 1.8];
+  const GATE_FROM = -26;        // gates spawn this far ahead and travel toward the atom at z = 0
+  const DOOR_COLORS = ["#ff8a5c", "#38c6b6", "#6fa8ff"];
+  const IVORY = "#f3ead8", INK = "#0e1c2b";
+  const HEARTS = 3;
+
+  let ctx = null;
+  let run = null;
+
+  const num = (n) => Number(n).toLocaleString("ar-IQ");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function shuffle(a) {
+    const b = a.slice();
+    for (let i = b.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [b[i], b[j]] = [b[j], b[i]];
+    }
+    return b;
+  }
+
+  // ---------- textures ----------
+  function doorTexture(text, color) {
+    const c = document.createElement("canvas");
+    c.width = 256; c.height = 384;
+    const draw = () => {
+      const g = c.getContext("2d");
+      g.fillStyle = IVORY; g.fillRect(0, 0, 256, 384);
+      g.fillStyle = color; g.fillRect(0, 0, 256, 26); g.fillRect(0, 358, 256, 26);
+      g.fillStyle = INK; g.textAlign = "center"; g.textBaseline = "middle";
+      let size = 58, lines;
+      do {
+        g.font = `800 ${size}px Tajawal, system-ui, sans-serif`;
+        lines = [];
+        let line = "";
+        for (const w of text.split(" ")) {
+          const t = line ? line + " " + w : w;
+          if (g.measureText(t).width > 220 && line) { lines.push(line); line = w; } else line = t;
+        }
+        lines.push(line);
+        size -= 4;
+      } while (lines.some((l) => g.measureText(l).width > 220) && size > 26);
+      const lh = (size + 4) * 1.15;
+      lines.forEach((l, i) => g.fillText(l, 128, 192 + (i - (lines.length - 1) / 2) * lh));
+      tex.needsUpdate = true;
+    };
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 4;
+    draw();
+    if (document.fonts && document.fonts.status !== "loaded") document.fonts.ready.then(draw);
+    return tex;
+  }
+
+  function floorTexture() {
+    const c = document.createElement("canvas");
+    c.width = c.height = 256;
+    const g = c.getContext("2d");
+    g.fillStyle = "#15283b"; g.fillRect(0, 0, 256, 256);
+    g.fillStyle = "#1f3852";
+    g.fillRect(0, 0, 256, 6);
+    g.fillRect(84, 0, 4, 256); g.fillRect(170, 0, 4, 256);
+    const tex = new THREE.CanvasTexture(c);
+    tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(1, 14);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  }
+
+  // ---------- scene ----------
+  function build() {
+    const renderer = Stage.renderer();
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog("#0e1c2b", 16, 34);
+    const camera = new THREE.PerspectiveCamera(52, 1, 0.1, 80);
+    scene.add(new THREE.HemisphereLight("#dfe9f3", "#0e1c2b", 1.5));
+    const key = new THREE.DirectionalLight("#fff3e0", 1.3);
+    key.position.set(-3, 6, 4);
+    scene.add(key);
+
+    const floorTex = floorTexture();
+    const floor = new THREE.Mesh(new THREE.PlaneGeometry(5.6, 60), new THREE.MeshStandardMaterial({ map: floorTex, roughness: 0.9 }));
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.z = -24;
+    scene.add(floor);
+
+    // glowing rails along both sides of the track
+    const railMat = new THREE.MeshBasicMaterial({ color: "#38c6b6" });
+    for (const x of [-2.9, 2.9]) {
+      const rail = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 60), railMat);
+      rail.position.set(x, 0.04, -24);
+      scene.add(rail);
+    }
+    // a row of lab columns either side, so the motion reads as speed
+    const pillarMat = new THREE.MeshStandardMaterial({ color: "#1f3852", roughness: 0.8 });
+    const pillars = [];
+    for (let i = 0; i < 8; i++) for (const x of [-3.8, 3.8]) {
+      const p = new THREE.Mesh(new THREE.BoxGeometry(0.4, 3.2, 0.4), pillarMat);
+      p.position.set(x, 1.6, -i * 6);
+      scene.add(p);
+      pillars.push(p);
+    }
+
+    // the player: nucleus with two electron orbits
+    const atom = new THREE.Group();
+    atom.add(new THREE.Mesh(new THREE.SphereGeometry(0.32, 20, 14), new THREE.MeshStandardMaterial({ color: "#f2aa3c", emissive: "#4a2c00" })));
+    const orbitMat = new THREE.MeshBasicMaterial({ color: "#6fa8ff" });
+    const eMat = new THREE.MeshStandardMaterial({ color: "#eef3f7", emissive: "#5a6b7c" });
+    const orbits = [];
+    for (let i = 0; i < 2; i++) {
+      const o = new THREE.Group();
+      o.add(new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.02, 6, 48), orbitMat));
+      const e = new THREE.Mesh(new THREE.SphereGeometry(0.07, 10, 8), eMat);
+      e.position.x = 0.62;
+      o.add(e);
+      o.rotation.set(Math.PI / 2 + (i ? 0.9 : -0.9), 0, 0);
+      atom.add(o);
+      orbits.push(o);
+    }
+    atom.position.set(0, 0.75, 0);
+    scene.add(atom);
+
+    const gateGroup = new THREE.Group();
+    scene.add(gateGroup);
+
+    ctx = { renderer, scene, camera, floorTex, pillars, atom, orbits, gateGroup,
+      tweens: [], clock: new THREE.Clock(), raf: 0, swipe: null };
+
+    const canvas = renderer.domElement;
+    canvas.addEventListener("pointerdown", (e) => { if (run) ctx.swipe = { x: e.clientX, id: e.pointerId }; });
+    canvas.addEventListener("pointerup", (e) => {
+      const s = ctx.swipe;
+      ctx.swipe = null;
+      if (!run || !s || s.id !== e.pointerId) return;
+      const dx = e.clientX - s.x;
+      if (Math.abs(dx) > 30) step(dx > 0 ? 1 : -1);
+      else setLane(Math.min(2, Math.floor((e.clientX / window.innerWidth) * 3))); // tap a third of the screen
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!run) return;
+      if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+    });
+    window.addEventListener("resize", resize);
+  }
+
+  // Keep the three lanes in view between the question card and the lane buttons.
+  function resize() {
+    if (!ctx || !run) return;
+    const { renderer, camera } = ctx;
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    const q = document.querySelector(".race-q"), lanes = document.querySelector(".race-lanes");
+    const top = q ? q.getBoundingClientRect().bottom : 64;
+    const bottom = lanes ? lanes.getBoundingClientRect().top : h;
+    const freeH = Math.max(bottom - top, 160);
+    camera.aspect = w / h;
+    const t = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
+    // distance at which 7.4 units of track width fit the screen width, and the scene fits the free height
+    const d = Math.max(5.5, 3.7 / (t * camera.aspect), (5.5 * h) / (2 * t * freeH));
+    camera.position.set(0, 1.4 + d * 0.32, d);
+    camera.lookAt(0, 0.6, -5);
+    camera.setViewOffset(w, h, 0, -((top + bottom) / 2 - h / 2), w, h);
+    camera.updateProjectionMatrix();
+    ctx.scene.fog.near = d + 12;
+    ctx.scene.fog.far = d + 34;
+  }
+
+  // ---------- run ----------
+  function distractors(unit, term, pool) {
+    const same = shuffle(unit.terms.filter((t) => t.id !== term.id));
+    const other = shuffle(pool.filter((t) => t.id !== term.id && !same.includes(t)));
+    return same.concat(other).slice(0, 2);
+  }
+
+  function startRun(unit, ui, onExit) {
+    run = {
+      unit, ui, onExit,
+      questions: shuffle(unit.terms),
+      index: -1, lane: 1, hearts: HEARTS, correct: 0, score: 0,
+      gate: null, asked: [],
+    };
+    ctx.atom.position.x = LANES[1];
+    renderUI();
+    ui.setScore(0);
+    resize();
+    nextGate();
+  }
+
+  function clearGate() {
+    const g = ctx.gateGroup;
+    while (g.children.length) {
+      const o = g.children.pop();
+      o.traverse((m) => {
+        if (m.geometry) m.geometry.dispose();
+        if (m.material) { if (m.material.map) m.material.map.dispose(); m.material.dispose(); }
+      });
+    }
+  }
+
+  function nextGate() {
+    clearGate();
+    run.index++;
+    const term = run.questions[run.index];
+    if (!term || run.hearts <= 0) return finish();
+    const options = shuffle([term].concat(distractors(run.unit, term, run.ui.pool())));
+    const wall = new THREE.Group();
+    const frameMat = new THREE.MeshStandardMaterial({ color: "#2a4560", roughness: 0.7 });
+    const beam = new THREE.Mesh(new THREE.BoxGeometry(6.2, 0.35, 0.4), frameMat);
+    beam.position.y = 2.75;
+    wall.add(beam);
+    for (const x of [-2.7, -0.9, 0.9, 2.7]) {
+      const post = new THREE.Mesh(new THREE.BoxGeometry(0.22, 2.9, 0.4), frameMat);
+      post.position.set(x, 1.45, 0);
+      wall.add(post);
+    }
+    const doors = options.map((opt, i) => {
+      const pivot = new THREE.Group(); // hinge on the door's left edge so it can swing open
+      pivot.position.set(LANES[i] - 0.78, 0, 0);
+      const door = new THREE.Mesh(
+        new THREE.BoxGeometry(1.56, 2.55, 0.1),
+        new THREE.MeshStandardMaterial({ map: doorTexture(opt.en, DOOR_COLORS[i]), roughness: 0.6 })
+      );
+      door.position.set(0.78, 1.3, 0);
+      pivot.add(door);
+      wall.add(pivot);
+      return { term: opt, pivot, door };
+    });
+    wall.position.z = GATE_FROM;
+    ctx.gateGroup.add(wall);
+    // about 9 s for the first gate, down to 6 s
+    const seconds = Math.max(6, 9 - run.index * 0.4);
+    run.gate = { term, options, wall, doors, speed: -GATE_FROM / seconds, decided: false };
+    run.asked.push(term);
+    showQuestion(term, options);
+  }
+
+  function setLane(i) {
+    if (!run || !run.gate || run.gate.decided) return;
+    run.lane = i;
+    tween(ctx.atom.position, { x: LANES[i] }, 0.18);
+    document.querySelectorAll(".lane").forEach((b) => b.classList.toggle("on", Number(b.dataset.i) === i));
+  }
+
+  function step(dir) { setLane(Math.max(0, Math.min(2, run.lane + dir))); }
+
+  // called when the gate reaches the atom
+  function decide() {
+    const g = run.gate;
+    g.decided = true;
+    const picked = g.options[run.lane];
+    const rightIndex = g.options.indexOf(g.term);
+    const ok = picked === g.term;
+    tween(g.doors[rightIndex].pivot.rotation, { y: -1.4 }, 0.3);
+    markLanes(rightIndex, ok ? -1 : run.lane);
+    if (ok) {
+      run.correct++;
+      run.score += 10;
+      run.ui.setScore(run.score);
+      run.ui.toast(`${g.term.en} = ${g.term.ar}`, "ok");
+      later(nextGate, 900);
+    } else {
+      run.hearts--;
+      renderHearts();
+      run.ui.toast(`الجواب: ${g.term.en} = ${g.term.ar}`, "bad");
+      g.speed = 0;
+      tween(ctx.atom.position, { z: 1.4 }, 0.2, () => tween(ctx.atom.position, { z: 0 }, 0.35));
+      later(nextGate, 1700);
+    }
+  }
+
+  // run a step later only if the same run is still on screen
+  function later(fn, ms) {
+    const r = run;
+    setTimeout(() => { if (run === r) fn(); }, ms);
+  }
+
+  function finish() {
+    run.gate = null;
+    const out = run.hearts <= 0;
+    const stars = out ? 0 : run.hearts;
+    run.score += stars * 5;
+    run.ui.setScore(run.score);
+    run.ui.levelDone({
+      stars,
+      score: run.score,
+      title: out ? "انتهت المحاولات" : "عبرت كل الأبواب!",
+      summary: `${num(run.correct)} من ${num(run.asked.length)} إجابة صحيحة`,
+      items: run.asked,
+      levelIndex: 0,
+      levelCount: 1,
+    });
+  }
+
+  // ---------- DOM ----------
+  function renderUI() {
+    const q = document.createElement("div");
+    q.className = "race-q";
+    q.innerHTML = `<div class="race-meta"><span id="race-hearts" aria-label="المحاولات"></span><span id="race-count"></span></div>
+      <p id="race-def"></p><div class="race-bar"><span id="race-bar"></span></div>`;
+    const lanes = document.createElement("div");
+    lanes.className = "race-lanes";
+    lanes.dir = "ltr"; // lanes follow the doors from left to right
+    lanes.innerHTML = [0, 1, 2].map((i) => `<button class="lane" type="button" data-i="${i}" style="--c:${DOOR_COLORS[i]}"></button>`).join("");
+    lanes.addEventListener("click", (e) => {
+      const b = e.target.closest(".lane");
+      if (b) setLane(Number(b.dataset.i));
+    });
+    document.getElementById("stage-ui").replaceChildren(q, lanes);
+    renderHearts();
+  }
+
+  function renderHearts() {
+    let s = "";
+    for (let i = 0; i < HEARTS; i++) s += i < run.hearts ? "♥" : '<span class="off">♥</span>';
+    document.getElementById("race-hearts").innerHTML = s;
+  }
+
+  function showQuestion(term, options) {
+    document.getElementById("race-def").textContent = term.def_ar;
+    document.getElementById("race-count").textContent = `سؤال ${num(run.index + 1)} من ${num(run.questions.length)}`;
+    run.ui.setStatus(`${run.unit.title_ar} · اعبر من باب المصطلح الصحيح`);
+    document.querySelectorAll(".lane").forEach((b, i) => {
+      b.textContent = options[i].en;
+      b.className = "lane" + (i === run.lane ? " on" : "");
+    });
+  }
+
+  function markLanes(right, wrong) {
+    document.querySelectorAll(".lane").forEach((b, i) => {
+      if (i === right) b.classList.add("right");
+      if (i === wrong) b.classList.add("wrong");
+    });
+  }
+
+  // ---------- loop ----------
+  function tween(obj, to, dur, done) {
+    const from = {};
+    for (const k in to) from[k] = obj[k];
+    ctx.tweens = ctx.tweens.filter((t) => !(t.obj === obj && Object.keys(t.to).some((k) => k in to)));
+    ctx.tweens.push({ obj, from, to, dur, t: 0, done });
+  }
+
+  function frame() {
+    ctx.raf = requestAnimationFrame(frame);
+    const dt = Math.min(ctx.clock.getDelta(), 0.05);
+    const finished = [];
+    ctx.tweens = ctx.tweens.filter((tw) => {
+      tw.t = Math.min(tw.t + dt / tw.dur, 1);
+      const e = 1 - Math.pow(1 - tw.t, 3);
+      for (const k in tw.to) tw.obj[k] = tw.from[k] + (tw.to[k] - tw.from[k]) * e;
+      if (tw.t >= 1 && tw.done) finished.push(tw.done);
+      return tw.t < 1;
+    });
+    finished.forEach((f) => f());
+
+    const g = run && run.gate;
+    const moving = g && g.speed > 0;
+    if (g) {
+      g.wall.position.z += g.speed * dt;
+      if (!g.decided && g.wall.position.z >= ctx.atom.position.z - 0.3) decide();
+      const bar = document.getElementById("race-bar");
+      if (bar) bar.style.width = `${Math.min(100, (1 - g.wall.position.z / GATE_FROM) * 100)}%`;
+    }
+    // the floor and columns scroll with the gate so the corridor feels like it is moving
+    const v = moving ? g.speed * dt : 0;
+    ctx.floorTex.offset.y += (v * 14) / 60;
+    for (const p of ctx.pillars) { p.position.z += v; if (p.position.z > 6) p.position.z -= 48; }
+    ctx.atom.rotation.y += dt * 1.5;
+    ctx.orbits.forEach((o, i) => { o.rotation.z += dt * (2.2 + i); });
+    ctx.atom.position.y = 0.75 + Math.sin(ctx.clock.elapsedTime * 3) * 0.06;
+    ctx.renderer.render(ctx.scene, ctx.camera);
+  }
+
+  return {
+    id: "atom-race",
+    levelsOf: (terms) => [terms],
+    metaLabel: (terms) => `${num(terms.length)} سؤال`,
+    start(unit, _levelIndex, ui, onExit) {
+      if (!ctx) build();
+      startRun(unit, ui, onExit);
+      cancelAnimationFrame(ctx.raf);
+      ctx.clock.getDelta();
+      frame();
+    },
+    stop() {
+      if (ctx) cancelAnimationFrame(ctx.raf);
+      run = null;
+    },
+    // for the automated browser test
+    peek() {
+      return run && run.gate && {
+        index: run.index, hearts: run.hearts, correct: run.correct,
+        answer: run.gate.options.indexOf(run.gate.term), decided: run.gate.decided, z: run.gate.wall.position.z,
+      };
+    },
+  };
+})();
+
 // Platform shell: home page (one card per unit in content/terms), game registry, progress in localStorage.
 const UNITS = JSON.parse(document.getElementById("units-data").textContent);
 
 // Every unit gets every game; a game with ready:false shows as "قريباً".
 const GAMES = [
   { id: "term-lab", name: "مختبر المصطلحات", desc: "اسحب مكعب المصطلح الإنكليزي إلى منصة تعريفه العربي.", ready: true, impl: TermLab },
-  { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: false },
+  { id: "atom-race", name: "سباق الذرات", desc: "سؤال سريع وثلاثة أبواب، اعبر من باب الجواب الصحيح.", ready: true, impl: AtomRace },
   { id: "term-bank", name: "بنك المصطلحات", desc: "بطاقات تدور للحفظ: وجه إنكليزي، ووجه عربي مع التعريف.", ready: true, impl: TermBank },
 ];
 
@@ -1312,7 +1747,7 @@ const ui = {
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";
     wrap.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-      <h3 id="sheet-title">${last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
+      <h3 id="sheet-title">${r.title ? esc(r.title) : last ? "أنهيت الفصل!" : `أنهيت المستوى ${num(r.levelIndex + 1)}`}</h3>
       <div class="big-stars" aria-label="${num(r.stars)} من ٣ نجوم">${starsHtml(r.stars, 3)}</div>
       <p>${num(r.score)} نقطة، ${r.summary || (r.mistakes ? `${num(r.mistakes)} محاولة خاطئة` : "بلا أخطاء")}</p>
       <div class="learned">${r.items.map((t) => `<div><span>${esc(t.emoji || "")} ${esc(t.ar)}</span><bdi>${esc(t.en)}</bdi>${t.example_ar ? `<small>${esc(t.example_ar)}</small>` : ""}</div>`).join("")}</div>
