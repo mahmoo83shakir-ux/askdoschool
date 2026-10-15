@@ -1,0 +1,46 @@
+{
+  "id": "unit-04",
+  "unit": 4,
+  "title_ar": "الحرارة",
+  "title_en": "Heat",
+  "status": "draft",
+  "source_note": "كتاب الفيزياء للصف الأول المتوسط، الفصل الرابع «الحرارة» (الطبعة السابعة المنقحة 2024، ص 59–). الدرس الأول «مفهوم الحرارة» (ص 61–64): المصطلحات الأربعة من «المفردات» بترتيب ورودها في النص، والتعريفات من نص الكتاب. الدرس الثاني يُضاف في الجلسة القادمة.",
+  "terms": [
+    {
+      "id": "heat",
+      "en": "Heat",
+      "ar": "الحرارة",
+      "def_ar": "الطاقة الحرارية التي تنتقل من الجسم الساخن إلى الجسم البارد المتماسين.",
+      "def_en": "Thermal energy that flows from a hot object to a colder one in contact.",
+      "example_ar": "يبرد الحديد الساخن في الماء ويسخن الماء.",
+      "emoji": "♨️"
+    },
+    {
+      "id": "thermal-equilibrium",
+      "en": "Thermal Equilibrium",
+      "ar": "الاتزان الحراري",
+      "def_ar": "الحالة التي تتساوى فيها درجة حرارة جسمين متماسين.",
+      "def_en": "The state in which two objects in contact reach the same temperature.",
+      "example_ar": "يصل الحديد والماء إلى درجة الحرارة نفسها.",
+      "emoji": "🟰"
+    },
+    {
+      "id": "temperature",
+      "en": "Temperature",
+      "ar": "درجة الحرارة",
+      "def_ar": "مقياس لمعدل الطاقة الحركية لجسيمات الجسم.",
+      "def_en": "A measure of the average kinetic energy of an object's particles.",
+      "example_ar": "جسيمات الكاكاو الساخن تتحرك أسرع.",
+      "emoji": "🌡️"
+    },
+    {
+      "id": "thermometer",
+      "en": "Thermometer",
+      "ar": "المحرار",
+      "def_ar": "أنبوب زجاجي دقيق بداخله سائل كالزئبق أو الكحول، نقيس به درجة الحرارة.",
+      "def_en": "A thin glass tube with mercury or alcohol, used to measure temperature.",
+      "example_ar": "المحرار الطبي مدرّج من 35 إلى 42 °C.",
+      "emoji": "🩺"
+    }
+  ]
+}
