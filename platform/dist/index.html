@@ -81,7 +81,22 @@ button { font: inherit; color: inherit; }
   display: grid;
   gap: 14px;
 }
-.unit-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.unit-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+details.unit > summary { list-style: none; cursor: pointer; }
+details.unit > summary::-webkit-details-marker { display: none; }
+details.unit > summary::after {
+  content: "▾"; color: var(--muted); font-size: 1.1rem; align-self: center;
+  transition: transform .2s;
+}
+details.unit[open] > summary::after { transform: rotate(180deg); }
+details.unit:not([open]) { padding-block: 14px; }
+.unit-body { display: grid; gap: 14px; margin-top: 14px; }
+.unit-side { display: grid; justify-items: end; gap: 6px; margin-inline-start: auto; }
+.unit-count { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.now {
+  margin-inline-start: 8px; padding: 1px 8px; border-radius: 999px;
+  background: var(--brass); color: var(--bg); font-size: 0.7rem; font-weight: 800;
+}
 .unit-head h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: var(--step-2); line-height: 1.2; }
 .unit-num { color: var(--brass); font-size: var(--step--1); font-weight: 700; }
 .unit-en { color: var(--muted); font-size: var(--step--1); direction: ltr; }
@@ -298,6 +313,7 @@ button { font: inherit; color: inherit; }
         <strong id="hud-game">مختبر المصطلحات</strong>
         <span id="hud-level">المستوى ١ من ٤</span>
       </div>
+      <button class="icon-btn" id="btn-sound" type="button" aria-label="كتم الصوت">🔊</button>
       <div class="hud-score"><span id="hud-score">0</span><small>نقطة</small></div>
     </div>
     <div id="stage-ui"></div>
@@ -305,7 +321,7 @@ button { font: inherit; color: inherit; }
   </section>
 </div>
 
-<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"},{"id":"contact-force","en":"Contact Force","ar":"قوى التماس","def_ar":"قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.","def_en":"Forces between objects that result from direct contact.","example_ar":"شد نابض باليد أو دفع عربة.","emoji":"🤝"},{"id":"field-force","en":"Field Force","ar":"قوى المجال","def_ar":"قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.","def_en":"Forces that act at a distance without actual contact.","example_ar":"جذب المغناطيس للمسامير.","emoji":"🧲"},{"id":"resultant-force","en":"Resultant Force","ar":"محصلة القوى","def_ar":"قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.","def_en":"One force equal in effect to several forces acting on an object at once (Fnet).","example_ar":"500 N و300 N نحو الشرق محصلتهما 800 N.","emoji":"➕"},{"id":"balanced-force","en":"Balanced Force","ar":"القوى المتزنة","def_ar":"قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.","def_en":"Forces whose resultant is zero, so the object's motion does not change.","example_ar":"شد حبل بقوتين متساويتين متعاكستين.","emoji":"🪢"},{"id":"unbalanced-force","en":"Unbalanced Force","ar":"القوى غير المتزنة","def_ar":"قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.","def_en":"Forces whose resultant is not zero, changing an object's speed or direction.","example_ar":"ركل اللاعب لكرة القدم.","emoji":"⚽"}]},{"id":"unit-03","unit":3,"title_ar":"الضغط","title_en":"Pressure","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرس الثاني «ضغط السائل والغاز» (ص 47–51): المصطلحات الأربعة من «المفردات» والتعريفات من نص الكتاب. الدرس الثالث يُضاف في الجلسة القادمة.","terms":[{"id":"pressure","en":"Pressure","ar":"الضغط","def_ar":"القوة العمودية المؤثرة في وحدة المساحة.","def_en":"The perpendicular force acting on a unit area: P = F ÷ A.","example_ar":"تقطع السكين الحادة بسهولة لأن ضغطها أكبر.","emoji":"📌"},{"id":"pascal","en":"Pascal","ar":"الباسكال","def_ar":"وحدة قياس الضغط، ويساوي نيوتن لكل متر مربع (N/m²).","def_en":"The unit of pressure, equal to one newton per square metre (N/m²).","example_ar":"قوة 200 N على 0.01 m² تعطي 20000 Pa.","emoji":"📏"},{"id":"liquid-pressure","en":"Liquid Pressure","ar":"ضغط السائل","def_ar":"وزن عمود السائل على مساحة القاعدة التي يقع عليها الوزن العمودي للسائل.","def_en":"The weight of a liquid column on the area of the base it rests on.","example_ar":"يندفع الماء أقوى من الثقب الأسفل.","emoji":"🌊"},{"id":"lateral-pressure","en":"Lateral Pressure","ar":"الضغط الجانبي","def_ar":"الضغط الذي يسلطه السائل على جدران الوعاء الذي يحتويه.","def_en":"The pressure a liquid exerts on the walls of its container.","example_ar":"قاعدة السد أعرض لتتحمل ضغط الماء.","emoji":"🚰"},{"id":"gas-pressure","en":"Gas Pressure","ar":"ضغط الغاز","def_ar":"الضغط الذي تسلطه جزيئات الغاز نتيجة اصطدام الجزيئات فيما بينها.","def_en":"The pressure gas molecules exert as a result of their collisions.","example_ar":"نفخ الإطار بالمنفاخ يزيد ضغط الهواء فيه.","emoji":"🛞"},{"id":"atmospheric-pressure","en":"Atmospheric Pressure","ar":"الضغط الجوي","def_ar":"الضغط الذي يسببه وزن الغلاف الجوي على الأرض.","def_en":"The pressure caused by the weight of the atmosphere on Earth.","example_ar":"يدفع الضغط الجوي العصير في قصبة الشرب.","emoji":"🌍"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
+<script type="application/json" id="units-data">[{"id":"unit-01","unit":1,"title_ar":"خواص المادة","title_en":"Properties of Matter","status":"draft","source_note":"مطابق لكتاب الفيزياء للصف الأول المتوسط، الفصل الأول (الطبعة السابعة المنقحة 2024، ص 6–26). الترتيب والمصطلحات الإنكليزية من صناديق «المفردات»، والتعريفات العربية من نص الكتاب أو من صيغتها المختصرة في «مراجعة الفصل» (ص 25)، مختصرة لتناسب شرائح الحلقات. ينتظر مراجعة المعلم.","terms":[{"id":"matter","en":"Matter","ar":"المادة","def_ar":"كل شيء له كتلة وله حجم.","def_en":"Anything that has mass and volume.","example_ar":"الماء والهواء والجليد كلها مادة.","emoji":"🧱"},{"id":"physical-property","en":"Physical Property","ar":"الخاصية الفيزيائية","def_ar":"خاصية للمادة يمكن ملاحظتها أو قياسها من دون تغيير في هوية المادة.","def_en":"A property observed or measured without changing what the substance is.","example_ar":"اللون والكتلة والكثافة خواص فيزيائية.","emoji":"🎨"},{"id":"physical-change","en":"Physical Change","ar":"التغير الفيزيائي","def_ar":"تغير تتغير فيه بعض صفات المادة الفيزيائية دون تغير المادة الأصلية.","def_en":"A change in some physical properties without changing the original substance.","example_ar":"انصهار الثلج وذوبان السكر في الماء.","emoji":"🧊"},{"id":"chemical-change","en":"Chemical Change","ar":"التغير الكيميائي","def_ar":"تغير في تركيب المادة تنتج عنه مادة جديدة تختلف في خواصها.","def_en":"A change in composition that produces a new substance with new properties.","example_ar":"حرق الخشب وتسوس الأسنان.","emoji":"⚗️"},{"id":"chemical-property","en":"Chemical Property","ar":"الخاصية الكيميائية","def_ar":"قابلية المادة للتفاعل مع مواد أخرى وتكوين مادة جديدة.","def_en":"A substance's ability to react with others and form a new substance.","example_ar":"قابلية الخشب للاحتراق.","emoji":"🔥"},{"id":"surface-tension","en":"Surface Tension","ar":"الشد السطحي","def_ar":"قوة تؤثر في جزيئات سطح السائل فيتصرف السطح كأنه غشاء رقيق ومرن.","def_en":"A force on a liquid's surface molecules that makes it act like a thin elastic film.","example_ar":"تقف بعض الحشرات على سطح الماء.","emoji":"💧"},{"id":"viscosity","en":"Viscosity","ar":"اللزوجة","def_ar":"خاصية السائل التي تجعله يقاوم الانسياب.","def_en":"The property of a liquid that makes it resist flowing.","example_ar":"لزوجة العسل أكبر من لزوجة الماء.","emoji":"🍯"},{"id":"solid","en":"Solid","ar":"الصلب","def_ar":"حالة للمادة لها حجم وشكل محددان.","def_en":"A state of matter with a definite volume and shape.","example_ar":"الحجر والجليد والماس.","emoji":"🪨"},{"id":"liquid","en":"Liquid","ar":"السائل","def_ar":"حالة للمادة لها حجم محدد وشكل متغير.","def_en":"A state of matter with a definite volume but no fixed shape.","example_ar":"الماء يأخذ شكل الكأس.","emoji":"🥛"},{"id":"gas","en":"Gas","ar":"الغاز","def_ar":"حالة للمادة لها حجم متغير وشكل متغير.","def_en":"A state of matter with no fixed volume or shape.","example_ar":"الهواء يملأ البالون كله.","emoji":"🎈"},{"id":"plasma","en":"Plasma","ar":"البلازما","def_ar":"حالة رابعة للمادة جسيماتها مشحونة كهربائياً، تحدث عند درجات حرارة عالية جداً.","def_en":"A fourth state of matter with charged particles, at very high temperatures.","example_ar":"البرق وأنابيب النيون والشمس.","emoji":"⚡"},{"id":"volume","en":"Volume","ar":"الحجم","def_ar":"مقدار الحيز الذي تشغله المادة في الكون.","def_en":"The amount of space that matter occupies.","example_ar":"نقيس حجم الحجر بإزاحة الماء.","emoji":"🧪"},{"id":"boyles-law","en":"Boyle's Law","ar":"قانون بويل","def_ar":"يزداد حجم الغاز عندما ينخفض الضغط عليه بثبوت درجة الحرارة.","def_en":"At constant temperature, a gas's volume increases as its pressure decreases.","example_ar":"تكبر فقاعة الهواء وهي تصعد إلى السطح.","emoji":"🫧"},{"id":"mass","en":"Mass","ar":"الكتلة","def_ar":"كمية المادة الموجودة في الجسم.","def_en":"The amount of matter in an object.","example_ar":"نقيس الكتلة بالميزان بوحدة kg أو g.","emoji":"⚖️"},{"id":"density","en":"Density","ar":"الكثافة","def_ar":"كمية المادة الموجودة في حجم معين.","def_en":"The amount of matter in a given volume (mass ÷ volume).","example_ar":"يطفو الخشب لأن كثافته أقل من الماء.","emoji":"🪵"}]},{"id":"unit-02","unit":2,"title_ar":"القوة","title_en":"Force","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثاني «القوة» (الطبعة السابعة المنقحة 2024، ص 27–38). الدرس الأول (ص 29–32): القوة والنيوتن من «المفردات» والوزن من النص. الدرس الثاني (ص 33–37): المصطلحات الخمسة من «المفردات» والنص، والتعريفات من نص الدرس ومن «مراجعة الفصل» (ص 38). ينتظر مراجعة المعلم.","terms":[{"id":"force","en":"Force","ar":"القوة","def_ar":"كل مؤثر يغير أو يحاول أن يغير من حالة الجسم الحركية أو شكله.","def_en":"Any influence that changes, or tries to change, an object's motion or shape.","example_ar":"ندفع الكرسي بقوة لنحركه.","emoji":"💪"},{"id":"newton","en":"Newton","ar":"النيوتن","def_ar":"وحدة قياس القوة، ويساوي قوة جذب الأرض لجسم كتلته 1/9.8 kg.","def_en":"The unit of force: Earth's pull on an object of mass 1/9.8 kg.","example_ar":"رفع تفاحة كتلتها 100 g يحتاج نحو 1 N.","emoji":"🍎"},{"id":"weight","en":"Weight","ar":"الوزن","def_ar":"قوة الجاذبية الأرضية التي تؤثر بها الأرض في الجسم.","def_en":"The force of Earth's gravity on an object: w = m × g.","example_ar":"وزن حقيبة كتلتها 6 kg يساوي 58.8 N.","emoji":"🎒"},{"id":"contact-force","en":"Contact Force","ar":"قوى التماس","def_ar":"قوى تأثير بين الأجسام ناتجة عن تماس مباشر بينها.","def_en":"Forces between objects that result from direct contact.","example_ar":"شد نابض باليد أو دفع عربة.","emoji":"🤝"},{"id":"field-force","en":"Field Force","ar":"قوى المجال","def_ar":"قوى تؤثر عن بعد دون تماس فعلي بين الأجسام.","def_en":"Forces that act at a distance without actual contact.","example_ar":"جذب المغناطيس للمسامير.","emoji":"🧲"},{"id":"resultant-force","en":"Resultant Force","ar":"محصلة القوى","def_ar":"قوة تعادل مجموعة قوى بتأثيرها في جسم في آن واحد وفي نقطة واحدة.","def_en":"One force equal in effect to several forces acting on an object at once (Fnet).","example_ar":"500 N و300 N نحو الشرق محصلتهما 800 N.","emoji":"➕"},{"id":"balanced-force","en":"Balanced Force","ar":"القوى المتزنة","def_ar":"قوى محصلتها المؤثرة في الجسم تساوي صفراً، فلا تغير حركته.","def_en":"Forces whose resultant is zero, so the object's motion does not change.","example_ar":"شد حبل بقوتين متساويتين متعاكستين.","emoji":"🪢"},{"id":"unbalanced-force","en":"Unbalanced Force","ar":"القوى غير المتزنة","def_ar":"قوى محصلتها لا تساوي صفراً، فتغير مقدار سرعة الجسم أو اتجاهها.","def_en":"Forces whose resultant is not zero, changing an object's speed or direction.","example_ar":"ركل اللاعب لكرة القدم.","emoji":"⚽"}]},{"id":"unit-03","unit":3,"title_ar":"الضغط","title_en":"Pressure","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الثالث «الضغط» (الطبعة السابعة المنقحة 2024، ص 42–). الدرس الأول «الضغط» (ص 44–46): الضغط والباسكال من صندوق «المفردات» والتعريف من نص الكتاب. الدرس الثاني «ضغط السائل والغاز» (ص 47–51): المصطلحات الأربعة من «المفردات» والتعريفات من نص الكتاب. الدرس الثالث «مبدأ أرخميدس» (ص 52–55): قوة الطفو ومبدأ أرخميدس من «المفردات» (الكتاب يكتب Buoyoncy، والصحيح Buoyancy). ينتظر مراجعة المعلم.","terms":[{"id":"pressure","en":"Pressure","ar":"الضغط","def_ar":"القوة العمودية المؤثرة في وحدة المساحة.","def_en":"The perpendicular force acting on a unit area: P = F ÷ A.","example_ar":"تقطع السكين الحادة بسهولة لأن ضغطها أكبر.","emoji":"📌"},{"id":"pascal","en":"Pascal","ar":"الباسكال","def_ar":"وحدة قياس الضغط، ويساوي نيوتن لكل متر مربع (N/m²).","def_en":"The unit of pressure, equal to one newton per square metre (N/m²).","example_ar":"قوة 200 N على 0.01 m² تعطي 20000 Pa.","emoji":"📏"},{"id":"liquid-pressure","en":"Liquid Pressure","ar":"ضغط السائل","def_ar":"وزن عمود السائل على مساحة القاعدة التي يقع عليها الوزن العمودي للسائل.","def_en":"The weight of a liquid column on the area of the base it rests on.","example_ar":"يندفع الماء أقوى من الثقب الأسفل.","emoji":"🌊"},{"id":"lateral-pressure","en":"Lateral Pressure","ar":"الضغط الجانبي","def_ar":"الضغط الذي يسلطه السائل على جدران الوعاء الذي يحتويه.","def_en":"The pressure a liquid exerts on the walls of its container.","example_ar":"قاعدة السد أعرض لتتحمل ضغط الماء.","emoji":"🚰"},{"id":"gas-pressure","en":"Gas Pressure","ar":"ضغط الغاز","def_ar":"الضغط الذي تسلطه جزيئات الغاز نتيجة اصطدام الجزيئات فيما بينها.","def_en":"The pressure gas molecules exert as a result of their collisions.","example_ar":"نفخ الإطار بالمنفاخ يزيد ضغط الهواء فيه.","emoji":"🛞"},{"id":"atmospheric-pressure","en":"Atmospheric Pressure","ar":"الضغط الجوي","def_ar":"الضغط الذي يسببه وزن الغلاف الجوي على الأرض.","def_en":"The pressure caused by the weight of the atmosphere on Earth.","example_ar":"يدفع الضغط الجوي العصير في قصبة الشرب.","emoji":"🌍"},{"id":"buoyancy-force","en":"Buoyancy Force","ar":"قوة الطفو","def_ar":"قوة دفع السائل للأجسام المغمورة فيه كلياً أو جزئياً نحو الأعلى.","def_en":"The upward push of a liquid on an object fully or partly immersed in it.","example_ar":"يشعر السابح أن جسمه أخف في الماء.","emoji":"🛟"},{"id":"archimedes-principle","en":"Archimedes' Principle","ar":"مبدأ أرخميدس","def_ar":"قوة الطفو على جسم مغمور في مائع تساوي وزن المائع الذي أزاحه الجسم.","def_en":"The buoyant force on an immersed object equals the weight of fluid it displaces.","example_ar":"تطفو الباخرة لأنها تزيح ماءً كثيراً.","emoji":"🚢"}]},{"id":"unit-04","unit":4,"title_ar":"الحرارة","title_en":"Heat","status":"draft","source_note":"كتاب الفيزياء للصف الأول المتوسط، الفصل الرابع «الحرارة» (الطبعة السابعة المنقحة 2024، ص 59–). الدرس الأول «مفهوم الحرارة» (ص 61–64): المصطلحات الأربعة من «المفردات» بترتيب ورودها في النص، والتعريفات من نص الكتاب. الدرس الثاني يُضاف في الجلسة القادمة.","terms":[{"id":"heat","en":"Heat","ar":"الحرارة","def_ar":"الطاقة الحرارية التي تنتقل من الجسم الساخن إلى الجسم البارد المتماسين.","def_en":"Thermal energy that flows from a hot object to a colder one in contact.","example_ar":"يبرد الحديد الساخن في الماء ويسخن الماء.","emoji":"♨️"},{"id":"thermal-equilibrium","en":"Thermal Equilibrium","ar":"الاتزان الحراري","def_ar":"الحالة التي تتساوى فيها درجة حرارة جسمين متماسين.","def_en":"The state in which two objects in contact reach the same temperature.","example_ar":"يصل الحديد والماء إلى درجة الحرارة نفسها.","emoji":"🟰"},{"id":"temperature","en":"Temperature","ar":"درجة الحرارة","def_ar":"مقياس لمعدل الطاقة الحركية لجسيمات الجسم.","def_en":"A measure of the average kinetic energy of an object's particles.","example_ar":"جسيمات الكاكاو الساخن تتحرك أسرع.","emoji":"🌡️"},{"id":"thermometer","en":"Thermometer","ar":"المحرار","def_ar":"أنبوب زجاجي دقيق بداخله سائل كالزئبق أو الكحول، نقيس به درجة الحرارة.","def_en":"A thin glass tube with mercury or alcohol, used to measure temperature.","example_ar":"المحرار الطبي مدرّج من 35 إلى 42 °C.","emoji":"🩺"}]},{"id":"unit-99","unit":99,"title_ar":"مصطلحات من كتاب الكيمياء","title_en":"Chemistry Terms (to be placed)","status":"draft","source_note":"مؤقت: مصطلحات من المسودة الأولى موضعها كتاب الكيمياء للأول المتوسط (الفصل الثاني: الذرات والعناصر والمركبات). الرقم 99 يبقيها بعد فصول الفيزياء حتى يقرر المعلم ترتيب الكتب (docs/questions.md). الذرة والمركب مطابقان لصياغة كتاب الكيمياء؛ العنصر والمخلوط لم يُتحقق منهما بعد.","terms":[{"id":"atom","en":"Atom","ar":"الذرة","def_ar":"أصغر جزء من المادة، ولا يُرى بالعين المجردة.","def_en":"The smallest part of matter; too small to see.","example_ar":"قطعة الذهب مكونة من ذرات ذهب.","emoji":"⚛️"},{"id":"element","en":"Element","ar":"العنصر","def_ar":"مادة نقية تتكون من نوع واحد فقط من الذرات.","def_en":"A pure substance made of only one kind of atom.","example_ar":"الأوكسجين والحديد والذهب.","emoji":"🥇"},{"id":"compound","en":"Compound","ar":"المركب","def_ar":"مادة ناتجة عن اتحاد عنصرين أو أكثر بنسب وزنية ثابتة.","def_en":"A substance formed from two or more elements in fixed ratios.","example_ar":"الماء من الهيدروجين والأوكسجين.","emoji":"💧"},{"id":"mixture","en":"Mixture","ar":"المخلوط","def_ar":"مادتان أو أكثر مختلطتان فيزيائياً، تحتفظ كل منهما بخواصها.","def_en":"Two or more substances mixed physically, each keeping its properties.","example_ar":"الرمل والماء نفصلهما بالترشيح.","emoji":"🥗"}]}]</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 <script>
 // One WebGL renderer on #scene, shared by every game (a canvas can hold only one GL context).
@@ -1633,10 +1649,15 @@ function starsHtml(got, total) {
 }
 
 // ---------- home ----------
+// The newest book chapter (units under 90) opens by default; the viewer's own toggles are kept while the page is open.
+const currentUnit = UNITS.filter((u) => u.unit < 90).reduce((a, u) => (!a || u.unit > a.unit ? u : a), null);
+const openUnits = new Set(currentUnit ? [currentUnit.id] : []);
+
 function renderHome() {
   let termCount = 0, starsGot = 0, starsMax = 0;
   const cards = UNITS.map((u) => {
     termCount += u.terms.length;
+    let unitGot = 0, unitMax = 0;
     const games = GAMES.map((g) => {
       if (!g.ready) {
         return `<button class="game-card" type="button" disabled>
@@ -1646,29 +1667,82 @@ function renderHome() {
       const levels = g.impl.levelsOf(u.terms).length;
       const gp = gameProgress(u.id, g.id);
       const got = Object.values(gp.stars).reduce((a, b) => a + b, 0);
-      starsGot += got; starsMax += levels * 3;
+      unitGot += got; unitMax += levels * 3;
       return `<button class="game-card" type="button" data-unit="${esc(u.id)}" data-game="${g.id}">
         <strong>${g.name}</strong><p>${g.desc}</p>
         <div class="meta"><span>${g.impl.metaLabel ? g.impl.metaLabel(u.terms) : (levels === 1 ? "مستوى واحد" : `${num(levels)} مستويات`)}</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
       </button>`;
     }).join("");
-    return `<article class="unit">
-      <div class="unit-head">
-        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
-        <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
+    starsGot += unitGot; starsMax += unitMax;
+    const isCurrent = currentUnit && u.id === currentUnit.id;
+    return `<details class="unit" data-unit-id="${esc(u.id)}"${openUnits.has(u.id) ? " open" : ""}>
+      <summary class="unit-head">
+        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}${isCurrent ? '<span class="now">الفصل الحالي</span>' : ""}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
+        <div class="unit-side">
+          <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
+          <span class="unit-count">${num(u.terms.length)} مصطلح، ${num(unitGot)} من ${num(unitMax)} نجمة</span>
+        </div>
+      </summary>
+      <div class="unit-body">
+        <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
+        <div class="games">${games}</div>
       </div>
-      <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
-      <div class="games">${games}</div>
-    </article>`;
+    </details>`;
   });
   cards.push(`<article class="unit placeholder"><h2>الفصول القادمة</h2>
     <p>كل فصل يضاف إلى ملف المصطلحات يظهر هنا تلقائياً مع ألعابه.</p></article>`);
   $("units").innerHTML = cards.join("");
+  $("units").querySelectorAll("details.unit").forEach((d) => d.addEventListener("toggle", () => {
+    if (d.open) openUnits.add(d.dataset.unitId); else openUnits.delete(d.dataset.unitId);
+  }));
   $("totals").innerHTML = `
     <span class="chip"><b>${num(UNITS.length)}</b> فصل</span>
     <span class="chip"><b>${num(termCount)}</b> مصطلح</span>
-    <span class="chip"><b>${num(starsGot)}</b> / ${num(starsMax)} نجمة</span>`;
+    <span class="chip"><b>${num(starsGot)}</b> من ${num(starsMax)} نجمة</span>`;
 }
+
+// ---------- sound: short tones for right, wrong and level done; starts only after a tap ----------
+const Sfx = (() => {
+  let ac = null;
+  let muted = false;
+  try { muted = localStorage.getItem("askdo.platform.muted") === "1"; } catch (_) {}
+  function tone(freq, start, dur, type = "sine", gain = 0.12) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(gain, ac.currentTime + start);
+    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + start + dur);
+    o.connect(g).connect(ac.destination);
+    o.start(ac.currentTime + start); o.stop(ac.currentTime + start + dur + 0.02);
+  }
+  function play(kind) {
+    if (muted) return;
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      if (ac.state === "suspended") ac.resume();
+      if (kind === "ok") { tone(660, 0, 0.12); tone(990, 0.09, 0.18); }
+      else if (kind === "bad") { tone(220, 0, 0.22, "triangle", 0.14); }
+      else if (kind === "done") { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.1, 0.22)); }
+    } catch (_) { /* no audio on this device */ }
+  }
+  return {
+    play,
+    get muted() { return muted; },
+    toggle() {
+      muted = !muted;
+      try { localStorage.setItem("askdo.platform.muted", muted ? "1" : "0"); } catch (_) {}
+      return muted;
+    },
+  };
+})();
+
+function renderMute() {
+  const b = $("btn-sound");
+  b.textContent = Sfx.muted ? "🔇" : "🔊";
+  b.setAttribute("aria-label", Sfx.muted ? "تشغيل الصوت" : "كتم الصوت");
+  b.setAttribute("aria-pressed", String(Sfx.muted));
+}
+$("btn-sound").addEventListener("click", () => { Sfx.toggle(); renderMute(); });
+renderMute();
 
 $("units").addEventListener("click", (e) => {
   const card = e.target.closest("[data-game]");
@@ -1731,6 +1805,7 @@ const ui = {
     const t = $("toast");
     t.textContent = text;
     t.className = "toast show " + (kind || "");
+    if (kind) Sfx.play(kind);
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => (t.className = "toast"), 1600);
   },
@@ -1743,6 +1818,7 @@ const ui = {
     gp.best[r.levelIndex] = Math.max(gp.best[r.levelIndex] || 0, r.score);
     saveProgress();
     $("toast").className = "toast";
+    Sfx.play(r.stars > 0 ? "done" : "bad");
     const last = r.levelIndex === r.levelCount - 1;
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";

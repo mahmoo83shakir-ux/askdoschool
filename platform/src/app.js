@@ -29,10 +29,15 @@ function starsHtml(got, total) {
 }
 
 // ---------- home ----------
+// The newest book chapter (units under 90) opens by default; the viewer's own toggles are kept while the page is open.
+const currentUnit = UNITS.filter((u) => u.unit < 90).reduce((a, u) => (!a || u.unit > a.unit ? u : a), null);
+const openUnits = new Set(currentUnit ? [currentUnit.id] : []);
+
 function renderHome() {
   let termCount = 0, starsGot = 0, starsMax = 0;
   const cards = UNITS.map((u) => {
     termCount += u.terms.length;
+    let unitGot = 0, unitMax = 0;
     const games = GAMES.map((g) => {
       if (!g.ready) {
         return `<button class="game-card" type="button" disabled>
@@ -42,29 +47,82 @@ function renderHome() {
       const levels = g.impl.levelsOf(u.terms).length;
       const gp = gameProgress(u.id, g.id);
       const got = Object.values(gp.stars).reduce((a, b) => a + b, 0);
-      starsGot += got; starsMax += levels * 3;
+      unitGot += got; unitMax += levels * 3;
       return `<button class="game-card" type="button" data-unit="${esc(u.id)}" data-game="${g.id}">
         <strong>${g.name}</strong><p>${g.desc}</p>
         <div class="meta"><span>${g.impl.metaLabel ? g.impl.metaLabel(u.terms) : (levels === 1 ? "مستوى واحد" : `${num(levels)} مستويات`)}</span><span class="stars" aria-label="${num(got)} من ${num(levels * 3)} نجوم">${starsHtml(Math.round((got / (levels * 3)) * 5), 5)}</span></div>
       </button>`;
     }).join("");
-    return `<article class="unit">
-      <div class="unit-head">
-        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
-        <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
+    starsGot += unitGot; starsMax += unitMax;
+    const isCurrent = currentUnit && u.id === currentUnit.id;
+    return `<details class="unit" data-unit-id="${esc(u.id)}"${openUnits.has(u.id) ? " open" : ""}>
+      <summary class="unit-head">
+        <div><div class="unit-num">${u.unit >= 90 ? "مصطلحات إضافية" : `الفصل ${num(u.unit)}`}${isCurrent ? '<span class="now">الفصل الحالي</span>' : ""}</div><h2>${esc(u.title_ar)}</h2><div class="unit-en">${esc(u.title_en)}</div></div>
+        <div class="unit-side">
+          <span class="status ${u.status === "reviewed" ? "reviewed" : ""}">${u.status === "reviewed" ? "مطابق للكتاب" : "مسودة"}</span>
+          <span class="unit-count">${num(u.terms.length)} مصطلح، ${num(unitGot)} من ${num(unitMax)} نجمة</span>
+        </div>
+      </summary>
+      <div class="unit-body">
+        <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
+        <div class="games">${games}</div>
       </div>
-      <div class="term-strip" aria-label="مصطلحات الفصل">${u.terms.map((t) => `<span>${esc(t.en)}</span>`).join("")}</div>
-      <div class="games">${games}</div>
-    </article>`;
+    </details>`;
   });
   cards.push(`<article class="unit placeholder"><h2>الفصول القادمة</h2>
     <p>كل فصل يضاف إلى ملف المصطلحات يظهر هنا تلقائياً مع ألعابه.</p></article>`);
   $("units").innerHTML = cards.join("");
+  $("units").querySelectorAll("details.unit").forEach((d) => d.addEventListener("toggle", () => {
+    if (d.open) openUnits.add(d.dataset.unitId); else openUnits.delete(d.dataset.unitId);
+  }));
   $("totals").innerHTML = `
     <span class="chip"><b>${num(UNITS.length)}</b> فصل</span>
     <span class="chip"><b>${num(termCount)}</b> مصطلح</span>
-    <span class="chip"><b>${num(starsGot)}</b> / ${num(starsMax)} نجمة</span>`;
+    <span class="chip"><b>${num(starsGot)}</b> من ${num(starsMax)} نجمة</span>`;
 }
+
+// ---------- sound: short tones for right, wrong and level done; starts only after a tap ----------
+const Sfx = (() => {
+  let ac = null;
+  let muted = false;
+  try { muted = localStorage.getItem("askdo.platform.muted") === "1"; } catch (_) {}
+  function tone(freq, start, dur, type = "sine", gain = 0.12) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(gain, ac.currentTime + start);
+    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + start + dur);
+    o.connect(g).connect(ac.destination);
+    o.start(ac.currentTime + start); o.stop(ac.currentTime + start + dur + 0.02);
+  }
+  function play(kind) {
+    if (muted) return;
+    try {
+      ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+      if (ac.state === "suspended") ac.resume();
+      if (kind === "ok") { tone(660, 0, 0.12); tone(990, 0.09, 0.18); }
+      else if (kind === "bad") { tone(220, 0, 0.22, "triangle", 0.14); }
+      else if (kind === "done") { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.1, 0.22)); }
+    } catch (_) { /* no audio on this device */ }
+  }
+  return {
+    play,
+    get muted() { return muted; },
+    toggle() {
+      muted = !muted;
+      try { localStorage.setItem("askdo.platform.muted", muted ? "1" : "0"); } catch (_) {}
+      return muted;
+    },
+  };
+})();
+
+function renderMute() {
+  const b = $("btn-sound");
+  b.textContent = Sfx.muted ? "🔇" : "🔊";
+  b.setAttribute("aria-label", Sfx.muted ? "تشغيل الصوت" : "كتم الصوت");
+  b.setAttribute("aria-pressed", String(Sfx.muted));
+}
+$("btn-sound").addEventListener("click", () => { Sfx.toggle(); renderMute(); });
+renderMute();
 
 $("units").addEventListener("click", (e) => {
   const card = e.target.closest("[data-game]");
@@ -127,6 +185,7 @@ const ui = {
     const t = $("toast");
     t.textContent = text;
     t.className = "toast show " + (kind || "");
+    if (kind) Sfx.play(kind);
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => (t.className = "toast"), 1600);
   },
@@ -139,6 +198,7 @@ const ui = {
     gp.best[r.levelIndex] = Math.max(gp.best[r.levelIndex] || 0, r.score);
     saveProgress();
     $("toast").className = "toast";
+    Sfx.play(r.stars > 0 ? "done" : "bad");
     const last = r.levelIndex === r.levelCount - 1;
     const wrap = document.createElement("div");
     wrap.className = "sheet-wrap";

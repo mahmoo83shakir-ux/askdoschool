@@ -17,4 +17,5 @@ Games (each unit gets all of them):
 Games share one WebGL renderer (`src/stage.js`). To add a game: write `src/games/<id>.js` exposing `start(unit, levelIndex, ui, onExit)`, `stop()`, `levelsOf(terms)`, add it to `SCRIPTS` in `build.py` and to `GAMES` in `src/app.js`.
 
 Published Artifact: see `platform_url` in `config/channel.json`.
+- Home: each unit is collapsible; the newest book chapter opens first («الفصل الحالي»). Short tones for right, wrong and level done, with a mute button in the game bar (remembered per browser).
 - Units numbered 90+ (e.g. `unit-99`, terms waiting for their book chapter) show as «مصطلحات إضافية» instead of a chapter number.
