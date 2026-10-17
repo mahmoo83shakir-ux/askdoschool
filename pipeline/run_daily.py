@@ -28,10 +28,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default="", help="YYYY-MM-DD; defaults to today in the channel timezone")
     parser.add_argument("--dry-run", action="store_true", help="render the video but publish nothing")
+    parser.add_argument("--scheduled", action="store_true",
+                        help="cron run: GitHub can start it hours late, so a run before noon belongs to the previous day")
     args = parser.parse_args()
 
     config = episode_mod.load_config()
-    date = dt.date.fromisoformat(args.date) if args.date else dt.datetime.now(ZoneInfo(config["timezone"])).date()
+    now = dt.datetime.now(ZoneInfo(config["timezone"]))
+    if args.scheduled:
+        now -= dt.timedelta(hours=12)
+    date = dt.date.fromisoformat(args.date) if args.date else now.date()
     if episode_mod.episode_number(config, date) < 1:
         print(f"{date} is before start_date {config['start_date']}: no episode today.")
         return 0

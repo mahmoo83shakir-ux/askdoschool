@@ -2,7 +2,7 @@ name: الحلقة اليومية
 
 on:
   schedule:
-    - cron: "7 12 * * *"   # 15:07 بتوقيت بغداد. GitHub يؤخر التشغيل المجدول أحياناً ساعات (5 ساعات في أول أسبوع)، فالبدء المبكر يضمن النشر قبل السابعة مساءً
+    - cron: "7 9 * * *"   # 12:07 بتوقيت بغداد. GitHub يبدأ التشغيل المجدول متأخراً 4–9 ساعات، فالبدء المبكر ينشر الحلقة عصراً. التأخير بعد منتصف الليل لا يغير يوم الحلقة (--scheduled)
   workflow_dispatch:
     inputs:
       date:
@@ -56,7 +56,7 @@ jobs:
           GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION }}
           PAUSE_PUBLISHING: ${{ vars.PAUSE_PUBLISHING }}
         run: |
-          python pipeline/run_daily.py --date "${{ inputs.date }}" ${{ inputs.dry_run && '--dry-run' || '' }}
+          python pipeline/run_daily.py --date "${{ inputs.date }}" ${{ inputs.dry_run && '--dry-run' || '' }} ${{ github.event_name == 'schedule' && '--scheduled' || '' }}
 
       - name: Keep the video as a run artifact
         if: always()
